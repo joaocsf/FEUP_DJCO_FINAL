@@ -106,9 +106,9 @@ namespace Search_Shell.Grid
 				Matrix4x4.Rotate(Quaternion.Euler(finalAngles)) *
 				Matrix4x4.identity;
 
-			Debug.Log("Trasnforming Point" + volumePos);
+			// Debug.Log("Trasnforming Point" + volumePos);
 			Vector3 res = transformation.MultiplyPoint(volumePos);
-			Debug.Log("Result Point" + res);
+			// Debug.Log("Result Point" + res);
 			Drawer.instance.AddDrawable(new DrawableCube(transform.parent.position + res, c), 1000);
 			return res;
 		}

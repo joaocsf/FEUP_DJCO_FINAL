@@ -6,6 +6,15 @@ namespace Search_Shell.Helper
 {
     public class Drawer
     { 
+
+        public static Drawer instance {
+            get {
+                if(_instance == null)
+                    _instance = new Drawer();
+                return _instance;
+            }   
+        }
+        private static Drawer _instance = null;
         List<Drawable> drawables = new List<Drawable>();
 
         public void AddDrawable(Drawable drawable, int lifeTime = -1){
@@ -14,7 +23,7 @@ namespace Search_Shell.Helper
         }
 
         public void Draw(){
-            
+           // Debug.Log("Drawing" + drawables.Count);
             for(int i = 0; i < drawables.Count; i++){
                 drawables[i].Draw();
                 if(drawables[i].IsDead()){

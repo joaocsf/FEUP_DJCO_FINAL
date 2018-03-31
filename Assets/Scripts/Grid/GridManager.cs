@@ -14,9 +14,12 @@ namespace Search_Shell.Grid{
 
 			yield return new WaitForFixedUpdate();
 
-			GridObject[] objs = GetComponentsInChildren<GridObject>();	
+			GridObject[] objs = GetComponentsInChildren<GridObject>();
+				
 			foreach(GridObject obj in objs){
-				Debug.Log("Here");
+				obj.SnapPosition();
+				obj.CalculateVolume();
+				// Debug.Log("Registered:" + obj.name);
 				RegisterObject(obj);
 			}
 		}
@@ -34,14 +37,16 @@ namespace Search_Shell.Grid{
 			}
 		}
 
-		public bool AssignObjectToPosition(GridObject obj, Vector3 pos){
+		public GridObject AssignObjectToPosition(GridObject obj, Vector3 pos){
 
-			if(position2Object.ContainsKey(pos)) return false;
+			GridObject solid;	
+			//Debug.Log(pos.x + " - " + pos.y  + " - " + pos.z);
+			if(position2Object.TryGetValue(pos, out solid))
+				return solid;
 
 			position2Object.Add(pos, obj);
 
-			return true;
-
+			return null;
 		}
 
 		public void RemoveObjectFromPosition(GridObject obj, Vector3 pos){
@@ -50,30 +55,52 @@ namespace Search_Shell.Grid{
 					position2Object.Remove(pos);
 			}
 
-		public void ClearObject(GridObject obj){
-			List<Vector3> positions = obj.GetVolumePositions();
 
+		public void ClearObject(GridObject obj, List<Vector3> positions){
 			foreach(Vector3 position in positions){
 				RemoveObjectFromPosition(obj, position);
 			}
-
 		}
-		public void RegisterObject(GridObject obj){
-			List<Vector3> positions = obj.GetVolumePositions();
 
-			foreach(Vector3 position in positions){
-				if(!AssignObjectToPosition(obj, position)) {
-					Debug.LogError("Cannot Assign Object to this position! Overlap!!");
-					ClearObject(obj);
-				}
+		public void ClearObject(GridObject obj){
+			ClearObject(obj, obj.GetVolumePositions());
+		}
+
+		public void SlideObject(GridObject obj, Vector3 movement){
+			ClearObject(obj);
+			List<Vector3> calculatedMovement = obj.CalculateMovement(movement);
+			if(RegisterObject(obj, calculatedMovement)){
+				obj.Slide(movement);				
+			}else{
+				ClearObject(obj, calculatedMovement);
+				RegisterObject(obj);
 			}
 
 
-			objects.Add(obj);
-			
-
-
 		}
+
+		public bool RegisterObject(GridObject obj, List<Vector3> positions){
+
+			foreach(Vector3 position in positions){
+				GridObject existing = AssignObjectToPosition(obj, position);
+				if(existing != null) {
+					ClearObject(obj);
+					return false;
+				}
+			}
+
+			objects.Add(obj);
+			return true;			
+		}
+
+		public bool RegisterObject(GridObject obj){
+			if(!RegisterObject(obj, obj.GetVolumePositions())){
+					Debug.LogError("Cannot Assign Object to this position! Overlap!!");
+					return false;
+			}
+			return true;
+		}
+
 		void Update () {
 			
 		}

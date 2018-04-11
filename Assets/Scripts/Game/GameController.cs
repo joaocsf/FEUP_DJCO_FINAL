@@ -22,26 +22,40 @@ namespace Search_Shell.Game{
 			SetupCamera();
 		}
 
+		void OnDrawGizmos() {
+		}
+
 		void SetupCamera () {
 
 			levelCamera.transform.parent = levelObject.transform;
 			subLevelCamera.transform.parent = subLevel.transform;
 			subLevelCamera.transform.localPosition = Vector3.zero + Vector3.one;
+			subLevelCamera.GetComponent<CameraFollow>().SetTransform(subLevelObject.transform);
 		}
 		
 		void Update () {
 
 			Vector3 input = new Vector3(
 				Input.GetAxisRaw("Horizontal"),
-				(Input.GetKey(KeyCode.Space)? 1 : (Input.GetKey(KeyCode.LeftShift)? -1 : 0)),
+				0,
 				Input.GetAxisRaw("Vertical"));
-
 
 			if(input == lastInput) return;
 			lastInput = input;
-			input = subLevelCamera.transform.TransformDirection(input);
+			if(input.magnitude == 0) return;
+			input = subLevelCamera.GetComponent<CameraFollow>().GetPlaneDirection(input);
+			Debug.DrawLine(subLevelCamera.transform.position, subLevelCamera.transform.position + input, Color.black, 2);
 			input = subLevel.transform.InverseTransformDirection(input);
-			
+			input.y = 0;
+			input = input.normalized;
+			Debug.Log(input + "- " + input.magnitude);
+			if(Mathf.Abs(input.x) > 0.7f){
+				input.x = Mathf.Sign(input.x);
+				input.z = 0;
+			}else{
+				input.z = Mathf.Sign(input.z);
+				input.x = 0;
+			}
 
 			if((int)input.sqrMagnitude != 0){
 				input.x = Mathf.Round(input.x);

@@ -16,6 +16,10 @@ namespace Search_Shell.Helper
         }
         private static Drawer _instance = null;
         List<Drawable> drawables = new List<Drawable>();
+        
+        public void Clear(){
+            drawables.Clear();
+        }
 
         public void AddDrawable(Drawable drawable, int lifeTime = -1){
             drawable.lifeTime = lifeTime;
@@ -82,12 +86,15 @@ namespace Search_Shell.Helper
 
         protected override void OnDraw()
         {
-            Gizmos.color = color;
-
-            if(wire)
-                Gizmos.DrawWireCube(position, size);
-            else
+            Color temp = color;
+            temp.a = 0.5f;
+            
+            Gizmos.color = temp;
+            if(!wire)
                 Gizmos.DrawCube(position, size);
+
+            Gizmos.color = color;
+            Gizmos.DrawWireCube(position, size);
         }
     }
 

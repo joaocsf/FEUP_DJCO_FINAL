@@ -5,13 +5,25 @@ using UnityEngine;
 
 namespace Search_Shell.Grid
 {
+	public struct Pivot {
+		public Vector3 point;
+		public Vector3 normal;
+	}
 	public class GridObject : MonoBehaviour {
 
+		public bool debugPivot = true;
+		public bool debugBoundingBox = true;
+		public bool debugVolumes = false;
 		[SerializeField]
 		private List<Vector3> volume = new List<Vector3>();
 		public Vector3 finalAngles = Vector3.zero;
 		public Vector3 finalPosition = Vector3.zero;
 		public Vector3 offset = Vector3.zero;
+
+		private GridBounds _bounds;
+		private Drawer _drawer = new Drawer();
+
+		private Vector3 lastDirection;
 
 		public void RemoveVolume(){
 			volume.Clear();
@@ -39,15 +51,82 @@ namespace Search_Shell.Grid
 
 			return v3;
 		}
+		public Matrix4x4 RollMatrix(Vector3 direction, float angle){
+			Pivot pivot = GetRollPivot(direction);
+			Matrix4x4 matrix = 
+				Matrix4x4.Translate(pivot.point) *
+				Matrix4x4.Rotate(Quaternion.Euler(pivot.normal * angle)) *
+				Matrix4x4.Translate(-pivot.point) *
+				Matrix4x4.identity;
+			return matrix;
+		}
+
+		public void Roll (Vector3 direction, float angle){
+			Roll(direction, angle, ref finalPosition, ref finalAngles);
+		}
+
+		public Vector3 MatrixRotation(Vector3 point, Vector3 angles){
+			Matrix4x4 mat = Matrix4x4.Rotate(Quaternion.Euler(angles)) * Matrix4x4.identity;
+
+			return mat.MultiplyVector(point);
+		}
+
+		public void Roll(Vector3 direction, float angle, ref Vector3 position, ref Vector3 angles){
+			Pivot pivot = GetRollPivot(direction);
+			Matrix4x4 matrix = RollMatrix(direction,angle);
+			Vector3 tempPos = position;
+			position = matrix.MultiplyPoint(position);
+
+			Vector3 upVector = matrix.MultiplyVector(Vector3.up);
+
+			Quaternion rot = Quaternion.AngleAxis(angle, pivot.normal) * Quaternion.Euler(angles.x, angles.y, angles.z);
+
+			angles = rot.eulerAngles;
+			_bounds = GetBounds();
+		}
+
+		public List<Vector3> CalculateRoll(Vector3 direction, float angle){
+			lastDirection = direction;
+			Pivot pivot = GetRollPivot(direction);
+			Debug.Log(direction +" < " + angle);
+			Debug.Log(pivot.point + " < " + pivot.normal);
+			Vector3 tempPosition = finalPosition;
+			Vector3 tempAngles = finalAngles;
+
+			Roll(direction,angle);
+
+			List<Vector3> res = GetVolumePositions();
+
+			finalPosition = tempPosition;
+			finalAngles = tempAngles;
+
+			return res;
+		}
+
+		public Pivot GetRollPivot(Vector3 direction){
+			GridBounds bounds = GetBounds();
+			Vector3 position = Vector3.zero;
+			position.y = bounds.min.y;
+
+			position.x = (direction.x < -0.5f)? bounds.min.x : (direction.x > 0.5f)? bounds.max.x : bounds.center.x; 
+			position.z = (direction.z < -0.5f)? bounds.min.z : (direction.z > 0.5f)? bounds.max.z : bounds.center.z; 
+			if(Mathf.Abs(direction.z) > 0){
+				direction.z *= 1;
+			}
+			Vector3 normal = Vector3.Cross(direction, Vector3.up).normalized;
+
+			return new Pivot{point= position, normal = normal};
+		} 
+
 		public List<Vector3> CalculateMovement(Vector3 relativePosition){
-			finalPosition = transform.localPosition + relativePosition;
+			Vector3 tempPosition = finalPosition;
+			finalPosition = finalPosition + relativePosition;
 			finalPosition = SnapVector(finalPosition);
 			List<Vector3> res = GetVolumePositions();
 
-			finalPosition = transform.localPosition;
+			finalPosition = tempPosition;
 
 			return res;			
-
 		}
 
 		private Color c = Color.white;
@@ -72,6 +151,8 @@ namespace Search_Shell.Grid
 			foreach (Vector3 v3 in volumes)
 				bounds.Encapsulate(v3);
 
+			bounds.Encapsulate(bounds.max + new Vector3(0.5f,0.5f,0.5f));
+			bounds.Encapsulate(bounds.min - new Vector3(0.5f,0.5f,0.5f));
 			return bounds;
 		}
 		private Vector3 computePosition(Transform transform, Vector3 finalPos){
@@ -120,57 +201,50 @@ namespace Search_Shell.Grid
 						for(int k = minZ; k <= maxZ; k++)
 							AddVolume(new Vector3(i,j,k));
 			}
+			_bounds = GetBounds();
 		}
 
-		public void PositionBox(){
+		private void DebugPivot(Vector3 dir){
+			Pivot pivot = GetRollPivot(dir);
+			pivot.point += transform.parent.position;
+			Gizmos.color = Color.red;
+			Gizmos.DrawWireSphere(pivot.point, 0.1f);
+			Gizmos.color = new Color(1f,0,0,1.0f);
+			Gizmos.DrawWireCube(pivot.point + pivot.normal/2f, pivot.normal + Vector3.one*0.05f);
 
-			finalPosition = transform.localPosition;
-			finalAngles = transform.localEulerAngles;
-			Debug.Log("Current Position: "  + finalPosition + " Current Rotation" + finalAngles);
-			Vector3 tmp = finalPosition + transform.parent.position;
-			Debug.DrawLine(tmp, tmp + Vector3.up, Color.white, 2);
-			Drawer.instance.AddDrawable( new DrawableCube(tmp, Vector3.one/2, Color.yellow, true), 100);
-			c = Color.green;
-			GridBounds bounds = new GridBounds();	
-			List<Vector3> volumes = GetVolumePositions();
-			if(volumes.Count == 0)
-				return;
-
-			foreach(Vector3 pos in volumes){
-				Drawer.instance.AddDrawable( new DrawableCube(transform.parent.position + finalPosition, Vector3.one/3f, Color.cyan, true), 100);
-				Drawer.instance.AddDrawable( new DrawableCube(transform.parent.position + pos, Vector3.one/2f, Color.yellow, false), 100);
-				Vector3 basePoint = transform.parent.position + pos;
-				Debug.DrawLine(basePoint, basePoint + Vector3.down, Color.white, 2);
-				bounds.Encapsulate(pos - finalPosition);
-			}
-
-			Vector3 tempCenter = bounds.center + transform.localPosition;
-			Drawer.instance.AddDrawable( new DrawableCube(transform.parent.position + tempCenter, Vector3.one/2f, Color.white, false));
-			Drawer.instance.AddDrawable( new DrawableLine(transform.parent.position + tempCenter, transform.position, Color.green));
-			Vector3 size = bounds.size + Vector3.one;
-
-			Debug.Log( "Temp Center Begin:" + tempCenter + "Size:" + size);
-
-			tempCenter.x = Mathf.FloorToInt(tempCenter.x) + Mathf.Sign(tempCenter.x) * ( (Mathf.RoundToInt(size.x) % 2 == 0)? 0.5f : 0f );
-			tempCenter.y = Mathf.FloorToInt(tempCenter.y) + Mathf.Sign(tempCenter.y) * ( (Mathf.RoundToInt(size.y) % 2 == 0)? 0.5f : 0f );
-			tempCenter.z = Mathf.FloorToInt(tempCenter.z) + Mathf.Sign(tempCenter.z) * ( (Mathf.RoundToInt(size.z) % 2 == 0)? 0.5f : 0f );
-
-			Debug.Log( "Temp Center End:" + tempCenter + "Size:" + size);
-
-			Drawer.instance.AddDrawable( new DrawableCube(transform.parent.position + tempCenter, Vector3.one/2f, Color.black, false));
-			c = Color.blue;
-			transform.position = transform.parent.position + tempCenter - bounds.center;
-			Debug.Log("End Position:" + transform.localPosition);
-			finalPosition = transform.localPosition;
-			finalAngles = transform.localEulerAngles;
-
-			GetVolumePositions();
 
 		}
+		private void DebugPivots(){
+			//DebugPivot(Vector3.left);
+			DebugPivot(lastDirection);
+			//DebugPivot(Vector3.right);
+			//DebugPivot(Vector3.forward);
+			//DebugPivot(Vector3.back);
+		}
 
+		private void DebugBoundingBox(){
+			if(_bounds == null)
+				_bounds = GetBounds();
+			Color c = Color.blue;
+			c.a = 0.5f;
+			Gizmos.color = c;
+			Gizmos.DrawCube(transform.parent.position + _bounds.center, _bounds.size);
+			c.a = 1.0f;
+			Gizmos.color = c;
+			Gizmos.DrawWireCube(transform.parent.position + _bounds.center, _bounds.size);
+		}
 		[ExecuteInEditMode]
 		void OnDrawGizmos(){
-			Drawer.instance.Draw();
+			
+
+			if(debugVolumes)
+				_drawer.Draw();
+
+			if(debugBoundingBox)
+				DebugBoundingBox();
+
+			if(debugPivot)
+				DebugPivots();
 		}
 		
 		void Update () {
@@ -190,16 +264,18 @@ namespace Search_Shell.Grid
 			res.y = Mathf.Round(res.y);
 			res.z = Mathf.Round(res.z);
 			// Debug.Log("Result Point" + res);
-			Drawer.instance.AddDrawable(new DrawableCube(transform.parent.position + res, Vector3.one, c, false), 1000);
 			return res;
 		}
 
 		public List<Vector3> GetVolumePositions () {
 
 			List<Vector3> res = new List<Vector3>();
+			_drawer.Clear();
+
 
 			foreach(Vector3 point in volume){
 				Vector3 realPosition = ComputeRealPosition(point);
+				_drawer.AddDrawable(new DrawableCube(transform.parent.position + realPosition, Vector3.one, Color.green, false));
 				res.Add(realPosition);
 			}
 

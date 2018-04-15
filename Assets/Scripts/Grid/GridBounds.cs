@@ -6,6 +6,7 @@ namespace Search_Shell.Grid
     {
         private bool initialized = false;
         public Vector3 min;
+        public Vector3 max;
 
         public Vector3 size {
             get {return max - min;}
@@ -16,7 +17,6 @@ namespace Search_Shell.Grid
                 return (max + min)/2f;
             }
         }
-        public Vector3 max;
         public void Encapsulate(Vector3 point){
             if(!initialized){
                 min = max = point;

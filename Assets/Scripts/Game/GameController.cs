@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Search_Shell.Grid;
+using Search_Shell.Controllers;
+using Search_Shell.Controllers.Movement;
 
 namespace Search_Shell.Game{
 
@@ -48,7 +50,6 @@ namespace Search_Shell.Game{
 			input = subLevel.transform.InverseTransformDirection(input);
 			input.y = 0;
 			input = input.normalized;
-			Debug.Log(input + "- " + input.magnitude);
 			if(Mathf.Abs(input.x) > 0.7f){
 				input.x = Mathf.Sign(input.x);
 				input.z = 0;
@@ -63,8 +64,12 @@ namespace Search_Shell.Game{
 				input.z = Mathf.Round(input.z);
 			}
 
-			subLevel.SlideObject(subLevelObject, input);
+			Debug.Log(input);
+			MovementController controller = subLevelObject.GetComponent<MovementController>();
 
+			if(controller.Animating) return;
+
+			controller.Move(input);
 
 		}
 	}

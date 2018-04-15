@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using Search_Shell.Grid;
 using Search_Shell.Helper;
+using System;
 
 [CustomEditor(typeof(GridObject))]
 public class GridObjectEditor : Editor {
@@ -35,12 +36,72 @@ public class GridObjectEditor : Editor {
 		return transform.InverseTransformVector(dir);
 
 	}
+
+	private void ToggleDebug(Action<GridObject> action){
+
+			GridObject[] objs = obj.transform.parent.GetComponentsInChildren<GridObject>();
+
+			foreach(GridObject obj in objs){
+				action(obj);
+			}
+	}
+
 	public override void OnInspectorGUI()
 	{
 		obj = (GridObject)target;
+
+		AllOptions();
+		EditorGUILayout.Separator();
+		ThisObject(obj);
+
 		if(GUILayout.Button("Update Shape")){
-			obj.CalculateVolume();
 			obj.SnapPosition();
+			obj.CalculateVolume();
 		}
+	}
+
+	public void VerticalField(String name, Action action){
+		GUILayout.BeginVertical();
+		GUILayout.Label(name);
+		if(GUILayout.Button("Toggle"))
+			action();
+		GUILayout.EndVertical();
+
+
+	}
+
+	public void ThisObject(GridObject obj){
+		GUILayout.Label("This Object");
+
+		GUILayout.BeginHorizontal();
+		VerticalField("Bounding Box", () => obj.debugBoundingBox = !obj.debugBoundingBox);
+		VerticalField("Volumes", () => obj.debugVolumes = !obj.debugVolumes);
+		VerticalField("Pivots", () => obj.debugPivot = !obj.debugPivot);
+		GUILayout.EndHorizontal();
+
+
+	}
+
+	public void AllOptions(){
+		GUILayout.Label("All Objects");
+		GUILayout.BeginHorizontal();
+
+		GUILayout.BeginVertical();
+		GUILayout.Label("Bounding Boxes:");
+		if(GUILayout.Button("Show"))
+			ToggleDebug(obj => obj.debugBoundingBox = true);
+		if(GUILayout.Button("Hide"))
+			ToggleDebug(obj => obj.debugBoundingBox = false);
+
+		GUILayout.EndVertical();
+		GUILayout.BeginVertical();
+		GUILayout.Label("Volume Boxes:");
+		if(GUILayout.Button("Show"))
+			ToggleDebug(obj => obj.debugVolumes = true);
+		if(GUILayout.Button("Hide"))
+			ToggleDebug(obj => obj.debugVolumes = false);
+
+		GUILayout.EndVertical();
+		GUILayout.EndHorizontal();
 	}
 }

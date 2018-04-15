@@ -62,6 +62,26 @@ namespace Search_Shell.Grid{
 			}
 		}
 
+		public GridObject CheckObject(Vector3 pos){
+			GridObject obj;
+
+			position2Object.TryGetValue(pos, out obj);
+
+			return obj;
+		}
+
+		public HashSet<GridObject> CheckCollision(GridObject obj, List<Vector3> positions){
+
+			HashSet<GridObject> objs = new HashSet<GridObject>();
+			foreach(Vector3 position in positions){
+				GridObject res = CheckObject(position);
+				if(res == null || res == obj) continue;
+				objs.Add(res);
+			}
+
+			return objs;
+		}
+
 		public void ClearObject(GridObject obj){
 			ClearObject(obj, obj.GetVolumePositions());
 		}

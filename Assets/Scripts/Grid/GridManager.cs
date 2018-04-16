@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Search_Shell.Controllers.Animation;
+using System;
 
 namespace Search_Shell.Grid{
 	public class GridManager : MonoBehaviour {
 
 		public bool debug = true;
 		public Vector2 dims;
+		
+		public int maxGravityInterations = 20;
+
+		private HashSet<GridObject> affectingObjects = new HashSet<GridObject>();
 		HashSet<GridObject> objects = new HashSet<GridObject>();
 		Dictionary<Vector3, GridObject> position2Object = new Dictionary<Vector3, GridObject>();
 
+		private HashSet<IGridEvents> listeners = new HashSet<IGridEvents>();
 		IEnumerator Start () {
 
 			yield return new WaitForFixedUpdate();
@@ -40,6 +47,20 @@ namespace Search_Shell.Grid{
 				Gizmos.DrawCube(transform.position + pos, Vector3.one*0.5f);
 			}
 
+		}
+
+		public void AddListener(IGridEvents lstnr){
+			listeners.Add(lstnr);
+		}
+
+		public void RemoveListener(IGridEvents lstnr){
+			listeners.Remove(lstnr);
+		}
+		
+		public void CallListeners(Action<IGridEvents> action){
+			foreach(IGridEvents e in listeners){
+				action(e);
+			}
 		}
 
 		public GridObject AssignObjectToPosition(GridObject obj, Vector3 pos){
@@ -99,8 +120,48 @@ namespace Search_Shell.Grid{
 				ClearObject(obj, calculatedMovement);
 				RegisterObject(obj);
 			}
+		}
 
+		private bool CheckGround(GridObject obj, Vector3 dir){
+			return CheckCollision(obj, obj.CalculateSlide(dir)).Count > 0;
+		}
 
+		private void FinishGravityAnimation(GridObject obj, Vector3 dir){
+			affectingObjects.Remove(obj);
+			obj.Slide(dir);
+
+			if(affectingObjects.Count == 0){
+				CallListeners(e => e.OnFinishedGravity());
+			}
+		}
+
+		private void MoveObject(GridObject obj, Vector3 dir){
+			affectingObjects.Add(obj);
+			ClearObject(obj);
+			obj.Slide(dir);
+			RegisterObject(obj);
+			obj.Slide(-dir);
+			LinearAnimation anim = obj.GetComponent<LinearAnimation>();
+			anim.Animate(dir, () => FinishGravityAnimation(obj, dir));
+		}
+
+		public bool VerifyGravity(HashSet<GridObject> movedObjs){
+			List<GridObject> objs = new List<GridObject>(movedObjs);
+			objs.Sort( (o1, o2) => Mathf.RoundToInt(o1.finalPosition.y - o1.finalPosition.y));
+
+			bool moved = false;
+			foreach(GridObject obj in movedObjs){
+				int n = 0;
+				while(++n <= maxGravityInterations){
+					if(CheckGround(obj, Vector3.down * n)){
+						if(n == 1) break;
+						MoveObject(obj, Vector3.down * (n-1));	
+						moved = true;
+						break;
+					}
+				}				
+			}
+			return moved;
 		}
 
 		public bool RegisterObject(GridObject obj, List<Vector3> positions){

@@ -15,6 +15,8 @@ namespace Search_Shell.Controllers.Animation {
         private Action finishAction;
         protected bool animating = false;
 
+        public bool animateOnMovement = true;
+
         protected abstract void OnAnimate(Vector3 input);
         protected abstract void OnUpdate(float delta);
 

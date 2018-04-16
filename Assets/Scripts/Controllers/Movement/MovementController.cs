@@ -14,15 +14,22 @@ namespace Search_Shell.Controllers.Movement {
             get{ return _animating > 0; }
         }
 
+        private IMovementListener listener;
+
+        public void SetListener(IMovementListener listener){
+            this.listener = listener;
+        }
         public abstract HashSet<GridObject> Move(Vector3 input);
 
         protected void Animate(Vector3 input){
             AnimationController[] controllers = GetComponents<AnimationController>();
 
-            _animating = controllers.Length;
+            _animating = 0;
 
             gridManager.ClearObject(obj);
             foreach(AnimationController controller in controllers){
+                if(!controller.animateOnMovement) continue;
+                _animating ++;
                 controller.Animate(input, () => FinishAnimation(input));
             }
         }
@@ -32,6 +39,9 @@ namespace Search_Shell.Controllers.Movement {
                 OnFinishAnimation(input);
                 gridManager.RegisterObject(obj);
             }
+
+            if(listener != null)
+                listener.OnFinishedMovement();
         }
 
         protected abstract void OnFinishAnimation(Vector3 input);

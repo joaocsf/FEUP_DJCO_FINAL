@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 0
   dims: {x: 5, y: 5}
+  maxGravityInterations: 20
 --- !u!1 &32315565
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +273,7 @@ GameObject:
   - component: {fileID: 38133031}
   - component: {fileID: 38133036}
   - component: {fileID: 38133037}
+  - component: {fileID: 38133038}
   m_Layer: 0
   m_Name: ObjJump
   m_TagString: Untagged
@@ -386,6 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0faffa102f05c4648b847fcd83405178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animateOnMovement: 1
   duration: 0.3
   yOffset: 0.5
   curve:
@@ -402,6 +405,38 @@ MonoBehaviour:
       value: 1
       inSlope: 0
       outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &38133038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 38133030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46d3e568efe0424da705967b9e4fe15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animateOnMovement: 0
+  duration: 0.3
+  yOffset: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -2974,6 +3009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   dims: {x: 0, y: 0}
+  maxGravityInterations: 20
 --- !u!1 &1669294742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3325,6 +3361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27f7cd3f80b30c46a4982bec42bce3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animateOnMovement: 1
   duration: 0.5
   curve:
     serializedVersion: 2

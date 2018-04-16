@@ -7,7 +7,7 @@ using Search_Shell.Controllers.Movement;
 
 namespace Search_Shell.Game{
 
-	public class GameController : MonoBehaviour {
+	public class GameController : MonoBehaviour, IMovementListener, IGridEvents {
 
 		public GridManager level;
 		public GridManager subLevel;
@@ -19,6 +19,10 @@ namespace Search_Shell.Game{
 		public Camera subLevelCamera;
 
 		private Vector3 lastInput;
+
+		private HashSet<GridObject> movedObjects = new HashSet<GridObject>();
+
+		private bool canControll = true;
 
 		void Start () {
 			SetupCamera();
@@ -33,9 +37,12 @@ namespace Search_Shell.Game{
 			subLevelCamera.transform.parent = subLevel.transform;
 			subLevelCamera.transform.localPosition = Vector3.zero + Vector3.one;
 			subLevelCamera.GetComponent<CameraFollow>().SetTransform(subLevelObject.transform);
+			subLevel.AddListener(this);
 		}
 		
 		void Update () {
+			
+			if(!canControll) return;
 
 			Vector3 input = new Vector3(
 				Input.GetAxisRaw("Horizontal"),
@@ -64,12 +71,28 @@ namespace Search_Shell.Game{
 				input.z = Mathf.Round(input.z);
 			}
 
+			movedObjects.Clear();
+
 			MovementController controller = subLevelObject.GetComponent<MovementController>();
+			controller.SetListener(this);
 
 			if(controller.Animating) return;
 
-			controller.Move(input);
+			HashSet<GridObject> colls =  controller.Move(input);
+			if(colls.Count > 0) return;
+			canControll = false;
+			movedObjects.Add(subLevelObject);
 
 		}
-	}
+
+    public void OnFinishedMovement()
+    {
+			canControll = !subLevel.VerifyGravity(movedObjects);
+    }
+
+    public void OnFinishedGravity()
+    {
+			canControll = true;
+    }
+  }
 }

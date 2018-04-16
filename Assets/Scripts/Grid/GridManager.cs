@@ -35,6 +35,11 @@ namespace Search_Shell.Grid{
 					Gizmos.DrawLine(new Vector3(i,j,-dims.y) + local, local + new Vector3(i,j,dims.y));
 				}
 			}
+			Gizmos.color = Color.white;
+			foreach(Vector3 pos in position2Object.Keys){
+				Gizmos.DrawCube(transform.position + pos, Vector3.one*0.5f);
+			}
+
 		}
 
 		public GridObject AssignObjectToPosition(GridObject obj, Vector3 pos){
@@ -54,7 +59,6 @@ namespace Search_Shell.Grid{
 				if(position2Object[pos] == obj)
 					position2Object.Remove(pos);
 			}
-
 
 		public void ClearObject(GridObject obj, List<Vector3> positions){
 			foreach(Vector3 position in positions){
@@ -88,7 +92,7 @@ namespace Search_Shell.Grid{
 
 		public void SlideObject(GridObject obj, Vector3 movement){
 			ClearObject(obj);
-			List<Vector3> calculatedMovement = obj.CalculateMovement(movement);
+			List<Vector3> calculatedMovement = obj.CalculateSlide(movement);
 			if(RegisterObject(obj, calculatedMovement)){
 				obj.Slide(movement);				
 			}else{
@@ -104,6 +108,7 @@ namespace Search_Shell.Grid{
 			foreach(Vector3 position in positions){
 				GridObject existing = AssignObjectToPosition(obj, position);
 				if(existing != null) {
+					Debug.Log(existing.name);
 					ClearObject(obj);
 					return false;
 				}

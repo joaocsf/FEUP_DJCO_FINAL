@@ -38,9 +38,8 @@ namespace Search_Shell.Grid
 		}
 
 		public void Slide(Vector3 movement){
-			finalPosition = transform.localPosition + movement;
+			finalPosition += movement;
 			finalPosition = SnapVector(finalPosition);
-			//Animation
 			transform.localPosition = finalPosition;
 		}
 
@@ -88,8 +87,6 @@ namespace Search_Shell.Grid
 		public List<Vector3> CalculateRoll(Vector3 direction, float angle){
 			lastDirection = direction;
 			Pivot pivot = GetRollPivot(direction);
-			Debug.Log(direction +" < " + angle);
-			Debug.Log(pivot.point + " < " + pivot.normal);
 			Vector3 tempPosition = finalPosition;
 			Vector3 tempAngles = finalAngles;
 
@@ -118,7 +115,7 @@ namespace Search_Shell.Grid
 			return new Pivot{point= position, normal = normal};
 		} 
 
-		public List<Vector3> CalculateMovement(Vector3 relativePosition){
+		public List<Vector3> CalculateSlide(Vector3 relativePosition){
 			Vector3 tempPosition = finalPosition;
 			finalPosition = finalPosition + relativePosition;
 			finalPosition = SnapVector(finalPosition);

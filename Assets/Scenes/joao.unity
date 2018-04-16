@@ -270,8 +270,10 @@ GameObject:
   - component: {fileID: 38133033}
   - component: {fileID: 38133032}
   - component: {fileID: 38133031}
+  - component: {fileID: 38133036}
+  - component: {fileID: 38133037}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: ObjJump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,6 +364,48 @@ Transform:
   m_Father: {fileID: 9519868}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &38133036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 38133030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1593155cbd70f964bafaf78ebe7980b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &38133037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 38133030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0faffa102f05c4648b847fcd83405178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.3
+  yOffset: 0.5
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &44562676
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +630,7 @@ MonoBehaviour:
   level: {fileID: 1615233641}
   subLevel: {fileID: 9519869}
   levelObject: {fileID: 1669294747}
-  subLevelObject: {fileID: 1956885205}
+  subLevelObject: {fileID: 38133031}
   levelCamera: {fileID: 1525935774}
   subLevelCamera: {fileID: 44562679}
 --- !u!1 &174488168

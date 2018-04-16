@@ -64,7 +64,6 @@ namespace Search_Shell.Game{
 				input.z = Mathf.Round(input.z);
 			}
 
-			Debug.Log(input);
 			MovementController controller = subLevelObject.GetComponent<MovementController>();
 
 			if(controller.Animating) return;

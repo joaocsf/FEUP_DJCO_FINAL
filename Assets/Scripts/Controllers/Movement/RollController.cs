@@ -47,10 +47,6 @@ namespace Search_Shell.Controllers.Movement {
 			return obstacles;
 		}
 
-		public void Rotate(){
-
-		}
-
     public override HashSet<GridObject> Move(Vector3 input)
     {
 			HashSet<GridObject> obstacles = new HashSet<GridObject>();
@@ -59,6 +55,7 @@ namespace Search_Shell.Controllers.Movement {
 				return obstacles;
 			}else{
 				obstacles = CheckRotation(input);					
+
 				if(obstacles.Count == 0){
 					Animate(input);
 				}

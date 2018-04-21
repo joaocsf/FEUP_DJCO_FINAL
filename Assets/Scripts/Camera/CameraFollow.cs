@@ -8,17 +8,24 @@ public class CameraFollow : MonoBehaviour {
 
 	 public float sensitivity = 3;
 
+	 public float angle = 45f;
+
     public float radius = 3;
 
     public Vector2 mouse;
 
+    public Vector2 tempMousePos;
+
     private Vector3 cameraPos;
     public Transform obj;
 
+		public float lerpVelocity = 10;
+
+		public bool collide = false;
+
+		public Vector2 lastPressed = Vector2.zero;
 
 	void Start () {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 		
 	}
 
@@ -26,11 +33,18 @@ public class CameraFollow : MonoBehaviour {
 		this.obj = obj;
 	}
 
+	
+
 	void Update () {
-
-		mouse.x += Input.GetAxis("Mouse X")  * sensitivity;
-		mouse.y -= Input.GetAxis("Mouse Y") * sensitivity;
-
+		if(Input.GetKeyDown(KeyCode.Q))
+			lastPressed.x = 1;
+		else if(Input.GetKeyDown(KeyCode.E))
+			lastPressed.x = -1;
+		else
+			lastPressed.x = 0;
+		//mouse.x += Input.GetAxis("Mouse X")  * sensitivity;
+		//mouse.y -= Input.GetAxis("Mouse Y") * sensitivity;
+		mouse.x += lastPressed.x * angle;
 		mouse.x %= 360;
 		mouse.y = Mathf.Clamp(mouse.y, -80, 70);
 
@@ -75,12 +89,12 @@ public class CameraFollow : MonoBehaviour {
 		Vector3 cameraDir = GetDirection();
 		RaycastHit hit;
 		Vector3 point = Vector3.zero;
-		if (Physics.Raycast(obj.position, cameraDir, out hit, radius)){
+		if (Physics.Raycast(obj.position, cameraDir, out hit, radius) && collide){
 			cameraPos = hit.point - cameraDir.normalized;
 		}else
 			cameraPos = obj.position + cameraDir * radius;
 
-		transform.position = Vector3.Lerp(transform.position, cameraPos, 10f * delta);
-		transform.eulerAngles = new Vector3(mouse.y, mouse.x, 0);
+		transform.position = Vector3.Lerp(transform.position, cameraPos, delta * lerpVelocity);
+		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(mouse.y, mouse.x, 0)), delta*lerpVelocity);
 	}
 }

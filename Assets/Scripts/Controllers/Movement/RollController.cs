@@ -54,6 +54,11 @@ namespace Search_Shell.Controllers.Movement {
 				DebugRotation(input);
 				return obstacles;
 			}else{
+				
+				obstacles = gridManager.CheckCollision(obj, obj.CalculateSlide(Vector3.up));
+				if(obstacles.Count > 0)
+					return obstacles;
+
 				obstacles = CheckRotation(input);					
 
 				if(obstacles.Count == 0){

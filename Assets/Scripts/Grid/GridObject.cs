@@ -15,6 +15,8 @@ namespace Search_Shell.Grid
 		public bool debugBoundingBox = true;
 		public bool debugVolumes = false;
 		[SerializeField]
+
+		public GridObjectProperties properties;
 		private List<Vector3> volume = new List<Vector3>();
 		public Vector3 finalAngles = Vector3.zero;
 		public Vector3 finalPosition = Vector3.zero;

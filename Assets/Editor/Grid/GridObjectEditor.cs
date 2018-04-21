@@ -49,15 +49,23 @@ public class GridObjectEditor : Editor {
 	public override void OnInspectorGUI()
 	{
 		obj = (GridObject)target;
-
 		AllOptions();
 		EditorGUILayout.Separator();
+		GUILayout.Label("This Object");
+		Properties(obj);
 		ThisObject(obj);
 
 		if(GUILayout.Button("Update Shape")){
 			obj.SnapPosition();
 			obj.CalculateVolume();
 		}
+	}
+
+	public void Properties(GridObject obj) {
+		GUILayout.BeginVertical();
+		obj.properties.canControll = EditorGUILayout.Toggle("Controll", obj.properties.canControll);
+		obj.properties.isStatic = EditorGUILayout.Toggle("Static", obj.properties.isStatic);
+		GUILayout.EndVertical();
 	}
 
 	public void VerticalField(String name, Action action){
@@ -71,7 +79,6 @@ public class GridObjectEditor : Editor {
 	}
 
 	public void ThisObject(GridObject obj){
-		GUILayout.Label("This Object");
 
 		GUILayout.BeginHorizontal();
 		VerticalField("Bounding Box", () => obj.debugBoundingBox = !obj.debugBoundingBox);

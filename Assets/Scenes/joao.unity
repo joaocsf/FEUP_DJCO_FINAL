@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 38133036}
   - component: {fileID: 38133037}
   - component: {fileID: 38133038}
+  - component: {fileID: 38133039}
   m_Layer: 0
   m_Name: ObjJump
   m_TagString: Untagged
@@ -295,8 +296,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 0
   debugVolumes: 0
-  volume:
-  - {x: 0, y: 0, z: 0}
+  properties:
+    canControll: 1
+    isStatic: 0
   finalAngles: {x: 270, y: -0, z: 0}
   finalPosition: {x: 1, y: -4, z: -1}
   offset: {x: 0, y: 0, z: 0}
@@ -441,6 +443,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &38133039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 38133030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e95ba210411db4e89ce8e00f64db89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &44562676
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,9 +561,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 3
+  angle: 45
   radius: 3
-  mouse: {x: 0, y: 0}
+  mouse: {x: 44, y: 45}
+  tempMousePos: {x: 0, y: 0}
   obj: {fileID: 0}
+  lerpVelocity: 10
+  collide: 0
+  lastPressed: {x: 0, y: 0}
 --- !u!1 &96498459
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec241948e864d34288787314bdd76e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlighted: {fileID: 2100000, guid: a4bb693a4a6a08449845c3416d988234, type: 2}
+  selected: {fileID: 2100000, guid: 66eed73ee117e264e8de42f20ec0216c, type: 2}
   level: {fileID: 1615233641}
   subLevel: {fileID: 9519869}
   levelObject: {fileID: 1669294747}
@@ -1185,128 +1205,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 0
   debugVolumes: 0
-  volume:
-  - {x: -5, y: 0, z: -5}
-  - {x: -5, y: 0, z: -4}
-  - {x: -5, y: 0, z: -3}
-  - {x: -5, y: 0, z: -2}
-  - {x: -5, y: 0, z: -1}
-  - {x: -5, y: 0, z: 0}
-  - {x: -5, y: 0, z: 1}
-  - {x: -5, y: 0, z: 2}
-  - {x: -5, y: 0, z: 3}
-  - {x: -5, y: 0, z: 4}
-  - {x: -5, y: 0, z: 5}
-  - {x: -4, y: 0, z: -5}
-  - {x: -4, y: 0, z: -4}
-  - {x: -4, y: 0, z: -3}
-  - {x: -4, y: 0, z: -2}
-  - {x: -4, y: 0, z: -1}
-  - {x: -4, y: 0, z: 0}
-  - {x: -4, y: 0, z: 1}
-  - {x: -4, y: 0, z: 2}
-  - {x: -4, y: 0, z: 3}
-  - {x: -4, y: 0, z: 4}
-  - {x: -4, y: 0, z: 5}
-  - {x: -3, y: 0, z: -5}
-  - {x: -3, y: 0, z: -4}
-  - {x: -3, y: 0, z: -3}
-  - {x: -3, y: 0, z: -2}
-  - {x: -3, y: 0, z: -1}
-  - {x: -3, y: 0, z: 0}
-  - {x: -3, y: 0, z: 1}
-  - {x: -3, y: 0, z: 2}
-  - {x: -3, y: 0, z: 3}
-  - {x: -3, y: 0, z: 4}
-  - {x: -3, y: 0, z: 5}
-  - {x: -2, y: 0, z: -5}
-  - {x: -2, y: 0, z: -4}
-  - {x: -2, y: 0, z: -3}
-  - {x: -2, y: 0, z: -2}
-  - {x: -2, y: 0, z: -1}
-  - {x: -2, y: 0, z: 0}
-  - {x: -2, y: 0, z: 1}
-  - {x: -2, y: 0, z: 2}
-  - {x: -2, y: 0, z: 3}
-  - {x: -2, y: 0, z: 4}
-  - {x: -2, y: 0, z: 5}
-  - {x: -1, y: 0, z: -5}
-  - {x: -1, y: 0, z: -4}
-  - {x: -1, y: 0, z: -3}
-  - {x: -1, y: 0, z: -2}
-  - {x: -1, y: 0, z: -1}
-  - {x: -1, y: 0, z: 0}
-  - {x: -1, y: 0, z: 1}
-  - {x: -1, y: 0, z: 2}
-  - {x: -1, y: 0, z: 3}
-  - {x: -1, y: 0, z: 4}
-  - {x: -1, y: 0, z: 5}
-  - {x: 0, y: 0, z: -5}
-  - {x: 0, y: 0, z: -4}
-  - {x: 0, y: 0, z: -3}
-  - {x: 0, y: 0, z: -2}
-  - {x: 0, y: 0, z: -1}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 2}
-  - {x: 0, y: 0, z: 3}
-  - {x: 0, y: 0, z: 4}
-  - {x: 0, y: 0, z: 5}
-  - {x: 1, y: 0, z: -5}
-  - {x: 1, y: 0, z: -4}
-  - {x: 1, y: 0, z: -3}
-  - {x: 1, y: 0, z: -2}
-  - {x: 1, y: 0, z: -1}
-  - {x: 1, y: 0, z: 0}
-  - {x: 1, y: 0, z: 1}
-  - {x: 1, y: 0, z: 2}
-  - {x: 1, y: 0, z: 3}
-  - {x: 1, y: 0, z: 4}
-  - {x: 1, y: 0, z: 5}
-  - {x: 2, y: 0, z: -5}
-  - {x: 2, y: 0, z: -4}
-  - {x: 2, y: 0, z: -3}
-  - {x: 2, y: 0, z: -2}
-  - {x: 2, y: 0, z: -1}
-  - {x: 2, y: 0, z: 0}
-  - {x: 2, y: 0, z: 1}
-  - {x: 2, y: 0, z: 2}
-  - {x: 2, y: 0, z: 3}
-  - {x: 2, y: 0, z: 4}
-  - {x: 2, y: 0, z: 5}
-  - {x: 3, y: 0, z: -5}
-  - {x: 3, y: 0, z: -4}
-  - {x: 3, y: 0, z: -3}
-  - {x: 3, y: 0, z: -2}
-  - {x: 3, y: 0, z: -1}
-  - {x: 3, y: 0, z: 0}
-  - {x: 3, y: 0, z: 1}
-  - {x: 3, y: 0, z: 2}
-  - {x: 3, y: 0, z: 3}
-  - {x: 3, y: 0, z: 4}
-  - {x: 3, y: 0, z: 5}
-  - {x: 4, y: 0, z: -5}
-  - {x: 4, y: 0, z: -4}
-  - {x: 4, y: 0, z: -3}
-  - {x: 4, y: 0, z: -2}
-  - {x: 4, y: 0, z: -1}
-  - {x: 4, y: 0, z: 0}
-  - {x: 4, y: 0, z: 1}
-  - {x: 4, y: 0, z: 2}
-  - {x: 4, y: 0, z: 3}
-  - {x: 4, y: 0, z: 4}
-  - {x: 4, y: 0, z: 5}
-  - {x: 5, y: 0, z: -5}
-  - {x: 5, y: 0, z: -4}
-  - {x: 5, y: 0, z: -3}
-  - {x: 5, y: 0, z: -2}
-  - {x: 5, y: 0, z: -1}
-  - {x: 5, y: 0, z: 0}
-  - {x: 5, y: 0, z: 1}
-  - {x: 5, y: 0, z: 2}
-  - {x: 5, y: 0, z: 3}
-  - {x: 5, y: 0, z: 4}
-  - {x: 5, y: 0, z: 5}
+  properties:
+    canControll: 0
+    isStatic: 1
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 0, y: -5, z: 0}
   offset: {x: 0, y: 0, z: 0}
@@ -1355,11 +1256,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 1
   debugVolumes: 0
-  volume:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 1, z: 0}
-  - {x: 1, y: 0, z: 0}
-  - {x: 1, y: 1, z: 0}
+  properties:
+    canControll: 0
+    isStatic: 1
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 2, y: 1, z: -2}
   offset: {x: 0, y: 0, z: 0}
@@ -1714,106 +1613,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 0
   debugVolumes: 0
-  volume:
-  - {x: 0, y: -4, z: -5}
-  - {x: 0, y: -4, z: -4}
-  - {x: 0, y: -4, z: -3}
-  - {x: 0, y: -4, z: -2}
-  - {x: 0, y: -4, z: -1}
-  - {x: 0, y: -4, z: 0}
-  - {x: 0, y: -4, z: 1}
-  - {x: 0, y: -4, z: 2}
-  - {x: 0, y: -4, z: 3}
-  - {x: 0, y: -4, z: 4}
-  - {x: 0, y: -4, z: 5}
-  - {x: 0, y: -3, z: -5}
-  - {x: 0, y: -3, z: -4}
-  - {x: 0, y: -3, z: -3}
-  - {x: 0, y: -3, z: -2}
-  - {x: 0, y: -3, z: -1}
-  - {x: 0, y: -3, z: 0}
-  - {x: 0, y: -3, z: 1}
-  - {x: 0, y: -3, z: 2}
-  - {x: 0, y: -3, z: 3}
-  - {x: 0, y: -3, z: 4}
-  - {x: 0, y: -3, z: 5}
-  - {x: 0, y: -2, z: -5}
-  - {x: 0, y: -2, z: -4}
-  - {x: 0, y: -2, z: -3}
-  - {x: 0, y: -2, z: -2}
-  - {x: 0, y: -2, z: -1}
-  - {x: 0, y: -2, z: 0}
-  - {x: 0, y: -2, z: 1}
-  - {x: 0, y: -2, z: 2}
-  - {x: 0, y: -2, z: 3}
-  - {x: 0, y: -2, z: 4}
-  - {x: 0, y: -2, z: 5}
-  - {x: 0, y: -1, z: -5}
-  - {x: 0, y: -1, z: -4}
-  - {x: 0, y: -1, z: -3}
-  - {x: 0, y: -1, z: -2}
-  - {x: 0, y: -1, z: -1}
-  - {x: 0, y: -1, z: 0}
-  - {x: 0, y: -1, z: 1}
-  - {x: 0, y: -1, z: 2}
-  - {x: 0, y: -1, z: 3}
-  - {x: 0, y: -1, z: 4}
-  - {x: 0, y: -1, z: 5}
-  - {x: 0, y: 0, z: -5}
-  - {x: 0, y: 0, z: -4}
-  - {x: 0, y: 0, z: -3}
-  - {x: 0, y: 0, z: -2}
-  - {x: 0, y: 0, z: -1}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 2}
-  - {x: 0, y: 0, z: 3}
-  - {x: 0, y: 0, z: 4}
-  - {x: 0, y: 0, z: 5}
-  - {x: 0, y: 1, z: -5}
-  - {x: 0, y: 1, z: -4}
-  - {x: 0, y: 1, z: -3}
-  - {x: 0, y: 1, z: -2}
-  - {x: 0, y: 1, z: -1}
-  - {x: 0, y: 1, z: 0}
-  - {x: 0, y: 1, z: 1}
-  - {x: 0, y: 1, z: 2}
-  - {x: 0, y: 1, z: 3}
-  - {x: 0, y: 1, z: 4}
-  - {x: 0, y: 1, z: 5}
-  - {x: 0, y: 2, z: -5}
-  - {x: 0, y: 2, z: -4}
-  - {x: 0, y: 2, z: -3}
-  - {x: 0, y: 2, z: -2}
-  - {x: 0, y: 2, z: -1}
-  - {x: 0, y: 2, z: 0}
-  - {x: 0, y: 2, z: 1}
-  - {x: 0, y: 2, z: 2}
-  - {x: 0, y: 2, z: 3}
-  - {x: 0, y: 2, z: 4}
-  - {x: 0, y: 2, z: 5}
-  - {x: 0, y: 3, z: -5}
-  - {x: 0, y: 3, z: -4}
-  - {x: 0, y: 3, z: -3}
-  - {x: 0, y: 3, z: -2}
-  - {x: 0, y: 3, z: -1}
-  - {x: 0, y: 3, z: 0}
-  - {x: 0, y: 3, z: 1}
-  - {x: 0, y: 3, z: 2}
-  - {x: 0, y: 3, z: 3}
-  - {x: 0, y: 3, z: 4}
-  - {x: 0, y: 3, z: 5}
-  - {x: 0, y: 4, z: -5}
-  - {x: 0, y: 4, z: -4}
-  - {x: 0, y: 4, z: -3}
-  - {x: 0, y: 4, z: -2}
-  - {x: 0, y: 4, z: -1}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 1}
-  - {x: 0, y: 4, z: 2}
-  - {x: 0, y: 4, z: 3}
-  - {x: 0, y: 4, z: 4}
-  - {x: 0, y: 4, z: 5}
+  properties:
+    canControll: 0
+    isStatic: 1
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -5, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
@@ -1894,6 +1696,10 @@ Prefab:
     - target: {fileID: 100000, guid: 4e507d0d9fa6a7d47a70d4feea77f98d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4e507d0d9fa6a7d47a70d4feea77f98d, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 4e507d0d9fa6a7d47a70d4feea77f98d, type: 3}
@@ -2020,7 +1826,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 1
   debugVolumes: 0
-  volume: []
+  properties:
+    canControll: 0
+    isStatic: 1
   finalAngles: {x: 0, y: 0, z: 0}
   finalPosition: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
@@ -2089,6 +1897,7 @@ GameObject:
   - component: {fileID: 1257110671}
   - component: {fileID: 1257110670}
   - component: {fileID: 1257110669}
+  - component: {fileID: 1257110673}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -2123,8 +1932,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 0
   debugVolumes: 0
-  volume:
-  - {x: 0, y: 0, z: 0}
+  properties:
+    canControll: 1
+    isStatic: 1
   finalAngles: {x: 270, y: 0, z: 0}
   finalPosition: {x: 1, y: -4, z: -2}
   offset: {x: 0, y: 0, z: 0}
@@ -2181,6 +1991,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1257110667}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1257110673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1257110667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e95ba210411db4e89ce8e00f64db89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1270884433
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,106 +2134,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 0
   debugVolumes: 0
-  volume:
-  - {x: 0, y: -4, z: -5}
-  - {x: 0, y: -4, z: -4}
-  - {x: 0, y: -4, z: -3}
-  - {x: 0, y: -4, z: -2}
-  - {x: 0, y: -4, z: -1}
-  - {x: 0, y: -4, z: 0}
-  - {x: 0, y: -4, z: 1}
-  - {x: 0, y: -4, z: 2}
-  - {x: 0, y: -4, z: 3}
-  - {x: 0, y: -4, z: 4}
-  - {x: 0, y: -4, z: 5}
-  - {x: 0, y: -3, z: -5}
-  - {x: 0, y: -3, z: -4}
-  - {x: 0, y: -3, z: -3}
-  - {x: 0, y: -3, z: -2}
-  - {x: 0, y: -3, z: -1}
-  - {x: 0, y: -3, z: 0}
-  - {x: 0, y: -3, z: 1}
-  - {x: 0, y: -3, z: 2}
-  - {x: 0, y: -3, z: 3}
-  - {x: 0, y: -3, z: 4}
-  - {x: 0, y: -3, z: 5}
-  - {x: 0, y: -2, z: -5}
-  - {x: 0, y: -2, z: -4}
-  - {x: 0, y: -2, z: -3}
-  - {x: 0, y: -2, z: -2}
-  - {x: 0, y: -2, z: -1}
-  - {x: 0, y: -2, z: 0}
-  - {x: 0, y: -2, z: 1}
-  - {x: 0, y: -2, z: 2}
-  - {x: 0, y: -2, z: 3}
-  - {x: 0, y: -2, z: 4}
-  - {x: 0, y: -2, z: 5}
-  - {x: 0, y: -1, z: -5}
-  - {x: 0, y: -1, z: -4}
-  - {x: 0, y: -1, z: -3}
-  - {x: 0, y: -1, z: -2}
-  - {x: 0, y: -1, z: -1}
-  - {x: 0, y: -1, z: 0}
-  - {x: 0, y: -1, z: 1}
-  - {x: 0, y: -1, z: 2}
-  - {x: 0, y: -1, z: 3}
-  - {x: 0, y: -1, z: 4}
-  - {x: 0, y: -1, z: 5}
-  - {x: 0, y: 0, z: -5}
-  - {x: 0, y: 0, z: -4}
-  - {x: 0, y: 0, z: -3}
-  - {x: 0, y: 0, z: -2}
-  - {x: 0, y: 0, z: -1}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 2}
-  - {x: 0, y: 0, z: 3}
-  - {x: 0, y: 0, z: 4}
-  - {x: 0, y: 0, z: 5}
-  - {x: 0, y: 1, z: -5}
-  - {x: 0, y: 1, z: -4}
-  - {x: 0, y: 1, z: -3}
-  - {x: 0, y: 1, z: -2}
-  - {x: 0, y: 1, z: -1}
-  - {x: 0, y: 1, z: 0}
-  - {x: 0, y: 1, z: 1}
-  - {x: 0, y: 1, z: 2}
-  - {x: 0, y: 1, z: 3}
-  - {x: 0, y: 1, z: 4}
-  - {x: 0, y: 1, z: 5}
-  - {x: 0, y: 2, z: -5}
-  - {x: 0, y: 2, z: -4}
-  - {x: 0, y: 2, z: -3}
-  - {x: 0, y: 2, z: -2}
-  - {x: 0, y: 2, z: -1}
-  - {x: 0, y: 2, z: 0}
-  - {x: 0, y: 2, z: 1}
-  - {x: 0, y: 2, z: 2}
-  - {x: 0, y: 2, z: 3}
-  - {x: 0, y: 2, z: 4}
-  - {x: 0, y: 2, z: 5}
-  - {x: 0, y: 3, z: -5}
-  - {x: 0, y: 3, z: -4}
-  - {x: 0, y: 3, z: -3}
-  - {x: 0, y: 3, z: -2}
-  - {x: 0, y: 3, z: -1}
-  - {x: 0, y: 3, z: 0}
-  - {x: 0, y: 3, z: 1}
-  - {x: 0, y: 3, z: 2}
-  - {x: 0, y: 3, z: 3}
-  - {x: 0, y: 3, z: 4}
-  - {x: 0, y: 3, z: 5}
-  - {x: 0, y: 4, z: -5}
-  - {x: 0, y: 4, z: -4}
-  - {x: 0, y: 4, z: -3}
-  - {x: 0, y: 4, z: -2}
-  - {x: 0, y: 4, z: -1}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 1}
-  - {x: 0, y: 4, z: 2}
-  - {x: 0, y: 4, z: 3}
-  - {x: 0, y: 4, z: 4}
-  - {x: 0, y: 4, z: 5}
+  properties:
+    canControll: 0
+    isStatic: 1
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 5, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
@@ -2481,88 +2205,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 0
   debugVolumes: 0
-  volume:
-  - {x: 0, y: -4, z: -4}
-  - {x: 0, y: -4, z: -3}
-  - {x: 0, y: -4, z: -2}
-  - {x: 0, y: -4, z: -1}
-  - {x: 0, y: -4, z: 0}
-  - {x: 0, y: -4, z: 1}
-  - {x: 0, y: -4, z: 2}
-  - {x: 0, y: -4, z: 3}
-  - {x: 0, y: -4, z: 4}
-  - {x: 0, y: -3, z: -4}
-  - {x: 0, y: -3, z: -3}
-  - {x: 0, y: -3, z: -2}
-  - {x: 0, y: -3, z: -1}
-  - {x: 0, y: -3, z: 0}
-  - {x: 0, y: -3, z: 1}
-  - {x: 0, y: -3, z: 2}
-  - {x: 0, y: -3, z: 3}
-  - {x: 0, y: -3, z: 4}
-  - {x: 0, y: -2, z: -4}
-  - {x: 0, y: -2, z: -3}
-  - {x: 0, y: -2, z: -2}
-  - {x: 0, y: -2, z: -1}
-  - {x: 0, y: -2, z: 0}
-  - {x: 0, y: -2, z: 1}
-  - {x: 0, y: -2, z: 2}
-  - {x: 0, y: -2, z: 3}
-  - {x: 0, y: -2, z: 4}
-  - {x: 0, y: -1, z: -4}
-  - {x: 0, y: -1, z: -3}
-  - {x: 0, y: -1, z: -2}
-  - {x: 0, y: -1, z: -1}
-  - {x: 0, y: -1, z: 0}
-  - {x: 0, y: -1, z: 1}
-  - {x: 0, y: -1, z: 2}
-  - {x: 0, y: -1, z: 3}
-  - {x: 0, y: -1, z: 4}
-  - {x: 0, y: 0, z: -4}
-  - {x: 0, y: 0, z: -3}
-  - {x: 0, y: 0, z: -2}
-  - {x: 0, y: 0, z: -1}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 2}
-  - {x: 0, y: 0, z: 3}
-  - {x: 0, y: 0, z: 4}
-  - {x: 0, y: 1, z: -4}
-  - {x: 0, y: 1, z: -3}
-  - {x: 0, y: 1, z: -2}
-  - {x: 0, y: 1, z: -1}
-  - {x: 0, y: 1, z: 0}
-  - {x: 0, y: 1, z: 1}
-  - {x: 0, y: 1, z: 2}
-  - {x: 0, y: 1, z: 3}
-  - {x: 0, y: 1, z: 4}
-  - {x: 0, y: 2, z: -4}
-  - {x: 0, y: 2, z: -3}
-  - {x: 0, y: 2, z: -2}
-  - {x: 0, y: 2, z: -1}
-  - {x: 0, y: 2, z: 0}
-  - {x: 0, y: 2, z: 1}
-  - {x: 0, y: 2, z: 2}
-  - {x: 0, y: 2, z: 3}
-  - {x: 0, y: 2, z: 4}
-  - {x: 0, y: 3, z: -4}
-  - {x: 0, y: 3, z: -3}
-  - {x: 0, y: 3, z: -2}
-  - {x: 0, y: 3, z: -1}
-  - {x: 0, y: 3, z: 0}
-  - {x: 0, y: 3, z: 1}
-  - {x: 0, y: 3, z: 2}
-  - {x: 0, y: 3, z: 3}
-  - {x: 0, y: 3, z: 4}
-  - {x: 0, y: 4, z: -4}
-  - {x: 0, y: 4, z: -3}
-  - {x: 0, y: 4, z: -2}
-  - {x: 0, y: 4, z: -1}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 1}
-  - {x: 0, y: 4, z: 2}
-  - {x: 0, y: 4, z: 3}
-  - {x: 0, y: 4, z: 4}
+  properties:
+    canControll: 0
+    isStatic: 1
   finalAngles: {x: -0, y: 90, z: -0}
   finalPosition: {x: 0, y: 0, z: -5}
   offset: {x: 0, y: 0, z: 0}
@@ -2859,88 +2504,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 0
   debugVolumes: 0
-  volume:
-  - {x: 0, y: -4, z: -4}
-  - {x: 0, y: -4, z: -3}
-  - {x: 0, y: -4, z: -2}
-  - {x: 0, y: -4, z: -1}
-  - {x: 0, y: -4, z: 0}
-  - {x: 0, y: -4, z: 1}
-  - {x: 0, y: -4, z: 2}
-  - {x: 0, y: -4, z: 3}
-  - {x: 0, y: -4, z: 4}
-  - {x: 0, y: -3, z: -4}
-  - {x: 0, y: -3, z: -3}
-  - {x: 0, y: -3, z: -2}
-  - {x: 0, y: -3, z: -1}
-  - {x: 0, y: -3, z: 0}
-  - {x: 0, y: -3, z: 1}
-  - {x: 0, y: -3, z: 2}
-  - {x: 0, y: -3, z: 3}
-  - {x: 0, y: -3, z: 4}
-  - {x: 0, y: -2, z: -4}
-  - {x: 0, y: -2, z: -3}
-  - {x: 0, y: -2, z: -2}
-  - {x: 0, y: -2, z: -1}
-  - {x: 0, y: -2, z: 0}
-  - {x: 0, y: -2, z: 1}
-  - {x: 0, y: -2, z: 2}
-  - {x: 0, y: -2, z: 3}
-  - {x: 0, y: -2, z: 4}
-  - {x: 0, y: -1, z: -4}
-  - {x: 0, y: -1, z: -3}
-  - {x: 0, y: -1, z: -2}
-  - {x: 0, y: -1, z: -1}
-  - {x: 0, y: -1, z: 0}
-  - {x: 0, y: -1, z: 1}
-  - {x: 0, y: -1, z: 2}
-  - {x: 0, y: -1, z: 3}
-  - {x: 0, y: -1, z: 4}
-  - {x: 0, y: 0, z: -4}
-  - {x: 0, y: 0, z: -3}
-  - {x: 0, y: 0, z: -2}
-  - {x: 0, y: 0, z: -1}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 2}
-  - {x: 0, y: 0, z: 3}
-  - {x: 0, y: 0, z: 4}
-  - {x: 0, y: 1, z: -4}
-  - {x: 0, y: 1, z: -3}
-  - {x: 0, y: 1, z: -2}
-  - {x: 0, y: 1, z: -1}
-  - {x: 0, y: 1, z: 0}
-  - {x: 0, y: 1, z: 1}
-  - {x: 0, y: 1, z: 2}
-  - {x: 0, y: 1, z: 3}
-  - {x: 0, y: 1, z: 4}
-  - {x: 0, y: 2, z: -4}
-  - {x: 0, y: 2, z: -3}
-  - {x: 0, y: 2, z: -2}
-  - {x: 0, y: 2, z: -1}
-  - {x: 0, y: 2, z: 0}
-  - {x: 0, y: 2, z: 1}
-  - {x: 0, y: 2, z: 2}
-  - {x: 0, y: 2, z: 3}
-  - {x: 0, y: 2, z: 4}
-  - {x: 0, y: 3, z: -4}
-  - {x: 0, y: 3, z: -3}
-  - {x: 0, y: 3, z: -2}
-  - {x: 0, y: 3, z: -1}
-  - {x: 0, y: 3, z: 0}
-  - {x: 0, y: 3, z: 1}
-  - {x: 0, y: 3, z: 2}
-  - {x: 0, y: 3, z: 3}
-  - {x: 0, y: 3, z: 4}
-  - {x: 0, y: 4, z: -4}
-  - {x: 0, y: 4, z: -3}
-  - {x: 0, y: 4, z: -2}
-  - {x: 0, y: 4, z: -1}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 1}
-  - {x: 0, y: 4, z: 2}
-  - {x: 0, y: 4, z: 3}
-  - {x: 0, y: 4, z: 4}
+  properties:
+    canControll: 0
+    isStatic: 1
   finalAngles: {x: -0, y: 90, z: -0}
   finalPosition: {x: 0, y: 0, z: 5}
   offset: {x: 0, y: 0, z: 0}
@@ -3109,8 +2675,9 @@ MonoBehaviour:
   debugPivot: 0
   debugBoundingBox: 1
   debugVolumes: 0
-  volume:
-  - {x: 0, y: 0, z: 0}
+  properties:
+    canControll: 0
+    isStatic: 1
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -1, y: 1, z: -1}
   offset: {x: 0, y: 0, z: 0}
@@ -3124,7 +2691,7 @@ GameObject:
   - component: {fileID: 1709493394}
   - component: {fileID: 1709493397}
   - component: {fileID: 1709493395}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3270,7 +2837,8 @@ GameObject:
   - component: {fileID: 1956885206}
   - component: {fileID: 1956885210}
   - component: {fileID: 1956885209}
-  m_Layer: 2
+  - component: {fileID: 1956885211}
+  m_Layer: 9
   m_Name: Object
   m_TagString: Untagged
   m_Icon: {fileID: -3839803715187477772, guid: 0000000000000000d000000000000000, type: 0}
@@ -3306,16 +2874,9 @@ MonoBehaviour:
   debugPivot: 1
   debugBoundingBox: 1
   debugVolumes: 1
-  volume:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 1, z: 0}
-  - {x: 0, y: 1, z: 1}
-  - {x: 1, y: 0, z: 0}
-  - {x: 1, y: 0, z: 1}
-  - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 1, z: 1}
-  - {x: 0, y: 2, z: 0}
+  properties:
+    canControll: 1
+    isStatic: 0
   finalAngles: {x: -0, y: 0, z: 90}
   finalPosition: {x: 1, y: -4, z: 2}
   offset: {x: 0, y: 0, z: 0}
@@ -3393,6 +2954,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+--- !u!114 &1956885211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1956885203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e95ba210411db4e89ce8e00f64db89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1964258955
 GameObject:
   m_ObjectHideFlags: 0

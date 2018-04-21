@@ -13,8 +13,9 @@ namespace Search_Shell.Controllers.Movement {
 			return intersect.Count != 0;
 		}
 
-    public override HashSet<GridObject> Move(Vector3 input)
+    public override HashSet<GridObject> Move(Vector3 input, ref HashSet<GridObject> mayfall)
     {
+			mayfall.UnionWith(gridManager.CheckCollision(obj,obj.CalculateSlide(Vector3.up)));
 			HashSet<GridObject> check = new HashSet<GridObject>();
 			if(!CheckCollision(input, out check)){
 				FinishMovement(input);

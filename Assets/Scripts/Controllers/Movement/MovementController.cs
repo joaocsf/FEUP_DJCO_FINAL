@@ -19,7 +19,7 @@ namespace Search_Shell.Controllers.Movement {
         public void SetListener(IMovementListener listener){
             this.listener = listener;
         }
-        public abstract HashSet<GridObject> Move(Vector3 input);
+        public abstract HashSet<GridObject> Move(Vector3 input, ref HashSet<GridObject> mayfall);
 
         protected void Animate(Vector3 input){
             AnimationController[] controllers = GetComponents<AnimationController>();

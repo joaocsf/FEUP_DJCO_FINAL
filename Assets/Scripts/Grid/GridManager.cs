@@ -146,11 +146,17 @@ namespace Search_Shell.Grid{
 		}
 
 		public bool VerifyGravity(HashSet<GridObject> movedObjs){
+			
 			List<GridObject> objs = new List<GridObject>(movedObjs);
-			objs.Sort( (o1, o2) => Mathf.RoundToInt(o1.finalPosition.y - o1.finalPosition.y));
+			objs.Sort( (o1, o2) => {
+				if(o1.finalPosition.y > o2.finalPosition.y) return 1;
+				else if(o1.finalPosition.y < o2.finalPosition.y) return -1;
+				return 0;
+				});
 
 			bool moved = false;
-			foreach(GridObject obj in movedObjs){
+			foreach(GridObject obj in objs){
+				Debug.Log(obj.name);
 				int n = 0;
 				while(++n <= maxGravityInterations){
 					if(CheckGround(obj, Vector3.down * n)){
@@ -162,6 +168,17 @@ namespace Search_Shell.Grid{
 				}				
 			}
 			return moved;
+		}
+
+		public HashSet<GridObject> GetMovingObjects(){
+			HashSet<GridObject> objs = new HashSet<GridObject>();
+
+			foreach(GridObject obj in objects){
+				if(!obj.properties.isStatic)
+					objs.Add(obj);
+			}
+
+			return objs;
 		}
 
 		public bool RegisterObject(GridObject obj, List<Vector3> positions){

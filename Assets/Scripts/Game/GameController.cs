@@ -130,10 +130,11 @@ namespace Search_Shell.Game{
 
 			if(controller.Animating) return;
 
-			HashSet<GridObject> colls =  controller.Move(input);
+			HashSet<GridObject> colls =  controller.Move(input, ref movedObjects);
 			if(colls.Count > 0) return;
 			canControll = false;
-			movedObjects.Add(subLevelObject);
+			movedObjects = subLevel.GetMovingObjects();
+			//movedObjects.Add(subLevelObject);
 
 		}
 

@@ -47,7 +47,7 @@ namespace Search_Shell.Controllers.Movement {
 			return obstacles;
 		}
 
-    public override HashSet<GridObject> Move(Vector3 input)
+    public override HashSet<GridObject> Move(Vector3 input, ref HashSet<GridObject> mayfall)
     {
 			HashSet<GridObject> obstacles = new HashSet<GridObject>();
 			if(debug){

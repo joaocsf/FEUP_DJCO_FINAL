@@ -6,7 +6,7 @@ public class ScreenCapture : MonoBehaviour {
 
         Camera cam;
         public Camera cam2;
-        float scale = 10;
+        public float scale = 10;
         // Use this for initialization
         void Start () {
 

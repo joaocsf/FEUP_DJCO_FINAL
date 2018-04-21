@@ -12,4 +12,8 @@ public class SkyboxHandler : MonoBehaviour {
         
     }
 
+    public void SetOpacity(float f){
+        mat.SetFloat("_Opacity", f);
+    }
+
 }

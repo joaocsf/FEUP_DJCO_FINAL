@@ -7,6 +7,8 @@ public class CameraMove : MonoBehaviour {
 
     Vector2 mouse = Vector2.zero;
 
+    public float scale = 10;
+
 	void Start () {
 		
 	}
@@ -23,7 +25,7 @@ public class CameraMove : MonoBehaviour {
         else if(Input.GetKey(KeyCode.LeftShift))
             movement -= Vector3.up;
 
-        transform.position += movement * Time.deltaTime * 10;
+        transform.position += movement * Time.deltaTime * scale;
 
         mouse.x += Input.GetAxisRaw("Mouse X");
         mouse.y -= Input.GetAxisRaw("Mouse Y");

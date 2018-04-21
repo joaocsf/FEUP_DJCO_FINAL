@@ -7,6 +7,7 @@ using System;
 namespace Search_Shell.Grid{
 	public class GridManager : MonoBehaviour {
 
+		public float scale = 10;
 		public bool debug = true;
 		public Vector2 dims;
 		
@@ -135,6 +136,10 @@ namespace Search_Shell.Grid{
 			}
 		}
 
+		public void LoadNextLevel(){
+			CallListeners(e => e.OnLoadNextLevel());
+		}
+
 		private void MoveObject(GridObject obj, Vector3 dir){
 			affectingObjects.Add(obj);
 			ClearObject(obj);
@@ -156,7 +161,6 @@ namespace Search_Shell.Grid{
 
 			bool moved = false;
 			foreach(GridObject obj in objs){
-				Debug.Log(obj.name);
 				int n = 0;
 				while(++n <= maxGravityInterations){
 					if(CheckGround(obj, Vector3.down * n)){

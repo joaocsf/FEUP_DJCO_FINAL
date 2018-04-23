@@ -84,17 +84,21 @@ public class CameraFollow : MonoBehaviour {
 		Gizmos.DrawLine(obj.position, obj.position + cameraDir * radius);
 	}
 
-	void PositionCamera(Transform obj, float delta)
-	{
+	public void ForcePositionCamera(Vector3 origin, float delta){
 		Vector3 cameraDir = GetDirection();
 		RaycastHit hit;
 		Vector3 point = Vector3.zero;
-		if (Physics.Raycast(obj.position, cameraDir, out hit, radius) && collide){
+		if (Physics.Raycast(origin, cameraDir, out hit, radius) && collide){
 			cameraPos = hit.point - cameraDir.normalized;
 		}else
-			cameraPos = obj.position + cameraDir * radius;
+			cameraPos = origin + cameraDir * radius;
 
 		transform.position = Vector3.Lerp(transform.position, cameraPos, delta * lerpVelocity);
 		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(mouse.y, mouse.x, 0)), delta*lerpVelocity);
+	}
+
+	void PositionCamera(Transform obj, float delta)
+	{
+		ForcePositionCamera(obj.position, delta);
 	}
 }

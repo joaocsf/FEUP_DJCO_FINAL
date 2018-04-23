@@ -19,14 +19,16 @@ namespace Search_Shell.Game{
 
 		public string levelLayer = "Level";
 		public string subLevelLayer = "SubLevel";
+
+		public string startingLevel = "";
 		public float defaultCameraZoom = 5;
 		public AnimationCurve cameraCurve;
 		
 		public float transitionTime = 1;
 		public GridManager subLevel;
 
-		public GridObject levelObject;
-		public GridObject subLevelObject;
+		private GridObject levelObject;
+		private GridObject subLevelObject;
 
 		public Camera levelCamera;
 		public Camera subLevelCamera;
@@ -54,19 +56,30 @@ namespace Search_Shell.Game{
 			subLevelCamera.GetComponent<CameraFollow>().SetTransform(subLevelObject.transform);
 			subLevelCamera.GetComponent<CameraFollow>().radius = defaultCameraZoom;
 			*/
-			subLevel.AddListener(this);
-			SetLevel(level, levelObject);
-			SetSubLevel(subLevel, subLevelObject);
-			ControllObject(subLevelObject);
+			LoadStartingLevel(startingLevel);
 		}
 
-		public void SetLevel(GridManager level, GridObject levelObject){
+		public void LoadStartingLevel(string name){
+			GridManager sublevel = LoadLevel(name);	
+
+			SetSubLevel(sublevel);
+			LevelProperties properties = sublevel.GetComponent<LevelProperties>();
+
+			GridManager level = LoadLevel(properties.nextLevel);
+			SetLevel(level);
+		}
+
+		
+
+		public void SetLevel(GridManager level, GridObject levelObj = null){
 			this.level = level;
-			this.levelObject = levelObject;
+			LevelProperties levelProperties = level.GetComponent<LevelProperties>();
+			levelProperties.selectedObj = levelObj? levelObj : levelProperties.selectedObj;
+			this.levelObject = level.GetComponent<LevelProperties>().selectedObj;
 			if(levelObject != null)
 				levelCamera.transform.parent = levelObject.transform;
 
-			SetLayer(subLevel.transform,
+			SetLayer(level.transform,
 				obj => {
 					if(obj.GetComponent<Renderer>()){
 						obj.gameObject.layer = LayerMask.NameToLayer(levelLayer);
@@ -81,14 +94,15 @@ namespace Search_Shell.Game{
 			}
 		}
 
-		public void SetSubLevel(GridManager subLevel, GridObject sublevelObject){
+		public void SetSubLevel(GridManager subLevel){
 			if(this.subLevel != null)
 				this.subLevel.RemoveListener(this);
 
 			this.subLevel = subLevel;
-			this.subLevelObject = sublevelObject;
+			LevelProperties properties = subLevel.GetComponent<LevelProperties>();
+			this.subLevelObject = properties.selectedObj;
 			subLevelCamera.transform.parent = this.subLevel.transform;
-			levelCamera.GetComponent<ScreenCapture>().scale = subLevel.scale;
+			levelCamera.GetComponent<ScreenCapture>().scale = properties.scale;
 			subLevelCamera.GetComponent<SkyboxHandler>().SetOpacity(0);
 			subLevel.AddListener(this);
 			ControllObject(subLevelObject);
@@ -130,6 +144,7 @@ namespace Search_Shell.Game{
 		void UpdateReachableObjects(){
 			UpdateMaterial(HighLight.None);
 			DetectorController detect = subLevelObject.GetComponent<DetectorController>();
+			if(detect == null) return;
 			nearObjects = detect.NearObjects();
 			UpdateMaterial(HighLight.Highlighted);
 		}
@@ -191,8 +206,6 @@ namespace Search_Shell.Game{
 			if(colls.Count > 0) return;
 			canControll = false;
 			movedObjects = subLevel.GetMovingObjects();
-			//movedObjects.Add(subLevelObject);
-
 		}
 
     public void OnFinishedMovement()
@@ -213,14 +226,60 @@ namespace Search_Shell.Game{
 			StartCoroutine(CameraTransition());
     }
 
+		public void OnLoadNextSubLevel(String level){
+			StartCoroutine(InverseCameraTansition(level));
+		}
+
+		public GridManager LoadLevel(string levelName){
+			GameObject level = (GameObject)Resources.Load("Levels/" + levelName);
+			level = GameObject.Instantiate(level);
+
+			return level.GetComponent<GridManager>();
+		}
+
+		public void ClearLevel(GridManager obj){
+			Destroy(obj.gameObject);
+		}
+
+		IEnumerator InverseCameraTansition(String sublevelName) {
+			canControll = false;
+			yield return new WaitForFixedUpdate();
+			CameraFollow cam = subLevelCamera.GetComponent<CameraFollow>();
+			SkyboxHandler handler = subLevelCamera.GetComponent<SkyboxHandler>();
+
+			ClearLevel(level);
+			SetLevel(subLevel, subLevelObject);
+			SetSubLevel(LoadLevel(sublevelName));
+
+			LevelProperties subLevelProperties = subLevel.GetComponent<LevelProperties>();
+
+			cam.radius *= subLevelProperties.scale;
+			cam.ForcePositionCamera(subLevelObject.transform.position, 999);
+			float radius = cam.radius;
+			float diff = defaultCameraZoom - cam.radius;
+
+			float time = 0;
+
+			while(time < transitionTime){
+				time += Time.fixedDeltaTime;
+				handler.SetOpacity(1f - time/transitionTime);
+				cam.radius = radius + cameraCurve.Evaluate(time/transitionTime) * diff;	
+				yield return new WaitForFixedUpdate();
+			}
+			handler.SetOpacity(0);
+			canControll = true;
+		}
+
 		IEnumerator CameraTransition(){
 			canControll = false;
 			CameraFollow cam = subLevelCamera.GetComponent<CameraFollow>();
 			SkyboxHandler handler = subLevelCamera.GetComponent<SkyboxHandler>();
+			LevelProperties subLevelProperties = subLevel.GetComponent<LevelProperties>();
 			cam.SetTransform(subLevel.transform);
 			float time = 0;
+			
 			float radius = cam.radius;
-			float diff = subLevel.scale * defaultCameraZoom - radius;
+			float diff = subLevelProperties.scale * defaultCameraZoom - radius;
 			
 			while(time < transitionTime){
 				time += Time.fixedDeltaTime;
@@ -233,7 +292,13 @@ namespace Search_Shell.Game{
 			float dist = levelCamera.transform.localPosition.magnitude;
 			subLevelCamera.transform.position = levelCamera.transform.position;
 			cam.radius = defaultCameraZoom;
-			SetSubLevel(level, levelObject);
+
+			LevelProperties levelProperties = level.GetComponent<LevelProperties>();
+			GridManager sub = subLevel;
+			SetSubLevel(level);
+			ClearLevel(sub);
+			SetLevel(LoadLevel(levelProperties.nextLevel));
+
 			canControll = true;
 		}
   }

@@ -7,7 +7,6 @@ using System;
 namespace Search_Shell.Grid{
 	public class GridManager : MonoBehaviour {
 
-		public float scale = 10;
 		public bool debug = true;
 		public Vector2 dims;
 		
@@ -138,6 +137,10 @@ namespace Search_Shell.Grid{
 
 		public void LoadNextLevel(){
 			CallListeners(e => e.OnLoadNextLevel());
+		}
+
+		public void LoadNextSubLevel(string sublevel){
+			CallListeners(e => e.OnLoadNextSubLevel(sublevel));
 		}
 
 		private void MoveObject(GridObject obj, Vector3 dir){

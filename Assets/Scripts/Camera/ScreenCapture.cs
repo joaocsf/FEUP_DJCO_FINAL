@@ -17,7 +17,8 @@ public class ScreenCapture : MonoBehaviour {
         }
 
         void LateUpdate () {
-        cam.transform.localPosition = cam2.transform.localPosition / scale;
+        if(cam.transform.parent == null) return;
+        cam.transform.localPosition = cam2.transform.localPosition / Mathf.Clamp(scale,1, Mathf.Infinity);
         cam.transform.localEulerAngles = cam2.transform.localEulerAngles;
         }
 }

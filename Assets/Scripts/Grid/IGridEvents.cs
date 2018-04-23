@@ -5,5 +5,7 @@ namespace Search_Shell.Grid
        void OnFinishedGravity(); 
 
        void OnLoadNextLevel();
+
+       void OnLoadNextSubLevel(string name);
     }
 }

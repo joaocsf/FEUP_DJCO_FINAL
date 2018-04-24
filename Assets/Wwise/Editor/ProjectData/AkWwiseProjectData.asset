@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efabbc45ec0309b4daa097eb988b5ff2, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  AcousticTextureWwu:
+  - Guid: '{D37D4233-E16E-41C3-99F5-519885FEBA01}'
+    m_lastTimePart2: -1999263197
+    m_lastTimePsrt1: -427355295
+    ParentPhysicalPath: 
+    PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    List: []
+  autoPopulateEnabled: 1
+  AuxBusWwu:
+  - Guid: '{9C4B1C00-80E1-4DD0-A971-C3B9AA03613F}'
+    m_lastTimePart2: -1999263197
+    m_lastTimePsrt1: -427500378
+    ParentPhysicalPath: 
+    PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    List: []
+  BankWwu:
+  - Guid: '{FC8D4E37-F11D-444F-9881-F360D8EDCCE6}'
+    m_lastTimePart2: -1999263195
+    m_lastTimePsrt1: -363955469
+    ParentPhysicalPath: 
+    PhysicalPath: SoundBanks\Default Work Unit.wwu
+    List:
+    - Guid: 764bf1fc7d22d94ca30fa1055bea1a7c
+      ID: -1137964055
+      Name: Test
+      Path: Default Work Unit\Test
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Test
+        ObjectType: 7
+  basePath: Audio\GeneratedSoundBanks
+  callbackManagerBufferSize: 4
+  CurrentPluginConfig: 
+  defaultPoolSize: 4096
+  EventWwu:
+  - Guid: '{D5C964DA-05BD-4352-AE68-59BF5A06679B}'
+    m_lastTimePart2: -1999263195
+    m_lastTimePsrt1: -1639944796
+    ParentPhysicalPath: 
+    PhysicalPath: Events\Default Work Unit.wwu
+    List:
+    - Guid: e3fd2bd5b5f5df49a0319dc5fc53ad73
+      ID: 1099345086
+      Name: Play_Suspense
+      Path: Default Work Unit\Play_Suspense
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_Suspense
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+  ExpandedItems:
+  - /Search Shell_WwiseProject
+  - /Search Shell_WwiseProject/Events
+  - /Search Shell_WwiseProject/Events/Default Work Unit
+  - /Search Shell_WwiseProject/SoundBanks
+  - /Search Shell_WwiseProject/SoundBanks/Default Work Unit
+  language: English(US)
+  lowerPoolSize: 2048
+  m_lastPopulateTimePart2: 0
+  m_lastPopulateTimePsrt1: 0
+  memoryCutoffThreshold: 0.95
+  preparePoolSize: 0
+  RtpcWwu:
+  - Guid: '{9925D29B-9AE6-4549-BA3F-5CF62AD50BD7}'
+    m_lastTimePart2: -1999263197
+    m_lastTimePsrt1: -427510389
+    ParentPhysicalPath: 
+    PhysicalPath: Game Parameters\Default Work Unit.wwu
+    List: []
+  StateWwu:
+  - Guid: '{708ADFCC-BB73-4D2D-ABB8-FB82359AFAB9}'
+    m_lastTimePart2: -1999263197
+    m_lastTimePsrt1: -427395315
+    ParentPhysicalPath: 
+    PhysicalPath: States\Default Work Unit.wwu
+    List: []
+  streamingPoolSize: 1024
+  SwitchWwu:
+  - Guid: '{8FF43CD2-1445-4378-8424-337BFCC82816}'
+    m_lastTimePart2: -1999263197
+    m_lastTimePsrt1: -427365306
+    ParentPhysicalPath: 
+    PhysicalPath: Switches\Default Work Unit.wwu
+    List: []
+  TriggerWwu:
+  - Guid: '{1BBA855A-D28D-41C7-86B2-A6C0FE31B2A1}'
+    m_lastTimePart2: -1999263197
+    m_lastTimePsrt1: -427435335
+    ParentPhysicalPath: 
+    PhysicalPath: Triggers\Default Work Unit.wwu
+    List: []

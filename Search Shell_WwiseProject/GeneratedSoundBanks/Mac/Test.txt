@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1099345086	Play_Suspense			\Default Work Unit\Play_Suspense	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	941825066	Suspense	G:\Projects\Search Shell\Search Shell_WwiseProject\.cache\Mac\SFX\Suspense 6_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\Suspense		585712
+

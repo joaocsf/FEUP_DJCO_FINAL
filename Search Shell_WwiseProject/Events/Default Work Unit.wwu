@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{D5C964DA-05BD-4352-AE68-59BF5A06679B}" SchemaVersion="85">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{D5C964DA-05BD-4352-AE68-59BF5A06679B}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_Suspense" ID="{D52BFDE3-F5B5-49DF-A031-9DC5FC53AD73}">
+					<ChildrenList>
+						<Action Name="" ID="{ECA8E6B7-AFF1-44AB-8EAF-211867077828}" ShortID="282041350">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Suspense" ID="{73431572-6F51-40C0-A5D4-AF2E80C970DD}" WorkUnitID="{6F1A60C3-1E48-4FF4-905B-448DA2423BF5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

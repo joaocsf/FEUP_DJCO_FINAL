@@ -39,3 +39,6 @@ sysinfo.txt
 logRunSetup.txt
 
 *.zip
+
+Assets/WwiseSettings.xml
+Assets/WwiseSettings.xml*

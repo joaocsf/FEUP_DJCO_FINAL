@@ -7,6 +7,7 @@ using Search_Shell.Controllers.Detector;
 using Search_Shell.Controllers.Movement;
 using Search_Shell.Game.Controll;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Search_Shell.Game{
 
@@ -24,6 +25,7 @@ namespace Search_Shell.Game{
 		public float defaultCameraZoom = 5;
 		public AnimationCurve cameraCurve;
 		
+		
 		public float transitionTime = 1;
 		public GridManager subLevel;
 
@@ -32,6 +34,8 @@ namespace Search_Shell.Game{
 
 		public Camera levelCamera;
 		public Camera subLevelCamera;
+		
+		public GameObject Gui;
 
 		private Vector3 lastInput;
 
@@ -163,6 +167,12 @@ namespace Search_Shell.Game{
 		void Update () {
 			
 			if(!canControll) return;
+
+			if (Input.GetKeyDown("escape"))
+			{
+				Gui.SetActive(true);
+			}
+			Application.Quit();
 
 			if(Input.GetMouseButtonDown(0))
 				SwitchObject();

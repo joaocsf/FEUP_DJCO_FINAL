@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{CDBE4696-D877-41AD-906B-CF658D461F34}" SchemaVersion="85">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{CDBE4696-D877-41AD-906B-CF658D461F34}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Test" ID="{CE774BCA-C2CC-4A0A-A142-AC1801BF4D1F}">
+					<ChildrenList>
+						<Action Name="" ID="{87B508B2-975C-4F48-9C9F-70F7A4490DC2}" ShortID="458848537">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="positivenoise02" ID="{50FA50B0-992B-4A9F-B198-2A0CF41A9EB9}" WorkUnitID="{E28C1007-6579-445E-BA4A-04565E151414}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

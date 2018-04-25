@@ -9,5 +9,5 @@
   <SoundbankPath>Audio/GeneratedSoundBanks</SoundbankPath>
   <WwiseInstallationPathMac />
   <WwiseInstallationPathWindows>G:\Software\Wwise</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../Search Shell_WwiseProject/Search Shell_WwiseProject.wproj</WwiseProjectPath>
+  <WwiseProjectPath>../../FEUP_DJCO_FINAL/Search Shell_WwiseProject/Search Shell_WwiseProject.wproj</WwiseProjectPath>
 </WwiseSettings>

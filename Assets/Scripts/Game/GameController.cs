@@ -35,7 +35,7 @@ namespace Search_Shell.Game{
 		public Camera levelCamera;
 		public Camera subLevelCamera;
 		
-		public GameObject Gui;
+		private UIManager UIManager;
 
 		private Vector3 lastInput;
 
@@ -47,7 +47,8 @@ namespace Search_Shell.Game{
 
 		void Start () {
 			SetupCamera();
-		}
+			UIManager = GameObject.FindObjectOfType<UIManager>();
+    }
 
 		void OnDrawGizmos() {
 		}
@@ -168,11 +169,9 @@ namespace Search_Shell.Game{
 			
 			if(!canControll) return;
 
-			if (Input.GetKeyDown("escape"))
-			{
-				Gui.SetActive(true);
-			}
-			Application.Quit();
+			if (Input.GetKeyDown("escape")) {
+        UIManager.ToggleMenu();
+      }
 
 			if(Input.GetMouseButtonDown(0))
 				SwitchObject();

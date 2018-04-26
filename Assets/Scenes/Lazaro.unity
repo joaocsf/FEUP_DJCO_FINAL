@@ -365,6 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 148266760}
   - component: {fileID: 148266761}
+  - component: {fileID: 148266762}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -425,7 +426,22 @@ MonoBehaviour:
   subLevel: {fileID: 9519869}
   levelCamera: {fileID: 1525935774}
   subLevelCamera: {fileID: 44562679}
-  Gui: {fileID: 1990431349}
+--- !u!114 &148266762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 148266759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96a6a9172c94b5ea5de0e11742e26ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainPanel: {fileID: 1990431349}
+  btnExit: {fileID: 104164723}
+  btnContinue: {fileID: 1575706932}
+  btnNewGame: {fileID: 1720688924}
+  btnSettings: {fileID: 817021174}
 --- !u!1 &501153827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,14 +1369,13 @@ GameObject:
   - component: {fileID: 1990431350}
   - component: {fileID: 1990431352}
   - component: {fileID: 1990431351}
-  - component: {fileID: 1990431353}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1990431350
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1416,17 +1431,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1990431349}
---- !u!114 &1990431353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1990431349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96a6a9172c94b5ea5de0e11742e26ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2079894489
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,6 +47,8 @@ namespace Search_Shell.Game
 
         private Stack<MoveTurn> turns = new Stack<MoveTurn>();
 
+        private Dictionary<string, MoveTurn> levelsSave = new Dictionary<string, MoveTurn>();
+
         private struct Move
         {
             public Vector3 initialPosition;
@@ -233,6 +235,16 @@ namespace Search_Shell.Game
             {
                 Undo();
             }
+
+            if (Input.GetKeyDown("k"))
+            {
+                Save();
+            }
+            if (Input.GetKeyDown("l"))
+            {
+                Load();
+            }
+
             Application.Quit();
 
             if (Input.GetMouseButtonDown(0))
@@ -402,6 +414,41 @@ namespace Search_Shell.Game
         {
             if (turns.Count == 0) return;
             MoveTurn turn = turns.Pop();
+            Dictionary<GridObject, Move> movements = turn.movements;
+
+            foreach (GridObject obj in movements.Keys)
+            {
+                obj.transform.parent.GetComponent<GridManager>().ClearObject(obj);
+            }
+
+            foreach (GridObject obj in movements.Keys)
+            {
+                Move move = movements[obj];
+                obj.finalAngles = move.initialAngles;
+                obj.finalPosition = move.initialPosition;
+                obj.transform.localEulerAngles = move.initialAngles;
+                obj.transform.localPosition = move.initialPosition;
+                obj.transform.parent.GetComponent<GridManager>().RegisterObject(obj);
+            }
+            ControllObject(turn.current);
+        }
+
+        public void Save()
+        {
+            HashSet<GridObject> movedObjects = subLevel.GetMovingObjects();
+            Dictionary<GridObject, Move> movements = new Dictionary<GridObject, Move>();
+            foreach (GridObject obj in movedObjects)
+            {
+                Move move = new Move(obj.finalPosition, obj.finalAngles);
+                movements.Add(obj, move);
+            }
+            levelsSave[subLevel.name] = new MoveTurn(subLevelObject, movements);
+        }
+
+        public void Load()
+        {
+            if (!levelsSave.ContainsKey(subLevel.name)) return;
+            MoveTurn turn = levelsSave[subLevel.name];
             Dictionary<GridObject, Move> movements = turn.movements;
 
             foreach (GridObject obj in movements.Keys)

@@ -68,9 +68,10 @@ namespace Search_Shell.Controllers.Movement {
 			return obstacles;
     }
 
-    protected override void OnFinishAnimation(Vector3 input)
+    protected override bool OnFinishAnimation(Vector3 input)
     {
 			obj.Roll(input,-90f);
+			return true;
     }
   }
 

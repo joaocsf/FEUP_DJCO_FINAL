@@ -153,7 +153,7 @@ namespace Search_Shell.Grid{
 			anim.Animate(dir, () => FinishGravityAnimation(obj, dir));
 		}
 
-		public bool PushObject(GridObject obj, Vector3 dir){
+		public bool PushObject(GridObject obj, Vector3 dir, Action endAction){
 			if(obj.properties.isStatic){
 				return false;
 			}
@@ -161,7 +161,7 @@ namespace Search_Shell.Grid{
 			HashSet<GridObject> possibleColisions = CheckCollision(obj, obj.CalculateSlide(dir));
 
 			foreach(GridObject otherObj in possibleColisions){
-				if(!PushObject(otherObj, dir)){
+				if(!PushObject(otherObj, dir, endAction)){
 					return false;
 				}			
 			}
@@ -175,6 +175,9 @@ namespace Search_Shell.Grid{
 			anim.Animate(dir, () => {
 				affectingObjects.Remove(obj);
 				obj.Slide(dir);
+				Debug.Log(affectingObjects.Count);
+				if(affectingObjects.Count == 0)
+					endAction();
 			});
 
 			return true;

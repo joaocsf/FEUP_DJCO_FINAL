@@ -43,7 +43,33 @@ namespace Search_Shell.Game{
 
 		private HashSet<GridObject> movedObjects = new HashSet<GridObject>();
 
-		private bool canControll = true;
+        private Stack<MoveTurn> turns = new Stack<MoveTurn>();
+
+        private struct Move
+        {
+            public Vector3 initialPosition;
+            public Vector3 initialAngles;
+
+            public Move(Vector3 initialPosition, Vector3 initialAngles)
+            {
+                this.initialPosition = initialPosition;
+                this.initialAngles = initialAngles;
+            }
+        }
+
+        private struct MoveTurn
+        {
+            public Dictionary<GridObject, Move> movements;
+            public GridObject current;
+
+            public MoveTurn(GridObject subLevelObject, Dictionary<GridObject, Move> movements)
+            {
+                this.movements = movements;
+                this.current = subLevelObject;
+            }
+        }
+
+        private bool canControll = true;
 
 		void Start () {
 			SetupCamera();
@@ -102,7 +128,10 @@ namespace Search_Shell.Game{
 			if(this.subLevel != null)
 				this.subLevel.RemoveListener(this);
 
-			this.subLevel = subLevel;
+            turns.Clear();
+
+
+            this.subLevel = subLevel;
 			LevelProperties properties = subLevel.GetComponent<LevelProperties>();
 			this.subLevelObject = properties.selectedObj;
 			subLevelCamera.transform.parent = this.subLevel.transform;
@@ -159,6 +188,7 @@ namespace Search_Shell.Game{
 			if(Physics.Raycast(r, out hit)){
 				GridObject obj = hit.collider.GetComponent<GridObject>();
 				if(nearObjects.Contains(obj)){
+                    SaveTurn(subLevelObject, subLevel.GetObjects());
 					ControllObject(obj);
 				}
 			}
@@ -172,7 +202,12 @@ namespace Search_Shell.Game{
 			{
 				Gui.SetActive(true);
 			}
-			Application.Quit();
+
+            if (Input.GetKeyDown("u"))
+            {
+                Undo();
+            }
+            Application.Quit();
 
 			if(Input.GetMouseButtonDown(0))
 				SwitchObject();
@@ -216,6 +251,8 @@ namespace Search_Shell.Game{
 			if(colls.Count > 0) return;
 			canControll = false;
 			movedObjects = subLevel.GetMovingObjects();
+
+            SaveTurn(subLevelObject, subLevel.GetObjects());
 		}
 
     public void OnFinishedMovement()
@@ -311,5 +348,40 @@ namespace Search_Shell.Game{
 
 			canControll = true;
 		}
-  }
+
+        public void SaveTurn(GridObject current, HashSet<GridObject> movedObjects)
+        {
+
+            Dictionary<GridObject, Move> movements = new Dictionary<GridObject, Move>();
+            foreach (GridObject obj in movedObjects)
+            {
+                Move move = new Move(obj.finalPosition, obj.finalAngles);
+                movements.Add(obj, move);
+            }
+            turns.Push(new MoveTurn(current, movements));
+        }
+
+        public void Undo()
+        {
+            if (turns.Count == 0) return;
+            MoveTurn turn = turns.Pop();
+            Dictionary<GridObject, Move> movements = turn.movements;
+
+            foreach (GridObject obj in movements.Keys)
+            {
+                obj.transform.parent.GetComponent<GridManager>().ClearObject(obj); 
+            }
+
+            foreach (GridObject obj in movements.Keys)
+            {
+                Move move = movements[obj];
+                obj.finalAngles = move.initialAngles;
+                obj.finalPosition = move.initialPosition;
+                obj.transform.localEulerAngles = move.initialAngles;
+                obj.transform.localPosition = move.initialPosition;
+                obj.transform.parent.GetComponent<GridManager>().RegisterObject(obj);
+            }
+            ControllObject(turn.current);
+        }
+    }
 }

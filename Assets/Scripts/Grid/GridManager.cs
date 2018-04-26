@@ -153,6 +153,33 @@ namespace Search_Shell.Grid{
 			anim.Animate(dir, () => FinishGravityAnimation(obj, dir));
 		}
 
+		public bool PushObject(GridObject obj, Vector3 dir){
+			if(obj.properties.isStatic){
+				return false;
+			}
+
+			HashSet<GridObject> possibleColisions = CheckCollision(obj, obj.CalculateSlide(dir));
+
+			foreach(GridObject otherObj in possibleColisions){
+				if(!PushObject(otherObj, dir)){
+					return false;
+				}			
+			}
+
+			affectingObjects.Add(obj);
+			ClearObject(obj);
+			obj.Slide(dir);
+			RegisterObject(obj);
+			obj.Slide(-dir);
+			LinearAnimation anim = obj.GetComponent<LinearAnimation>();
+			anim.Animate(dir, () => {
+				affectingObjects.Remove(obj);
+				obj.Slide(dir);
+			});
+
+			return true;
+		}
+
 		public bool VerifyGravity(HashSet<GridObject> movedObjs){
 			
 			List<GridObject> objs = new List<GridObject>(movedObjs);

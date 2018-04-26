@@ -9,52 +9,85 @@ using Search_Shell.Game.Controll;
 using System;
 using UnityEngine.SceneManagement;
 
-namespace Search_Shell.Game{
+namespace Search_Shell.Game
+{
 
-	public class GameController : MonoBehaviour, IMovementListener, IGridEvents {
+    public class GameController : MonoBehaviour, IMovementListener, IGridEvents
+    {
 
-		public Material highlighted;
-		public Material selected;
+        public Material highlighted;
+        public Material selected;
 
-		public GridManager level;
+        public GridManager level;
 
-		public string levelLayer = "Level";
-		public string subLevelLayer = "SubLevel";
+        public string levelLayer = "Level";
+        public string subLevelLayer = "SubLevel";
 
-		public string startingLevel = "";
-		public float defaultCameraZoom = 5;
-		public AnimationCurve cameraCurve;
-		
-		
-		public float transitionTime = 1;
-		public GridManager subLevel;
+        public string startingLevel = "";
+        public float defaultCameraZoom = 5;
+        public AnimationCurve cameraCurve;
 
-		private GridObject levelObject;
-		private GridObject subLevelObject;
 
-		public Camera levelCamera;
-		public Camera subLevelCamera;
-		
-		private UIManager UIManager;
+        public float transitionTime = 1;
+        public GridManager subLevel;
 
-		private Vector3 lastInput;
+        private GridObject levelObject;
+        private GridObject subLevelObject;
 
-		private HashSet<GridObject> nearObjects = new HashSet<GridObject>();
+        public Camera levelCamera;
+        public Camera subLevelCamera;
 
-		private HashSet<GridObject> movedObjects = new HashSet<GridObject>();
+        private UIManager UIManager;
 
-		private bool canControll = true;
+        private Vector3 lastInput;
 
-		void Start () {
-			SetupCamera();
-			UIManager = GameObject.FindObjectOfType<UIManager>();
-    }
+        private HashSet<GridObject> nearObjects = new HashSet<GridObject>();
 
-		void OnDrawGizmos() {
-		}
+        private HashSet<GridObject> movedObjects = new HashSet<GridObject>();
 
-		void SetupCamera () {
-			/* 
+        private Stack<MoveTurn> turns = new Stack<MoveTurn>();
+
+        private Dictionary<string, MoveTurn> levelsSave = new Dictionary<string, MoveTurn>();
+
+        private struct Move
+        {
+            public Vector3 initialPosition;
+            public Vector3 initialAngles;
+
+            public Move(Vector3 initialPosition, Vector3 initialAngles)
+            {
+                this.initialPosition = initialPosition;
+                this.initialAngles = initialAngles;
+            }
+        }
+
+        private struct MoveTurn
+        {
+            public Dictionary<GridObject, Move> movements;
+            public GridObject current;
+
+            public MoveTurn(GridObject subLevelObject, Dictionary<GridObject, Move> movements)
+            {
+                this.movements = movements;
+                this.current = subLevelObject;
+            }
+        }
+
+        private bool canControll = true;
+
+        void Start()
+        {
+            SetupCamera();
+            UIManager = GameObject.FindObjectOfType<UIManager>();
+        }
+
+        void OnDrawGizmos()
+        {
+        }
+
+        void SetupCamera()
+        {
+            /* 
 			levelCamera.transform.parent = levelObject.transform;
 			subLevelCamera.transform.parent = subLevel.transform;
 			subLevelCamera.transform.localPosition = Vector3.zero + Vector3.one;
@@ -235,81 +268,4 @@ namespace Search_Shell.Game{
     {
 			StartCoroutine(CameraTransition());
     }
-
-		public void OnLoadNextSubLevel(String level){
-			StartCoroutine(InverseCameraTansition(level));
-		}
-
-		public GridManager LoadLevel(string levelName){
-			GameObject level = (GameObject)Resources.Load("Levels/" + levelName);
-			level = GameObject.Instantiate(level);
-
-			return level.GetComponent<GridManager>();
-		}
-
-		public void ClearLevel(GridManager obj){
-			Destroy(obj.gameObject);
-		}
-
-		IEnumerator InverseCameraTansition(String sublevelName) {
-			canControll = false;
-			yield return new WaitForFixedUpdate();
-			CameraFollow cam = subLevelCamera.GetComponent<CameraFollow>();
-			SkyboxHandler handler = subLevelCamera.GetComponent<SkyboxHandler>();
-
-			ClearLevel(level);
-			SetLevel(subLevel, subLevelObject);
-			SetSubLevel(LoadLevel(sublevelName));
-
-			LevelProperties subLevelProperties = subLevel.GetComponent<LevelProperties>();
-
-			cam.radius *= subLevelProperties.scale;
-			cam.ForcePositionCamera(subLevelObject.transform.position, 999);
-			float radius = cam.radius;
-			float diff = defaultCameraZoom - cam.radius;
-
-			float time = 0;
-
-			while(time < transitionTime){
-				time += Time.fixedDeltaTime;
-				handler.SetOpacity(1f - time/transitionTime);
-				cam.radius = radius + cameraCurve.Evaluate(time/transitionTime) * diff;	
-				yield return new WaitForFixedUpdate();
-			}
-			handler.SetOpacity(0);
-			canControll = true;
-		}
-
-		IEnumerator CameraTransition(){
-			canControll = false;
-			CameraFollow cam = subLevelCamera.GetComponent<CameraFollow>();
-			SkyboxHandler handler = subLevelCamera.GetComponent<SkyboxHandler>();
-			LevelProperties subLevelProperties = subLevel.GetComponent<LevelProperties>();
-			cam.SetTransform(subLevel.transform);
-			float time = 0;
-			
-			float radius = cam.radius;
-			float diff = subLevelProperties.scale * defaultCameraZoom - radius;
-			
-			while(time < transitionTime){
-				time += Time.fixedDeltaTime;
-				handler.SetOpacity(time/transitionTime);
-				cam.radius = radius + cameraCurve.Evaluate(time/transitionTime) * diff;	
-				yield return new WaitForFixedUpdate();
-			}
-			handler.SetOpacity(0);
-
-			float dist = levelCamera.transform.localPosition.magnitude;
-			subLevelCamera.transform.position = levelCamera.transform.position;
-			cam.radius = defaultCameraZoom;
-
-			LevelProperties levelProperties = level.GetComponent<LevelProperties>();
-			GridManager sub = subLevel;
-			SetSubLevel(level);
-			ClearLevel(sub);
-			SetLevel(LoadLevel(levelProperties.nextLevel));
-
-			canControll = true;
-		}
-  }
 }

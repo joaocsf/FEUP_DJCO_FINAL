@@ -215,7 +215,19 @@ namespace Search_Shell.Grid{
 			return objs;
 		}
 
-		public bool RegisterObject(GridObject obj, List<Vector3> positions){
+        public HashSet<GridObject> GetObjects()
+        {
+            HashSet<GridObject> objs = new HashSet<GridObject>();
+
+            foreach (GridObject obj in objects)
+            {
+                    objs.Add(obj);
+            }
+
+            return objs;
+        }
+
+        public bool RegisterObject(GridObject obj, List<Vector3> positions){
 
 			foreach(Vector3 position in positions){
 				GridObject existing = AssignObjectToPosition(obj, position);

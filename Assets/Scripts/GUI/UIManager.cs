@@ -4,10 +4,16 @@ using System.Collections;
 public class UIManager : MonoBehaviour
 {
     public GameObject mainPanel;
+    public GameObject gamePanel;
+
     public Button btnExit;
     public Button btnContinue;
     public Button btnNewGame;
     public Button btnSettings;
+    public Button btnMenu;
+    public Button btnBack;
+    public Button btnLeft;
+    public Button btnRight;
     private bool active = true;
 
     void Start()
@@ -16,15 +22,19 @@ public class UIManager : MonoBehaviour
         Button bNewGame = btnNewGame.GetComponent<Button>();
         Button bSettings = btnSettings.GetComponent<Button>();
         Button bContinue = btnContinue.GetComponent<Button>();
+        Button bMenu = btnMenu.GetComponent<Button>();
+        Button bLeft = btnLeft.GetComponent<Button>();
+        Button bRight = btnRight.GetComponent<Button>();
+        // Button bBack = btnBack.GetComponent<Button>();
 
         bExit.onClick.AddListener(ClickExit);
         bContinue.onClick.AddListener(ClickContinue);
         bNewGame.onClick.AddListener(ClickNewgame);
         bSettings.onClick.AddListener(ClickSettings);
+        bMenu.onClick.AddListener(ToggleMenu);
     }
     public void ClickContinue()
     {
-        mainPanel.SetActive(false);
     }
     public void ClickNewgame()
     {
@@ -37,8 +47,9 @@ public class UIManager : MonoBehaviour
     public void ClickSettings()
     {
     }
-
-    public void ToggleMenu(){
+    public void ToggleMenu()
+    {
+        gamePanel.SetActive(active);
         active = !active;
         mainPanel.SetActive(active);
     }

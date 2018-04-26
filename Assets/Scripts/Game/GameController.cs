@@ -170,6 +170,7 @@ namespace Search_Shell.Game{
 			if(!canControll) return;
 
 			if (Input.GetKeyDown("escape")) {
+        
         UIManager.ToggleMenu();
       }
 

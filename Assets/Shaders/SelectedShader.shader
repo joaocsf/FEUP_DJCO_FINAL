@@ -4,7 +4,7 @@
 		_SelectionColor ("Selection Color", Color) = (1,1,1,1)
 		_SelectionRadius ("Selection Radius", Range(0,1)) = 1
 		_SelectionTexture("Selection Mask", 2D) = "white" {}
-		_SelectionScale("Scale", Range(0,10)) = 1
+		_SelectionScale("Scale", Range(0,1)) = 1
 		_OverLay("Overlay", 2D) = "white" {}
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
@@ -52,8 +52,15 @@
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 			float f = dot(IN.viewDir, IN.worldNormal);
 			float2 screenUV = IN.screenPos.xy/ IN.screenPos.w;
+
 			screenUV = float2(IN.worldPos.x + IN.worldPos.z, IN.worldPos.y);
-			fixed4 overlay = tex2D (_OverLay, screenUV * _SelectionScale + float2(_CosTime.y, - _Time.y) * 0.1);
+			screenUV = IN.worldPos.xz + IN.worldPos.yz + IN.worldPos.yx;
+			screenUV.y /=0.5;
+			screenUV.x /= 0.5;
+			screenUV.x *= 1;
+			screenUV.y *= 1;
+			
+			fixed4 overlay = tex2D (_OverLay, screenUV * _SelectionScale + float2(_CosTime.y - _Time.y, 0) * 0.1);
 			f = clamp(f * _SelectionRadius , 0, 1);
 			f = 1 - tex2D(_SelectionTexture, float3(f,0,0)).r;
 			f += overlay.r;

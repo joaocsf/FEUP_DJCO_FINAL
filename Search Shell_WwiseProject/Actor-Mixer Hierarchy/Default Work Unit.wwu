@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E28C1007-6579-445E-BA4A-04565E151414}" SchemaVersion="85">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{E28C1007-6579-445E-BA4A-04565E151414}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="positivenoise02" ID="{50FA50B0-992B-4A9F-B198-2A0CF41A9EB9}" ShortID="127512855">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7415F2B5-20FE-46CA-B4C8-C925B47764E3}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{890A2CE1-1023-4D5C-89A0-7FF25D73CD69}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="positivenoise02" ID="{BE50C082-02C8-476B-8F7B-1E2BB4D7F9E4}" ShortID="613588331">
+							<Language>SFX</Language>
+							<AudioFile>positivenoise02.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="positivenoise02" ID="{BE50C082-02C8-476B-8F7B-1E2BB4D7F9E4}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

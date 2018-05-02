@@ -35,3 +35,10 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+logRunSetup.txt
+
+*.zip
+
+Assets/WwiseSettings.xml
+Assets/WwiseSettings.xml*

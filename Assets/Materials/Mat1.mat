@@ -76,6 +76,7 @@ Material:
     - _Parallax: 0.02
     - _SelectionRadius: 1
     - _SelectionScale: 0.198
+    - _SelectionThreshold: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

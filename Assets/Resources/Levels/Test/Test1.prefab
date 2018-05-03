@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114185412274895948}
   - component: {fileID: 114204881591378076}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Bench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1174,7 +1174,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c1159c5e556e691498aa5f25604fa70f, type: 3}
+  - {fileID: 2100000, guid: e3b0818ed1023f94d91ba83a05409d48, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

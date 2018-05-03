@@ -15,8 +15,10 @@ namespace Search_Shell.Game
     public class GameController : MonoBehaviour, IMovementListener, IGridEvents
     {
 
-        public Material highlighted;
-        public Material selected;
+        [Header("FX")]
+        public Color highlighted;
+        public Color selected;
+        public Material selectedShaderMat;
 
         public GridManager level;
 
@@ -186,6 +188,7 @@ namespace Search_Shell.Game
                 hl = obj.gameObject.AddComponent<HighLighter>();
                 hl.highlighted = highlighted;
                 hl.selected = selected;
+                hl.CopyMaterial(selectedShaderMat);
             }
             return hl;
         }

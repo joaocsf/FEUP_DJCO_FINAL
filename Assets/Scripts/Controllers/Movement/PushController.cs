@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Search_Shell.Controllers.Movement {
 	public class PushController : MovementController {
 
-		public bool update = false;
+		public int update;
 		public override HashSet<GridObject> Move(Vector3 input, ref HashSet<GridObject> mayfall)
 		{
 			HashSet<GridObject> colliding = new HashSet<GridObject>();
@@ -21,13 +21,12 @@ namespace Search_Shell.Controllers.Movement {
 				return 0;
 				});
 
-			update = objs.Count == 0;
+			update = objs.Count;
 
 			foreach(GridObject obj in objs){
 				Debug.Log(obj);
 				if(!gridManager.PushObject(obj, input, 
 					() => {
-						update = true;
 						Debug.Log("Update" + update);
 						Animate(Vector3.zero);
 					})){
@@ -43,9 +42,9 @@ namespace Search_Shell.Controllers.Movement {
 		}
 
 		protected override bool OnFinishAnimation(Vector3 input){
-			Debug.Log("Update" + update);
+			Debug.Log("UUUU Update :" + update);
 			obj.Slide(input);
-			return update;
+			return update-- <= 0;
 		}
 	}
 }

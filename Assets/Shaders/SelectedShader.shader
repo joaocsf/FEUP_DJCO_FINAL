@@ -1,6 +1,7 @@
 ﻿Shader "Custom/SelectedShader" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
+		_SelectionThreshold("Selection Threshold", Range(0,1)) = 1
 		_SelectionColor ("Selection Color", Color) = (1,1,1,1)
 		_SelectionRadius ("Selection Radius", Range(0,1)) = 1
 		_SelectionTexture("Selection Mask", 2D) = "white" {}
@@ -36,6 +37,7 @@
 		half _Glossiness;
 		half _Metallic;
 		float _SelectionRadius;
+		float _SelectionThreshold;
 		float _SelectionScale;
 		fixed4 _SelectionColor;
 		fixed4 _Color;
@@ -65,7 +67,7 @@
 			f = 1 - tex2D(_SelectionTexture, float3(f,0,0)).r;
 			f += overlay.r;
 			f = 1 - clamp(f, 0, 1);
-
+			f *= _SelectionThreshold;
 			o.Albedo = lerp(c.rgb, _SelectionColor, f);
 			o.Metallic = lerp(_Metallic, 0, f);
 			o.Smoothness = lerp(_Glossiness, 0, f);

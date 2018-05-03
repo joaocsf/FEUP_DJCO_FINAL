@@ -12,12 +12,17 @@ namespace Search_Shell.Game{
 
 		// Use this for initialization
 		
-		
-		public Material selected;
+		public Color selected;	
+		public Color highlighted;	
+		public Shader selectedShader;
 
-		public Material highlighted;
+		public float selectionRadius;
+		public Texture selectionTexture;
+		public float selectionScale;
+		public Texture overlay;
+
 		
-		private Dictionary<Renderer, Material> current;
+		private Dictionary<Renderer, Shader> current;
 
 		private Renderer[] _renderer;
 		private Renderer[] renderer{
@@ -28,38 +33,51 @@ namespace Search_Shell.Game{
 		}
 
 		private void UpdateDefault(){
-			current = new Dictionary<Renderer, Material>();
+			current = new Dictionary<Renderer, Shader>();
 			foreach(Renderer r in renderer){
-				current.Add(r, r.material);
+				current.Add(r, r.material.shader);
 			}
 		}
 
-		private void UpdateMaterial(Material material){
+		private void UpdateShader(Shader shader, Color c){
 			if(current == null) UpdateDefault();
 			foreach(Renderer r in renderer){
-				r.material = material;
+				r.material.shader = shader;
+				r.material.SetColor("_SelectionColor", c);
+				r.material.SetFloat("_SelectionRadius", selectionRadius);
+				r.material.SetTexture("_SelectionTexture", selectionTexture);
+				r.material.SetFloat("_SelectionScale", selectionScale);
+				r.material.SetTexture("_OverLay", overlay);
 			}
 		}
 
 		private void ResetMaterials(){
 			if(current == null) UpdateDefault();
 			foreach(Renderer r in renderer){
-				r.material = current[r];
+				r.material.shader = current[r];
 			}
 		}
 
 		public void SetSelected(HighLight highlight){
 			switch(highlight){
 				case HighLight.Selected:
-					UpdateMaterial(selected);
+					UpdateShader(selectedShader, selected);
 					break;
 				case HighLight.Highlighted:
-					UpdateMaterial(highlighted);
+					UpdateShader(selectedShader, highlighted);
 					break;
 				case HighLight.None:
 					ResetMaterials();
 					break;
 			}
+		}
+
+		public void CopyMaterial(Material material){
+			selectedShader = material.shader;
+			selectionRadius = material.GetFloat("_SelectionRadius");
+			selectionTexture = material.GetTexture("_SelectionTexture");
+			selectionScale = material.GetFloat("_SelectionScale");
+			overlay = material.GetTexture("_OverLay");
 		}
 	}
 }

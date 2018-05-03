@@ -48,7 +48,7 @@ namespace Search_Shell.Controllers.Movement {
             if(!Mathf.Approximately(input.sqrMagnitude, 0))
                 gridManager.RegisterObject(obj);
 
-            Debug.Log("Finishing Animation");
+            Debug.Log("Finishing Animation:" + update);
             if(!update) return;
 
             Debug.Log("Updating Listeners");

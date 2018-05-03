@@ -145,10 +145,13 @@ namespace Search_Shell.Grid{
 
 		private void MoveObject(GridObject obj, Vector3 dir){
 			affectingObjects.Add(obj);
+			Debug.Log(obj.name + "DIR:" + dir + "POS:" + obj.finalPosition);
 			ClearObject(obj);
 			obj.Slide(dir);
+			Debug.Log("DIR:" + dir + "POS:" + obj.finalPosition);
 			RegisterObject(obj);
 			obj.Slide(-dir);
+			Debug.Log("DIR:" + dir + "POS:" + obj.finalPosition);
 			LinearAnimation anim = obj.GetComponent<LinearAnimation>();
 			anim.Animate(dir, () => FinishGravityAnimation(obj, dir));
 		}
@@ -194,6 +197,7 @@ namespace Search_Shell.Grid{
 
 			bool moved = false;
 			foreach(GridObject obj in objs){
+				Debug.Log("Analysing:" + obj.name);
 				int n = 0;
 				while(++n <= maxGravityInterations){
 					if(CheckGround(obj, Vector3.down * n)){
@@ -235,7 +239,7 @@ namespace Search_Shell.Grid{
 			foreach(Vector3 position in positions){
 				GridObject existing = AssignObjectToPosition(obj, position);
 				if(existing != null) {
-					Debug.Log(existing.name);
+					Debug.Log(existing.name + " " + position);
 					ClearObject(obj);
 					return false;
 				}
@@ -247,6 +251,7 @@ namespace Search_Shell.Grid{
 
 		public bool RegisterObject(GridObject obj){
 			if(!RegisterObject(obj, obj.GetVolumePositions())){
+				Debug.Log(obj.name);
 					Debug.LogError("Cannot Assign Object to this position! Overlap!!");
 					return false;
 			}

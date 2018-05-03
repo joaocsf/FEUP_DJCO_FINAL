@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Search_Shell.Controllers.Movement {
 	public class PushController : MovementController {
 
-		public int update;
+		private int update;
 		public override HashSet<GridObject> Move(Vector3 input, ref HashSet<GridObject> mayfall)
 		{
 			HashSet<GridObject> colliding = new HashSet<GridObject>();

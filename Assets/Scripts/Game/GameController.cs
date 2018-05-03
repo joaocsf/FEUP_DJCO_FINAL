@@ -325,6 +325,8 @@ namespace Search_Shell.Game
 
         public GridManager LoadLevel(string levelName)
         {
+            if(levelName.Length == 0)
+                return null;
             GameObject level = (GameObject)Resources.Load("Levels/" + levelName);
             level = GameObject.Instantiate(level);
 

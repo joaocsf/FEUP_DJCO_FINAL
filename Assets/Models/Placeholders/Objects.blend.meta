@@ -17,6 +17,9 @@ ModelImporter:
     100018: TreeBottom
     100020: TreeMiddle
     100022: TreeTop
+    100024: Tree1
+    100026: Tree2
+    100028: Tree2Leafs
     400000: Bench
     400002: Dice
     400004: Eraser
@@ -29,6 +32,9 @@ ModelImporter:
     400018: TreeBottom
     400020: TreeMiddle
     400022: TreeTop
+    400024: Tree1
+    400026: Tree2
+    400028: Tree2Leafs
     2100000: unnamed
     2300000: Bench
     2300002: Dice
@@ -41,6 +47,9 @@ ModelImporter:
     2300016: TreeBottom
     2300018: TreeMiddle
     2300020: TreeTop
+    2300022: Tree1
+    2300024: Tree2
+    2300026: Tree2Leafs
     3300000: Bench
     3300002: Dice
     3300004: Eraser
@@ -52,6 +61,9 @@ ModelImporter:
     3300016: TreeBottom
     3300018: TreeMiddle
     3300020: TreeTop
+    3300022: Tree1
+    3300024: Tree2
+    3300026: Tree2Leafs
     4300000: Table
     4300002: TreeBottom
     4300004: TreeTop
@@ -63,6 +75,9 @@ ModelImporter:
     4300016: Eraser
     4300018: Dice
     4300020: PencilHead
+    4300022: Tree2Leafs
+    4300024: Tree2
+    4300026: Tree1
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

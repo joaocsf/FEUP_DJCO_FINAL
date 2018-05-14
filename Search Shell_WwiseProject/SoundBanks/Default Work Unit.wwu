@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{7EEF2B32-44C6-44F5-9F33-106084A05331}" SchemaVersion="85">
+<WwiseDocument Type="WorkUnit" ID="{19061B5E-BD4D-4031-9B64-CCAC326D4311}" SchemaVersion="85">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{7EEF2B32-44C6-44F5-9F33-106084A05331}" PersistMode="Standalone">
+		<WorkUnit Name="Default Work Unit" ID="{19061B5E-BD4D-4031-9B64-CCAC326D4311}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="Test" ID="{E695466A-68C2-4503-86DC-EF9627529C88}">
+				<SoundBank Name="ShellBank" ID="{1F6A78CF-41BD-4B83-831D-8DF18BBA34D9}">
 					<ObjectInclusionList>
-						<ObjectRef Name="positivenoise02" ID="{50FA50B0-992B-4A9F-B198-2A0CF41A9EB9}" WorkUnitID="{E28C1007-6579-445E-BA4A-04565E151414}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Footstep" ID="{A846CFAA-D4E8-441B-B66C-6129CB9DD61A}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

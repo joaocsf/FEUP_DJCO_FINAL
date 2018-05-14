@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="128">
 	<RootPaths>
-		<ProjectRoot>G:\Projects\Search Shell\Search Shell_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>G:\Projects\Search Shell\Search Shell_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>G:\Projects\Search Shell\Search Shell_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>G:\Projects\Search Shell\Search Shell_WwiseProject\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -16,19 +16,10 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3157003241" Language="SFX">
-			<ObjectPath>\SoundBanks\Default Work Unit\Test</ObjectPath>
-			<ShortName>Test</ShortName>
-			<Path>Test.bnk</Path>
-			<IncludedEvents>
-				<Event Id="3157003241" Name="Test" ObjectPath="\Events\Default Work Unit\Test"/>
-			</IncludedEvents>
-			<IncludedMemoryFiles>
-				<File Id="613588331" Language="SFX">
-					<ShortName>positivenoise02.wav</ShortName>
-					<Path>SFX\positivenoise02_1C9C67B2.wem</Path>
-				</File>
-			</IncludedMemoryFiles>
+		<SoundBank Id="2622570899" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\ShellBank</ObjectPath>
+			<ShortName>ShellBank</ShortName>
+			<Path>ShellBank.bnk</Path>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

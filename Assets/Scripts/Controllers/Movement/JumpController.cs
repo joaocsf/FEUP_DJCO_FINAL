@@ -32,9 +32,10 @@ namespace Search_Shell.Controllers.Movement {
 			Animate(endMovement);
 		}
 
-    protected override void OnFinishAnimation(Vector3 input)
+    protected override bool OnFinishAnimation(Vector3 input)
     {
 			obj.Slide(input);
+			return true;
     }
 	}
 }

@@ -145,12 +145,45 @@ namespace Search_Shell.Grid{
 
 		private void MoveObject(GridObject obj, Vector3 dir){
 			affectingObjects.Add(obj);
+			Debug.Log(obj.name + "DIR:" + dir + "POS:" + obj.finalPosition);
+			ClearObject(obj);
+			obj.Slide(dir);
+			Debug.Log("DIR:" + dir + "POS:" + obj.finalPosition);
+			RegisterObject(obj);
+			obj.Slide(-dir);
+			Debug.Log("DIR:" + dir + "POS:" + obj.finalPosition);
+			LinearAnimation anim = obj.GetComponent<LinearAnimation>();
+			anim.Animate(dir, () => FinishGravityAnimation(obj, dir));
+		}
+
+		public bool PushObject(GridObject obj, Vector3 dir, Action endAction){
+			if(obj.properties.isStatic){
+				return false;
+			}
+
+			HashSet<GridObject> possibleColisions = CheckCollision(obj, obj.CalculateSlide(dir));
+
+			foreach(GridObject otherObj in possibleColisions){
+				if(!PushObject(otherObj, dir, endAction)){
+					return false;
+				}			
+			}
+
+			affectingObjects.Add(obj);
 			ClearObject(obj);
 			obj.Slide(dir);
 			RegisterObject(obj);
 			obj.Slide(-dir);
 			LinearAnimation anim = obj.GetComponent<LinearAnimation>();
-			anim.Animate(dir, () => FinishGravityAnimation(obj, dir));
+			anim.Animate(dir, () => {
+				affectingObjects.Remove(obj);
+				obj.Slide(dir);
+				Debug.Log(affectingObjects.Count);
+				if(affectingObjects.Count == 0)
+					endAction();
+			});
+
+			return true;
 		}
 
 		public bool VerifyGravity(HashSet<GridObject> movedObjs){
@@ -164,6 +197,7 @@ namespace Search_Shell.Grid{
 
 			bool moved = false;
 			foreach(GridObject obj in objs){
+				Debug.Log("Analysing:" + obj.name);
 				int n = 0;
 				while(++n <= maxGravityInterations){
 					if(CheckGround(obj, Vector3.down * n)){
@@ -188,12 +222,24 @@ namespace Search_Shell.Grid{
 			return objs;
 		}
 
-		public bool RegisterObject(GridObject obj, List<Vector3> positions){
+        public HashSet<GridObject> GetObjects()
+        {
+            HashSet<GridObject> objs = new HashSet<GridObject>();
+
+            foreach (GridObject obj in objects)
+            {
+                    objs.Add(obj);
+            }
+
+            return objs;
+        }
+
+        public bool RegisterObject(GridObject obj, List<Vector3> positions){
 
 			foreach(Vector3 position in positions){
 				GridObject existing = AssignObjectToPosition(obj, position);
 				if(existing != null) {
-					Debug.Log(existing.name);
+					Debug.Log(existing.name + " " + position);
 					ClearObject(obj);
 					return false;
 				}
@@ -205,6 +251,7 @@ namespace Search_Shell.Grid{
 
 		public bool RegisterObject(GridObject obj){
 			if(!RegisterObject(obj, obj.GetVolumePositions())){
+				Debug.Log(obj.name);
 					Debug.LogError("Cannot Assign Object to this position! Overlap!!");
 					return false;
 			}

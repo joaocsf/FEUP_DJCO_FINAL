@@ -59,6 +59,34 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Steps" ID="{40D48A9C-AE68-4CE6-AFEA-66A0532B1FDB}">
+					<ChildrenList>
+						<Action Name="" ID="{69F5CA40-C234-48D0-9FFB-973ABA8CE514}" ShortID="826598248">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Steps" ID="{049EA59A-E28E-4E59-B57A-9358FE1B32EE}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Steps_01" ID="{A9305D11-3189-4E54-99D5-9AA26232D83E}">
+					<ChildrenList>
+						<Action Name="" ID="{611F26B8-B54F-40CF-8CBA-8AB54198DC9B}" ShortID="416430062">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Steps" ID="{049EA59A-E28E-4E59-B57A-9358FE1B32EE}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

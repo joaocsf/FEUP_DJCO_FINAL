@@ -147,12 +147,12 @@ MonoBehaviour:
   actionOnEventType: 0
   curveInterpolation: 4
   enableActionOnEvent: 0
-  eventID: -1137964055
+  eventID: -483601162
   m_callbackData: {fileID: 0}
   playingId: 0
   soundEmitterObject: {fileID: 0}
   transitionDuration: 0
-  valueGuid: 00000000000000000000000000000000
+  valueGuid: c662dfc808bce34095733cb6ca082eed
   multiPositionArray: []
   MultiPositionType: 1
   multiPositionTypeLabel: 0

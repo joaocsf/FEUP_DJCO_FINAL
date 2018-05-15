@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
   AcousticTextureWwu:
-  - Guid: '{E6F62319-5425-47CD-A600-82DF067675A2}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -537558714
+  - Guid: '{FAA86F3F-314F-4F7C-9344-F62F17B0B418}'
+    m_lastTimePart2: -1999261678
+    m_lastTimePsrt1: -2048388055
     ParentPhysicalPath: 
     PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
     List: []
@@ -180,9 +180,9 @@ MonoBehaviour:
         ObjectType: 15
   autoPopulateEnabled: 0
   AuxBusWwu:
-  - Guid: '{890A2CE1-1023-4D5C-89A0-7FF25D73CD69}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -538027646
+  - Guid: '{95264EF2-B7C4-4710-B145-A140E44F57FA}'
+    m_lastTimePart2: -1999261678
+    m_lastTimePsrt1: 2079357878
     ParentPhysicalPath: 
     PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     List: []
@@ -207,20 +207,56 @@ MonoBehaviour:
   CurrentPluginConfig: 
   defaultPoolSize: 4096
   EventWwu:
-  - Guid: '{CDBE4696-D877-41AD-906B-CF658D461F34}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -538415328
+  - Guid: '{F52FB322-7C49-4ECD-AD19-240917E57E12}'
+    m_lastTimePart2: -1999261678
+    m_lastTimePsrt1: 2078887544
     ParentPhysicalPath: 
     PhysicalPath: Events\Default Work Unit.wwu
     List:
-    - Guid: ca4b77ceccc20a4aa142ac1801bf4d1f
-      ID: -1137964055
-      Name: Test
-      Path: Default Work Unit\Test
+    - Guid: c662dfc808bce34095733cb6ca082eed
+      ID: -483601162
+      Name: Play_FallWood
+      Path: Default Work Unit\Play_FallWood
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Test
+      - ElementName: Play_FallWood
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 1c6305b14891a04ba45e374f976ec789
+      ID: 1191112106
+      Name: Play_StepGrass
+      Path: Default Work Unit\Play_StepGrass
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_StepGrass
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 46c2ef15a069de41bb2b2c185351a556
+      ID: -1743546673
+      Name: Play_StepLego
+      Path: Default Work Unit\Play_StepLego
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_StepLego
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: eb5009976991e34aa7e0080289bca054
+      ID: 1854392579
+      Name: Play_StepWood
+      Path: Default Work Unit\Play_StepWood
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_StepWood
         ObjectType: 3
       maxAttenuation: 0
       maxDuration: 0
@@ -229,10 +265,6 @@ MonoBehaviour:
   - /Search Shell_WwiseProject
   - /Search Shell_WwiseProject/Events
   - /Search Shell_WwiseProject/Events/Default Work Unit
-  - /Search Shell_WwiseProject/SoundBanks
-  - /Search Shell_WwiseProject/SoundBanks/Default Work Unit
-  - /Search Shell_WwiseProject/Virtual Acoustics
-  - /Search Shell_WwiseProject/Virtual Acoustics/Factory Reflect Acoustic Textures
   language: English(US)
   lowerPoolSize: 2048
   m_lastPopulateTimePart2: 0
@@ -240,9 +272,9 @@ MonoBehaviour:
   memoryCutoffThreshold: 0.95
   preparePoolSize: 0
   RtpcWwu:
-  - Guid: '{386BB3FB-CA72-42CC-A7DB-C06DEA2C3211}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -538415328
+  - Guid: '{F7089B78-2479-41A1-B379-8F5DC809E3A8}'
+    m_lastTimePart2: -1999261678
+    m_lastTimePsrt1: 2079047657
     ParentPhysicalPath: 
     PhysicalPath: Game Parameters\Default Work Unit.wwu
     List: []
@@ -343,24 +375,24 @@ MonoBehaviour:
       - ElementName: SS_Air_Turbulence
         ObjectType: 13
   StateWwu:
-  - Guid: '{951F7598-3A18-4BB9-8979-9DDD3DECE8C4}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -537558714
+  - Guid: '{68AABD09-94EE-4313-98D4-C1AA99A96AE8}'
+    m_lastTimePart2: -1999261678
+    m_lastTimePsrt1: -2048458105
     ParentPhysicalPath: 
     PhysicalPath: States\Default Work Unit.wwu
     List: []
   streamingPoolSize: 1024
   SwitchWwu:
-  - Guid: '{5554B98E-9F42-45D6-A1A6-F9FEE663542A}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -537558714
+  - Guid: '{DF812573-7F42-4EB6-88A0-944D0A00F26D}'
+    m_lastTimePart2: -1999261678
+    m_lastTimePsrt1: -2048443086
     ParentPhysicalPath: 
     PhysicalPath: Switches\Default Work Unit.wwu
     List: []
   TriggerWwu:
-  - Guid: '{C5286815-6D32-44BF-AFF1-5BA7DECEE10C}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -537558714
+  - Guid: '{91F921CB-4485-4837-83CA-B39A74086717}'
+    m_lastTimePart2: -1999261678
+    m_lastTimePsrt1: -2048403045
     ParentPhysicalPath: 
     PhysicalPath: Triggers\Default Work Unit.wwu
     List: []

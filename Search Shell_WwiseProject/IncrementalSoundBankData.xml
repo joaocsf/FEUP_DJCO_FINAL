@@ -6,12 +6,12 @@
 				<File Name="Footsteps" Hash="3780050419" Timestamp="1524494853"/>
 				<File Name="Init" Hash="1733027684" Timestamp="1526392500"/>
 				<File Name="Shell" Hash="2662602519" Timestamp="1526390451"/>
-				<File Name="ShellBank" Hash="1035408623" Timestamp="1526337861"/>
+				<File Name="ShellBank" Hash="1300666279" Timestamp="1526396136"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="459896016" Timestamp="1526392500"/>
+				<File Name="" Hash="1455853715" Timestamp="1526396136"/>
 			</Language>
 		</XMLInfo>
 	</Platform>

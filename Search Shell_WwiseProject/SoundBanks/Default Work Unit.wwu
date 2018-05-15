@@ -4,7 +4,12 @@
 		<WorkUnit Name="Default Work Unit" ID="{19061B5E-BD4D-4031-9B64-CCAC326D4311}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="ShellBank" ID="{1F6A78CF-41BD-4B83-831D-8DF18BBA34D9}">
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_FallWood" ID="{C8DF62C6-BC08-40E3-9573-3CB6CA082EED}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_StepLego" ID="{15EFC246-69A0-41DE-BB2B-2C185351A556}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_StepWood" ID="{970950EB-9169-4AE3-A7E0-080289BCA054}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_StepGrass" ID="{B105631C-9148-4BA0-A45E-374F976EC789}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>

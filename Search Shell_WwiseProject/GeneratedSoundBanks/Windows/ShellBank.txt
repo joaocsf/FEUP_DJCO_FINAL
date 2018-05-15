@@ -1,0 +1,20 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1191112106	Play_StepGrass			\Default Work Unit\Play_StepGrass	
+	1854392579	Play_StepWood			\Default Work Unit\Play_StepWood	
+	2551420623	Play_StepLego			\Default Work Unit\Play_StepLego	
+	3811366134	Play_FallWood			\Default Work Unit\Play_FallWood	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	19489720	Steps_Grass_Unknown03	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Grass_Unknown03_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Grass\Steps_Grass_Unknown03		42464
+	83376725	Steps_Wood_Unknown01	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Wood_Unknown01_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Wood\Left\Steps_Wood_Unknown01		6044
+	87045454	Steps_Lego03	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Lego03_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Lego\Steps_Lego03		17802
+	173387497	Steps_Grass_Unknown04	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Grass_Unknown04_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Grass\Steps_Grass_Unknown04		46298
+	181309529	Steps_Lego01	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Lego01_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Lego\Steps_Lego01		18128
+	561567985	Steps_Wood_Unknown03	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Wood_Unknown03_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Wood\Right\Steps_Wood_Unknown03		2096
+	673307912	Steps_Lego02	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Lego02_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Lego\Steps_Lego02		27010
+	801941750	Steps_Grass_Unknown02	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Grass_Unknown02_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Grass\Steps_Grass_Unknown02		51688
+	927002632	Steps_Grass_Unknown01	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Grass_Unknown01_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Grass\Steps_Grass_Unknown01		39778
+	999846372	Steps_Wood_Unknown02	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Wood_Unknown02_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Wood\Left\Steps_Wood_Unknown02		8394
+	1016516704	Fall_Wood01	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Fall_Wood01_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Falling\Wood\Fall_Wood01		27190
+	1066802818	Steps_Wood_Unknown04	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Wood_Unknown04_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Wood\Right\Steps_Wood_Unknown04		6130
+

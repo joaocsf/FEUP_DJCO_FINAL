@@ -188,8 +188,8 @@ MonoBehaviour:
     List: []
   BankWwu:
   - Guid: '{19061B5E-BD4D-4031-9B64-CCAC326D4311}'
-    m_lastTimePart2: -1999259032
-    m_lastTimePsrt1: -1751021913
+    m_lastTimePart2: -1999259021
+    m_lastTimePsrt1: -410764037
     ParentPhysicalPath: 
     PhysicalPath: SoundBanks\Default Work Unit.wwu
     List:

@@ -5306,7 +5306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46d3e568efe0424da705967b9e4fe15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animateOnMovement: 1
+  animateOnMovement: 0
   duration: 0.3
   yOffset: 0
   curve:

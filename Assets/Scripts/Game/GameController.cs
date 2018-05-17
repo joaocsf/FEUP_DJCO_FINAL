@@ -34,7 +34,7 @@ namespace Search_Shell.Game
         public GridManager subLevel;
 
         private GridObject levelObject;
-        private GridObject subLevelObject;
+        public GridObject subLevelObject {get; private set;}
 
         public Camera levelCamera;
         public Camera subLevelCamera;
@@ -47,40 +47,62 @@ namespace Search_Shell.Game
 
         private HashSet<GridObject> movedObjects = new HashSet<GridObject>();
 
-        private Stack<MoveTurn> turns = new Stack<MoveTurn>();
 
-        private Dictionary<string, MoveTurn> levelsSave = new Dictionary<string, MoveTurn>();
+        private SaveManager saveManager;
+/*
+        private Stack<Turn> turns = new Stack<Turn>();
 
-        private struct Move
+        private Dictionary<String, int> levelsSave = new Dictionary<String, int>();
+
+        [Serializable]
+        private struct Transformation
         {
             public Vector3 initialPosition;
             public Vector3 initialAngles;
 
-            public Move(Vector3 initialPosition, Vector3 initialAngles)
+            public Transformation(Vector3 initialPosition, Vector3 initialAngles)
             {
                 this.initialPosition = initialPosition;
                 this.initialAngles = initialAngles;
             }
         }
 
-        private struct MoveTurn
+        [Serializable]
+        private struct Turn
         {
-            public Dictionary<GridObject, Move> movements;
-            public GridObject current;
+            public Dictionary<String, Transformation> movements;
+            public String currentObjectName;
 
-            public MoveTurn(GridObject subLevelObject, Dictionary<GridObject, Move> movements)
+            public Turn(GridObject obj, Dictionary<GridObject, Transformation> movements)
+            {
+                this.movements = new Dictionary<String, Transformation>();
+                foreach(GridObject g in movements.Keys ){
+                    this.movements.Add(g.name, movements[g]);
+                }
+                this.currentObjectName = obj.name;
+            }
+
+            public Turn(GridObject obj, Dictionary<String, Transformation> movements)
             {
                 this.movements = movements;
-                this.current = subLevelObject;
+                this.currentObjectName = obj.name;
+            }
+
+            public Turn(String objectName, Dictionary<String, Transformation> movements)
+            {
+                this.movements = movements;
+                this.currentObjectName = objectName;
             }
         }
-
+*/
         private bool canControll = true;
 
         void Start()
         {
+            saveManager = new SaveManager(this);
             SetupCamera();
             UIManager = GameObject.FindObjectOfType<UIManager>();
+            
         }
 
         void OnDrawGizmos()
@@ -145,7 +167,6 @@ namespace Search_Shell.Game
             if (this.subLevel != null)
                 this.subLevel.RemoveListener(this);
 
-            turns.Clear();
 
 
             this.subLevel = subLevel;
@@ -218,7 +239,7 @@ namespace Search_Shell.Game
                 GridObject obj = hit.collider.GetComponent<GridObject>();
                 if (nearObjects.Contains(obj))
                 {
-                    SaveTurn(subLevelObject, subLevel.GetObjects());
+                    saveManager.SaveTurn();
                     ControllObject(obj);
                 }
             }
@@ -236,16 +257,16 @@ namespace Search_Shell.Game
 
             if (Input.GetKeyDown("u"))
             {
-                Undo();
+                saveManager.Undo();
             }
 
             if (Input.GetKeyDown("k"))
             {
-                Save();
+                saveManager.Save();
             }
             if (Input.GetKeyDown("l"))
             {
-                Load();
+                saveManager.Load();
             }
 
             Application.Quit();
@@ -297,7 +318,7 @@ namespace Search_Shell.Game
             canControll = false;
             movedObjects = subLevel.GetMovingObjects();
 
-            SaveTurn(subLevelObject, subLevel.GetObjects());
+            saveManager.SaveTurn();
         }
 
         public void OnFinishedMovement()
@@ -344,10 +365,15 @@ namespace Search_Shell.Game
             yield return new WaitForFixedUpdate();
             CameraFollow cam = subLevelCamera.GetComponent<CameraFollow>();
             SkyboxHandler handler = subLevelCamera.GetComponent<SkyboxHandler>();
-
+            
+            saveManager.Save();
             ClearLevel(level);
             SetLevel(subLevel, subLevelObject);
             SetSubLevel(LoadLevel(sublevelName));
+
+            saveManager.Load();
+            saveManager.LoadLevel();
+
 
             LevelProperties subLevelProperties = subLevel.GetComponent<LevelProperties>();
 
@@ -396,81 +422,17 @@ namespace Search_Shell.Game
 
             LevelProperties levelProperties = level.GetComponent<LevelProperties>();
             GridManager sub = subLevel;
+            saveManager.Save();
             SetSubLevel(level);
             ClearLevel(sub);
             SetLevel(LoadLevel(levelProperties.nextLevel));
 
+            saveManager.Load();
+            saveManager.LoadLevel();
+
+
             canControll = true;
         }
 
-        public void SaveTurn(GridObject current, HashSet<GridObject> movedObjects)
-        {
-
-            Dictionary<GridObject, Move> movements = new Dictionary<GridObject, Move>();
-            foreach (GridObject obj in movedObjects)
-            {
-                Move move = new Move(obj.finalPosition, obj.finalAngles);
-                movements.Add(obj, move);
-            }
-            turns.Push(new MoveTurn(current, movements));
-        }
-
-        public void Undo()
-        {
-            if (turns.Count == 0) return;
-            MoveTurn turn = turns.Pop();
-            Dictionary<GridObject, Move> movements = turn.movements;
-
-            foreach (GridObject obj in movements.Keys)
-            {
-                obj.transform.parent.GetComponent<GridManager>().ClearObject(obj);
-            }
-
-            foreach (GridObject obj in movements.Keys)
-            {
-                Move move = movements[obj];
-                obj.finalAngles = move.initialAngles;
-                obj.finalPosition = move.initialPosition;
-                obj.transform.localEulerAngles = move.initialAngles;
-                obj.transform.localPosition = move.initialPosition;
-                obj.transform.parent.GetComponent<GridManager>().RegisterObject(obj);
-            }
-            ControllObject(turn.current);
-        }
-
-        public void Save()
-        {
-            HashSet<GridObject> movedObjects = subLevel.GetMovingObjects();
-            Dictionary<GridObject, Move> movements = new Dictionary<GridObject, Move>();
-            foreach (GridObject obj in movedObjects)
-            {
-                Move move = new Move(obj.finalPosition, obj.finalAngles);
-                movements.Add(obj, move);
-            }
-            levelsSave[subLevel.name] = new MoveTurn(subLevelObject, movements);
-        }
-
-        public void Load()
-        {
-            if (!levelsSave.ContainsKey(subLevel.name)) return;
-            MoveTurn turn = levelsSave[subLevel.name];
-            Dictionary<GridObject, Move> movements = turn.movements;
-
-            foreach (GridObject obj in movements.Keys)
-            {
-                obj.transform.parent.GetComponent<GridManager>().ClearObject(obj);
-            }
-
-            foreach (GridObject obj in movements.Keys)
-            {
-                Move move = movements[obj];
-                obj.finalAngles = move.initialAngles;
-                obj.finalPosition = move.initialPosition;
-                obj.transform.localEulerAngles = move.initialAngles;
-                obj.transform.localPosition = move.initialPosition;
-                obj.transform.parent.GetComponent<GridManager>().RegisterObject(obj);
-            }
-            ControllObject(turn.current);
-        }
     }
 }

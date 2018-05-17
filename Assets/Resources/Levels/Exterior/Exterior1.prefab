@@ -371,7 +371,6 @@ GameObject:
   - component: {fileID: 33166289069682112}
   - component: {fileID: 65710395128405818}
   - component: {fileID: 23702330216589296}
-  - component: {fileID: 114546727926281160}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -1113,7 +1112,6 @@ GameObject:
   - component: {fileID: 33996132498867804}
   - component: {fileID: 65410141101732370}
   - component: {fileID: 23687331580553332}
-  - component: {fileID: 114562382308235674}
   m_Layer: 0
   m_Name: Brick (1)
   m_TagString: Untagged
@@ -5276,46 +5274,6 @@ MonoBehaviour:
     isStatic: 1
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 1, y: 0, z: -1}
-  offset: {x: 0, y: 0, z: 0}
---- !u!114 &114546727926281160
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1375155427748874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ac43f39b0677644b8ae1b45a1951fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugPivot: 1
-  debugBoundingBox: 1
-  debugVolumes: 0
-  properties:
-    canControll: 0
-    isStatic: 1
-  finalAngles: {x: -0, y: 0, z: 0}
-  finalPosition: {x: 0, y: 0, z: 6}
-  offset: {x: 0, y: 0, z: 0}
---- !u!114 &114562382308235674
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941489605160890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ac43f39b0677644b8ae1b45a1951fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugPivot: 1
-  debugBoundingBox: 1
-  debugVolumes: 0
-  properties:
-    canControll: 0
-    isStatic: 1
-  finalAngles: {x: -0, y: 0, z: 0}
-  finalPosition: {x: 0, y: 0, z: 6}
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114739039466912622
 MonoBehaviour:

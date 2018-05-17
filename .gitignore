@@ -46,3 +46,4 @@ logRunSetup.txt
 *.prof
 *.wsettings
 *.validationcache
+Plugins.meta

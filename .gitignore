@@ -40,5 +40,9 @@ logRunSetup.txt
 
 *.zip
 
-Assets/WwiseSettings.xml
-Assets/WwiseSettings.xml*
+/Assets/WwiseSettings.xml
+/Assets/WwiseSettings.xml*
+*.akd
+*.prof
+*.wsettings
+*.validationcache

@@ -87,6 +87,68 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Possess_Bad" ID="{37D710E2-71C4-453F-ACDC-06B2EC26A501}">
+					<ChildrenList>
+						<Action Name="" ID="{852DAB8A-2A09-4C23-9C84-4A924D9F5FBE}" ShortID="231399782">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="35"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Anxious" ID="{B553CED9-9385-4F46-8018-BADA58A007B9}" WorkUnitID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{DF553869-9B9D-4944-99A9-CE9D017FFF09}" ShortID="648453592">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Possess_Good" ID="{2ABD1937-6626-414B-93FB-AD162FC51D83}">
+					<ChildrenList>
+						<Action Name="" ID="{B3A4C0FB-B8D1-4005-BD58-671F81FBD1DB}" ShortID="255503691">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="35"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cheerful" ID="{910EE072-481C-42D8-830C-B3E34C7C713F}" WorkUnitID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Possess_Funny" ID="{FB8241D7-F045-4B2B-8683-6733B211AABF}">
+					<ChildrenList>
+						<Action Name="" ID="{1E76042F-D864-4908-BC6D-FFF42FD09B19}" ShortID="363247585">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="35"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ecstatic" ID="{83F70489-9F20-4984-B731-612A36D5E1B3}" WorkUnitID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Possess_Weird" ID="{9F153692-69F8-4196-87FC-98141848E102}">
+					<ChildrenList>
+						<Action Name="" ID="{C28F37E8-C60D-4D74-A05B-FF4C5DEE614E}" ShortID="691597136">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="35"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Confused" ID="{7C66A104-7C76-416F-875F-8FF56AE6DA6B}" WorkUnitID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

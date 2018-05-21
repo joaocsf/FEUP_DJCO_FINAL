@@ -4,6 +4,14 @@ Event	ID	Name			Wwise Object Path	Notes
 	2551420623	Play_StepLego			\Default Work Unit\Play_StepLego	
 	3811366134	Play_FallWood			\Default Work Unit\Play_FallWood	
 
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1718617278	Steps			\Default Work Unit\Steps	
+
+Switch	ID	Name	Switch Group			Notes
+	20886966	Lego	Steps			
+	2058049674	Wood	Steps			
+	4248645337	Grass	Steps			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	19489720	Steps_Grass_Unknown03	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Grass_Unknown03_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Grass\Steps_Grass_Unknown03		42464
 	83376725	Steps_Wood_Unknown01	C:\Users\anari\Desktop\FEUP_DJCO_FINAL\Search Shell_WwiseProject\.cache\Windows\SFX\Steps_Wood_Unknown01_6DA2138B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Collide\Steps\Wood\Left\Steps_Wood_Unknown01		6044

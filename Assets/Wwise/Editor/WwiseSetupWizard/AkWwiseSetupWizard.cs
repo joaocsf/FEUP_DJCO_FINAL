@@ -310,8 +310,12 @@ public class WwiseSetupWizard
 		// 3. Set the SoundBank path property on AkSoundEngineInitializer
 		CreateWwiseGlobalObject();
 
-		// 5. Add AkAudioListener component to camera
-		SetListener();
+		// 5. Disable the built-in audio listener, and add AkAudioListener component to camera
+		if (WwiseSettings.LoadSettings().CreateWwiseListener)
+		{
+			AkUtilities.RemoveUnityAudioListenerFromMainCamera();
+			AkUtilities.AddAkAudioListenerToMainCamera();
+		}
 
 		// 6. Enable "Run In Background" in PlayerSettings (PlayerSettings.runInbackground property)
 		UnityEditor.PlayerSettings.runInBackground = true;
@@ -336,12 +340,12 @@ public class WwiseSetupWizard
 		var AkInitializers = UnityEngine.Object.FindObjectsOfType<AkInitializer>();
 		UnityEngine.GameObject WwiseGlobalGameObject = null;
 		if (AkInitializers.Length > 0)
-			UnityEngine.Object.DestroyImmediate(AkInitializers[0].gameObject);
+			UnityEditor.Undo.DestroyObjectImmediate(AkInitializers[0].gameObject);
 
 		WwiseGlobalGameObject = new UnityEngine.GameObject("WwiseGlobal");
 
 		// attach initializer component
-		var AkInit = WwiseGlobalGameObject.AddComponent<AkInitializer>();
+		var AkInit = UnityEditor.Undo.AddComponent<AkInitializer>(WwiseGlobalGameObject);
 
 		// Set the soundbank path property on the initializer
 		AkInit.basePath = Settings.SoundbankPath;
@@ -370,28 +374,6 @@ public class WwiseSetupWizard
 		return true;
 	}
 
-	// Disable the built-in audio listener, and add the AkGameObj to the camera
-	private static void SetListener()
-	{
-		var settings = WwiseSettings.LoadSettings();
-
-		// Remove the audio listener script
-		if (settings.CreateWwiseListener && UnityEngine.Camera.main != null)
-		{
-			var listener = UnityEngine.Camera.main.gameObject.GetComponent<UnityEngine.AudioListener>();
-			if (listener != null)
-				UnityEngine.Object.DestroyImmediate(listener);
-
-			// Add the AkGameObj script
-			{
-				UnityEngine.Camera.main.gameObject.AddComponent<AkAudioListener>();
-
-				var akGameObj = UnityEngine.Camera.main.gameObject.GetComponent<AkGameObj>();
-				akGameObj.isEnvironmentAware = false;
-			}
-		}
-	}
-
 	// Modify the .wproj file to set needed soundbank settings
 	private static bool SetSoundbankSettings()
 	{
@@ -406,11 +388,10 @@ public class WwiseSetupWizard
 		SoundbankPath = "Z:" + SoundbankPath;
 #endif
 
+		SoundbankPath = AkUtilities.MakeRelativePath(System.IO.Path.GetDirectoryName(WprojPath), SoundbankPath);
 		if (AkUtilities.EnableBoolSoundbankSettingInWproj("SoundBankGenerateHeaderFile", WprojPath))
-		{
 			if (AkUtilities.SetSoundbankHeaderFilePath(WprojPath, SoundbankPath))
 				return AkUtilities.EnableBoolSoundbankSettingInWproj("SoundBankGenerateMaxAttenuationInfo", WprojPath);
-		}
 
 		return false;
 	}

@@ -78,7 +78,6 @@ public class AkSoundEngineController
 		//Execute callbacks that occurred in last frame (not the current update)
 		AkCallbackManager.PostCallbacks();
 		AkBankManager.DoUnloadBanks();
-		AkAudioListener.DefaultListeners.Refresh();
 		AkSoundEngine.RenderAudio();
 	}
 
@@ -381,11 +380,9 @@ public class AkSoundEngineController
 		{
 			editorListenerGameObject = gameObject;
 
-			// Clearing the isDirty flag of the AkAudioListener list.
-			AkAudioListener.DefaultListeners.Refresh();
-
 			AkSoundEngine.RegisterGameObj(editorListenerGameObject, editorListenerGameObject.name);
 
+			// Do not create AkGameObj component when adding this listener
 			var id = AkSoundEngine.GetAkGameObjectID(editorListenerGameObject);
 			AkSoundEnginePINVOKE.CSharp_AddDefaultListener(id);
 

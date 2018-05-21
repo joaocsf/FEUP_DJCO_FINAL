@@ -220,7 +220,7 @@ public class AkAmbientInspector : AkEventInspector
 #if UNITY_5_6_OR_NEWER
 			UnityEditor.Handles.CapFunction capFunc = UnityEditor.Handles.SphereHandleCap;
 #else
-			UnityEditor.Handles.DrawCapFunction capFunc = Handles.SphereCap;
+			UnityEditor.Handles.DrawCapFunction capFunc = UnityEditor.Handles.SphereCap;
 #endif
 			UnityEditor.Handles.ScaleValueHandle(0, pos, UnityEngine.Quaternion.identity, handleSize, capFunc, 0);
 

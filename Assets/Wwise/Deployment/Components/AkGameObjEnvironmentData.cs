@@ -20,7 +20,10 @@ public class AkGameObjEnvironmentData
 		new System.Collections.Generic.List<AkEnvironmentPortal>();
 
 	private readonly AkAuxSendArray auxSendValues = new AkAuxSendArray();
-	private bool isDirty = true;
+	private UnityEngine.Vector3 lastPosition = UnityEngine.Vector3.zero;
+	private bool hasEnvironmentListChanged = true;
+	private bool hasActivePortalListChanged = true;
+	private bool hasSentZero = false;
 
 	private void AddHighestPriorityEnvironmentsFromPortals(UnityEngine.Vector3 position)
 	{
@@ -64,15 +67,21 @@ public class AkGameObjEnvironmentData
 
 	public void UpdateAuxSend(UnityEngine.GameObject gameObject, UnityEngine.Vector3 position)
 	{
-		if (!isDirty)
+		if (!hasEnvironmentListChanged && !hasActivePortalListChanged && lastPosition == position)
 			return;
 
 		auxSendValues.Reset();
 		AddHighestPriorityEnvironmentsFromPortals(position);
 		AddHighestPriorityEnvironments(position);
 
-		AkSoundEngine.SetEmitterAuxSendValues(gameObject, auxSendValues, (uint) auxSendValues.Count());
-		isDirty = false;
+		bool isSendingZero = auxSendValues.Count() == 0;
+		if (!hasSentZero || !isSendingZero)
+			AkSoundEngine.SetEmitterAuxSendValues(gameObject, auxSendValues, (uint) auxSendValues.Count());
+
+		hasSentZero = isSendingZero;
+		lastPosition = position;
+		hasActivePortalListChanged = false;
+		hasEnvironmentListChanged = false;
 	}
 
 	private void TryAddEnvironment(AkEnvironment env)
@@ -88,7 +97,7 @@ public class AkGameObjEnvironmentData
 				if (index < 0)
 					activeEnvironments.Insert(~index, env);
 
-				isDirty = true;
+				hasEnvironmentListChanged = true;
 			}
 		}
 	}
@@ -97,7 +106,7 @@ public class AkGameObjEnvironmentData
 	{
 		activeEnvironmentsFromPortals.Remove(env);
 		activeEnvironments.Remove(env);
-		isDirty = true;
+		hasEnvironmentListChanged = true;
 	}
 
 	public void AddAkEnvironment(UnityEngine.Collider environmentCollider, UnityEngine.Collider gameObjectCollider)
@@ -106,6 +115,7 @@ public class AkGameObjEnvironmentData
 		if (portal != null)
 		{
 			activePortals.Add(portal);
+			hasActivePortalListChanged = true;
 
 			for (var i = 0; i < AkEnvironmentPortal.MAX_ENVIRONMENTS_PER_PORTAL; i++)
 				TryAddEnvironment(portal.environments[i]);
@@ -142,7 +152,7 @@ public class AkGameObjEnvironmentData
 			}
 
 			activePortals.Remove(portal);
-			isDirty = true;
+			hasActivePortalListChanged = true;
 		}
 		else
 		{

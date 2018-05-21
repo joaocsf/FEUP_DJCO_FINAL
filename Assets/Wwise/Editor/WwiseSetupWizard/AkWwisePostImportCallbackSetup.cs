@@ -122,8 +122,12 @@ public class AkWwisePostImportCallbackSetup
 
 	private static void PostImportFunction()
 	{
-		UnityEditor.EditorApplication.hierarchyWindowChanged += CheckWwiseGlobalExistance;
-		UnityEditor.EditorApplication.delayCall += CheckPicker;
+#if UNITY_2018_1_OR_NEWER
+        UnityEditor.EditorApplication.hierarchyChanged += CheckWwiseGlobalExistance;
+#else
+        UnityEditor.EditorApplication.hierarchyWindowChanged += CheckWwiseGlobalExistance;
+#endif
+        UnityEditor.EditorApplication.delayCall += CheckPicker;
 
 		if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode || UnityEditor.EditorApplication.isCompiling)
 			return;
@@ -299,40 +303,22 @@ public class AkWwisePostImportCallbackSetup
 					var objWwise = new UnityEngine.GameObject("WwiseGlobal");
 
 					//Attach initializer and terminator components
-					var init = objWwise.AddComponent<AkInitializer>();
+					var init = UnityEditor.Undo.AddComponent<AkInitializer>(objWwise);
 					AkWwiseProjectInfo.GetData().CopyInitSettings(init);
 				}
 			}
 			else
 			{
 				if (settings.CreateWwiseGlobal == false && AkInitializers[0].gameObject.name == "WwiseGlobal")
-					UnityEngine.Object.DestroyImmediate(AkInitializers[0].gameObject);
+					UnityEditor.Undo.DestroyObjectImmediate(AkInitializers[0].gameObject);
 				//All scenes will share the same initializer.  So expose the init settings consistently across scenes.
 				AkWwiseProjectInfo.GetData().CopyInitSettings(AkInitializers[0]);
 			}
 
-			if (UnityEngine.Camera.main != null)
+			if (settings.CreateWwiseListener)
 			{
-				var mainCameraGameObject = UnityEngine.Camera.main.gameObject;
-				var akListener = mainCameraGameObject.GetComponent<AkAudioListener>();
-
-				if (settings.CreateWwiseListener)
-				{
-					var listener = mainCameraGameObject.GetComponent<UnityEngine.AudioListener>();
-					if (listener != null)
-						UnityEngine.Object.DestroyImmediate(listener);
-
-					// Add the AkAudioListener script
-					if (akListener == null)
-					{
-						akListener = mainCameraGameObject.AddComponent<AkAudioListener>();
-						var akGameObj = akListener.GetComponent<AkGameObj>();
-						akGameObj.isEnvironmentAware = false;
-
-						UnityEngine.Debug.LogWarning(
-							"Automatically added AkAudioListener to Main Camera. Go to \"Edit > Wwise Settings...\" to disable this functionality.");
-					}
-				}
+				AkUtilities.RemoveUnityAudioListenerFromMainCamera();
+				AkUtilities.AddAkAudioListenerToMainCamera(true);
 			}
 
 			s_CurrentScene = activeSceneName;

@@ -46,24 +46,27 @@ public class AkGameObj : UnityEngine.MonoBehaviour
 		get { return m_listeners.ListenerList; }
 	}
 
-	/// <summary>
-	///     Adds an AkAudioListener to the container of listeners listening to this gameobject.
-	/// </summary>
-	/// <param name="listener"></param>
-	/// <returns>Returns true if the listener was not previously in the list, false otherwise.</returns>
-	public bool AddListener(AkAudioListener listener)
+	private bool isRegistered = false;
+
+	// If AkGameObj.AddListener() was used, consider using AkAudioListener.StartListeningToEmitter() instead.
+	internal void AddListener(AkAudioListener listener)
 	{
-		return m_listeners.Add(listener);
+		m_listeners.Add(listener);
 	}
 
-	/// <summary>
-	///     Removes an AkAudioListener from the container of listeners listening to this gameobject.
-	/// </summary>
-	/// <param name="listener"></param>
-	/// <returns>Returns true if the listener was previously in the list, false otherwise.</returns>
-	public bool RemoveListener(AkAudioListener listener)
+	// If AkGameObj.RemoveListener() was used, consider using AkAudioListener.StopListeningToEmitter() instead.
+	internal void RemoveListener(AkAudioListener listener)
 	{
-		return m_listeners.Remove(listener);
+		m_listeners.Remove(listener);
+	}
+
+	public AKRESULT Register()
+	{
+		if (isRegistered)
+			return AKRESULT.AK_Success;
+
+		isRegistered = true;
+		return AkSoundEngine.RegisterGameObj(gameObject, gameObject.name);
 	}
 
 	private void Awake()
@@ -84,23 +87,23 @@ public class AkGameObj : UnityEngine.MonoBehaviour
 		m_Collider = GetComponent<UnityEngine.Collider>();
 
 		//Register a Game Object in the sound engine, with its name.
-		var res = AkSoundEngine.RegisterGameObj(gameObject, gameObject.name);
-		if (res == AKRESULT.AK_Success)
+		if (Register() == AKRESULT.AK_Success)
 		{
 			// Get position with offset or custom position and orientation.
 			//Set the original position
 			AkSoundEngine.SetObjectPosition(gameObject, GetPosition(), GetForward(), GetUpward());
 
-			if (isEnvironmentAware && m_Collider)
+			if (isEnvironmentAware)
 			{
 				m_envData = new AkGameObjEnvironmentData();
-				//Check if this object is also an environment.
-				m_envData.AddAkEnvironment(m_Collider, m_Collider);
+
+				if (m_Collider)
+					m_envData.AddAkEnvironment(m_Collider, m_Collider);
 
 				m_envData.UpdateAuxSend(gameObject, transform.position);
 			}
 
-			m_listeners.Init(gameObject);
+			m_listeners.Init(this);
 		}
 	}
 
@@ -128,6 +131,14 @@ public class AkGameObj : UnityEngine.MonoBehaviour
 		//if enabled is set to false, then the update function wont be called
 		enabled = !isStaticObject;
 	}
+
+#if UNITY_EDITOR
+	private void OnDisable()
+	{
+		if (!UnityEditor.EditorApplication.isPlaying &&AkSoundEngine.IsInitialized())
+			AkSoundEngine.UnregisterGameObj(gameObject);
+	}
+#endif
 
 	private void OnDestroy()
 	{
@@ -164,7 +175,7 @@ public class AkGameObj : UnityEngine.MonoBehaviour
 			return;
 #endif
 
-		if (isEnvironmentAware && m_envData != null)
+		if (m_envData != null)
 			m_envData.UpdateAuxSend(gameObject, transform.position);
 
 		if (isStaticObject)

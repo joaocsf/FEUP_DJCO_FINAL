@@ -11,98 +11,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5755d733702f9c547824554a86b9c78c, type: 3}
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
-  AcousticTextureWwu:
-  - Guid: '{E6F62319-5425-47CD-A600-82DF067675A2}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -537558714
-    ParentPhysicalPath: 
-    PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
-    List: []
+  AcousticTextureWwu: []
   autoPopulateEnabled: 1
-  AuxBusWwu:
-  - Guid: '{890A2CE1-1023-4D5C-89A0-7FF25D73CD69}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -538027646
-    ParentPhysicalPath: 
-    PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
-    List: []
-  BankWwu:
-  - Guid: '{7EEF2B32-44C6-44F5-9F33-106084A05331}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -537714960
-    ParentPhysicalPath: 
-    PhysicalPath: SoundBanks\Default Work Unit.wwu
-    List:
-    - Guid: 6a4695e6c268034586dcef9627529c88
-      ID: -1137964055
-      Name: Test
-      Path: Default Work Unit\Test
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Test
-        ObjectType: 7
+  AuxBusWwu: []
+  BankWwu: []
   basePath: Audio\GeneratedSoundBanks
   callbackManagerBufferSize: 4
   CurrentPluginConfig: 
   defaultPoolSize: 4096
-  EventWwu:
-  - Guid: '{CDBE4696-D877-41AD-906B-CF658D461F34}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -538415328
-    ParentPhysicalPath: 
-    PhysicalPath: Events\Default Work Unit.wwu
-    List:
-    - Guid: ca4b77ceccc20a4aa142ac1801bf4d1f
-      ID: -1137964055
-      Name: Test
-      Path: Default Work Unit\Test
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Test
-        ObjectType: 3
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-  ExpandedItems:
-  - /Search Shell_WwiseProject
-  - /Search Shell_WwiseProject/Events
-  - /Search Shell_WwiseProject/Events/Default Work Unit
-  - /Search Shell_WwiseProject/SoundBanks
-  - /Search Shell_WwiseProject/SoundBanks/Default Work Unit
+  EventWwu: []
+  ExpandedItems: []
   language: English(US)
   lowerPoolSize: 2048
   m_lastPopulateTimePart2: 0
   m_lastPopulateTimePsrt1: 0
   memoryCutoffThreshold: 0.95
   preparePoolSize: 0
-  RtpcWwu:
-  - Guid: '{386BB3FB-CA72-42CC-A7DB-C06DEA2C3211}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -538415328
-    ParentPhysicalPath: 
-    PhysicalPath: Game Parameters\Default Work Unit.wwu
-    List: []
-  StateWwu:
-  - Guid: '{951F7598-3A18-4BB9-8979-9DDD3DECE8C4}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -537558714
-    ParentPhysicalPath: 
-    PhysicalPath: States\Default Work Unit.wwu
-    List: []
+  RtpcWwu: []
+  StateWwu: []
   streamingPoolSize: 1024
-  SwitchWwu:
-  - Guid: '{5554B98E-9F42-45D6-A1A6-F9FEE663542A}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -537558714
-    ParentPhysicalPath: 
-    PhysicalPath: Switches\Default Work Unit.wwu
-    List: []
-  TriggerWwu:
-  - Guid: '{C5286815-6D32-44BF-AFF1-5BA7DECEE10C}'
-    m_lastTimePart2: -1999261434
-    m_lastTimePsrt1: -537558714
-    ParentPhysicalPath: 
-    PhysicalPath: Triggers\Default Work Unit.wwu
-    List: []
+  SwitchWwu: []
+  TriggerWwu: []

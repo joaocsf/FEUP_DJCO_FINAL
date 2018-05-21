@@ -1,27 +1,1031 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{E28C1007-6579-445E-BA4A-04565E151414}" SchemaVersion="85">
+<WwiseDocument Type="WorkUnit" ID="{3FD4EC09-6A74-4A18-B270-F423860FA820}" SchemaVersion="85">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{E28C1007-6579-445E-BA4A-04565E151414}" PersistMode="Standalone">
+		<WorkUnit Name="Default Work Unit" ID="{3FD4EC09-6A74-4A18-B270-F423860FA820}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="positivenoise02" ID="{50FA50B0-992B-4A9F-B198-2A0CF41A9EB9}" ShortID="127512855">
+				<Folder Name="SFX" ID="{D80D1383-25D9-4C46-B093-A8D1168B0E83}" ShortID="400831636">
+					<ChildrenList>
+						<Folder Name="Collide" ID="{C70B21B0-463C-4563-A127-A49C51C9EA58}" ShortID="1069996316">
+							<ChildrenList>
+								<SwitchContainer Name="Steps" ID="{049EA59A-E28E-4E59-B57A-9358FE1B32EE}" ShortID="356503415">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="Grass" ID="{7048AED2-8A6D-468D-81D8-C066C1B5FBF2}" WorkUnitID="{DF812573-7F42-4EB6-88A0-944D0A00F26D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{3A0B5675-242F-4077-9AE0-21344AB10D0A}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Steps" ID="{73AA2B0A-AB77-465E-B7B7-28CC5A2D7418}" WorkUnitID="{DF812573-7F42-4EB6-88A0-944D0A00F26D}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Lego" ID="{AC036617-9211-4B2A-9824-EA84BA82E68D}" ShortID="325215322">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{3EBE50F3-91F2-4C42-AEBD-F871CDEDF5F2}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="9"/>
+																	<Property Name="Min" Type="Real64" Value="-9"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{FB79A864-DACA-4261-BD64-CE01BA434F4B}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="632"/>
+																	<Property Name="Min" Type="Real64" Value="-682"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Steps_Lego01" ID="{16F49266-5797-4474-BDBD-D17EFB2DB8C6}" ShortID="320302450">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Steps_Lego01" ID="{5F3FDBCE-A9E1-4DC2-A11D-457F66F13387}" ShortID="181309529">
+															<Language>SFX</Language>
+															<AudioFile>Steps_Lego01.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Steps_Lego01" ID="{5F3FDBCE-A9E1-4DC2-A11D-457F66F13387}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Steps_Lego02" ID="{850050A7-4312-42F8-AD7F-8B89138CB739}" ShortID="941159341">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Steps_Lego02" ID="{03F49F9E-DA20-4104-94FB-6EE50ED33A38}" ShortID="673307912">
+															<Language>SFX</Language>
+															<AudioFile>Steps_Lego02.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Steps_Lego02" ID="{03F49F9E-DA20-4104-94FB-6EE50ED33A38}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Steps_Lego03" ID="{AB9F2C8E-F0B6-4ED8-A6B8-B016EDCBDA99}" ShortID="812267868">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Steps_Lego03" ID="{604EAC42-EE23-4487-9EC9-3D6E943C9866}" ShortID="87045454">
+															<Language>SFX</Language>
+															<AudioFile>Steps_Lego03.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Steps_Lego03" ID="{604EAC42-EE23-4487-9EC9-3D6E943C9866}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Grass" ID="{D62C2092-CCED-4BB2-8DCA-2BE4D8DB7F3B}" ShortID="586407469">
+											<PropertyList>
+												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{90938E45-E7C3-4736-B05D-BDB012C65E3E}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="429"/>
+																	<Property Name="Min" Type="Real64" Value="-480"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>10</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Steps_Grass_Unknown02" ID="{2B750537-8D00-4B8A-8A77-428E8FC205AA}" ShortID="56378552">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Steps_Grass_Unknown02" ID="{A39236BB-5895-46E4-A80E-33944479E50D}" ShortID="801941750">
+															<Language>SFX</Language>
+															<AudioFile>Steps_Grass_Unknown02.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Steps_Grass_Unknown02" ID="{A39236BB-5895-46E4-A80E-33944479E50D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Steps_Grass_Unknown03" ID="{C21A6B41-36D7-4267-9F46-EDB504E73AE2}" ShortID="622531383">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Steps_Grass_Unknown03" ID="{73D177DB-DF17-41C5-A1D6-33F69CCBDC8A}" ShortID="19489720">
+															<Language>SFX</Language>
+															<AudioFile>Steps_Grass_Unknown03.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Steps_Grass_Unknown03" ID="{73D177DB-DF17-41C5-A1D6-33F69CCBDC8A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Steps_Grass_Unknown04" ID="{A81FB4C4-CCB9-488B-A08B-8C55283CCCE7}" ShortID="1069939773">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Steps_Grass_Unknown04" ID="{DF970CC5-5ED1-4F3B-B830-940642A2A723}" ShortID="173387497">
+															<Language>SFX</Language>
+															<AudioFile>Steps_Grass_Unknown04.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Steps_Grass_Unknown04" ID="{DF970CC5-5ED1-4F3B-B830-940642A2A723}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Steps_Grass_Unknown01" ID="{2ADA8031-4644-4152-92F9-3332F22ED7C7}" ShortID="565507489">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Steps_Grass_Unknown01" ID="{DD9A9540-5156-4A3A-A539-CC7BC0B6B643}" ShortID="927002632">
+															<Language>SFX</Language>
+															<AudioFile>Steps_Grass_Unknown01.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Steps_Grass_Unknown01" ID="{DD9A9540-5156-4A3A-A539-CC7BC0B6B643}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Wood" ID="{DA6F16DB-2E6D-458E-B278-1FDDD48A9C29}" ShortID="646882561">
+											<PropertyList>
+												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+												<Property Name="PlayMechanismInfiniteOrNumberOfLoops" Type="int16" Value="0"/>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="Left" ID="{DC663C80-078C-4BAD-A844-7C9938C650F0}" ShortID="534219400">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{ADA17136-315C-45AF-BE79-2087D9AFFC72}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="531"/>
+																			<Property Name="Min" Type="Real64" Value="-531"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Steps_Wood_Unknown01" ID="{6DA00C57-4EC9-4FC6-AAF6-189A1BEA0DC3}" ShortID="519126312">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Steps_Wood_Unknown01" ID="{E9CA7BF4-0F84-44EF-BAC7-ECCCCBA62E3D}" ShortID="83376725">
+																	<Language>SFX</Language>
+																	<AudioFile>Steps_Wood_Unknown01.wav</AudioFile>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Steps_Wood_Unknown01" ID="{E9CA7BF4-0F84-44EF-BAC7-ECCCCBA62E3D}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Steps_Wood_Unknown02" ID="{29EDC6C5-6B45-4710-BE66-F0DDC0805F7A}" ShortID="8728539">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Steps_Wood_Unknown02" ID="{EC8B3DFE-3D85-4F7C-B84E-DDA6BAC73544}" ShortID="999846372">
+																	<Language>SFX</Language>
+																	<AudioFile>Steps_Wood_Unknown02.wav</AudioFile>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Steps_Wood_Unknown02" ID="{EC8B3DFE-3D85-4F7C-B84E-DDA6BAC73544}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Right" ID="{C4082B39-86D8-45AB-BD09-40829F6A76EA}" ShortID="65837509">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{5FC302BA-A5F4-42A1-8956-82F09EE1CD0D}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="531"/>
+																			<Property Name="Min" Type="Real64" Value="-531"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Steps_Wood_Unknown03" ID="{CF7C616C-ADF5-43C1-A417-8965D8516123}" ShortID="519276234">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Steps_Wood_Unknown03" ID="{B26289B1-00A1-4E31-9013-F012003B43F1}" ShortID="561567985">
+																	<Language>SFX</Language>
+																	<AudioFile>Steps_Wood_Unknown03.wav</AudioFile>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Steps_Wood_Unknown03" ID="{B26289B1-00A1-4E31-9013-F012003B43F1}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Steps_Wood_Unknown04" ID="{DC37F824-8E1D-4631-BE5D-581F13EBC740}" ShortID="1058609018">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Steps_Wood_Unknown04" ID="{37153EE5-5FEE-4247-816E-CF58C611BCEE}" ShortID="1066802818">
+																	<Language>SFX</Language>
+																	<AudioFile>Steps_Wood_Unknown04.wav</AudioFile>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Steps_Wood_Unknown04" ID="{37153EE5-5FEE-4247-816E-CF58C611BCEE}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Lego" ID="{AC036617-9211-4B2A-9824-EA84BA82E68D}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Grass" ID="{D62C2092-CCED-4BB2-8DCA-2BE4D8DB7F3B}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Wood" ID="{DA6F16DB-2E6D-458E-B278-1FDDD48A9C29}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Lego" ID="{4D84A494-AA0C-4488-96A1-70FBCF044E91}"/>
+												<ItemList>
+													<ItemRef Name="Lego" ID="{AC036617-9211-4B2A-9824-EA84BA82E68D}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Falling" ID="{F3B65C81-52C3-4E0E-85E4-9A77750F8269}" ShortID="1037166800">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Wood" ID="{FA8B4C69-204E-45F7-9007-A013AC5CFD68}" ShortID="33061906">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{EC7DF08F-E4BD-4264-8590-023D5F6DC3C3}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="25"/>
+																	<Property Name="Min" Type="Real64" Value="-14"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{C386FB12-BEC8-43AD-A9B8-54B3D091E2DF}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1011"/>
+																	<Property Name="Min" Type="Real64" Value="-985"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Fall_Wood01" ID="{180E423E-9F5F-4A43-B64D-B69D4B0924FB}" ShortID="709719925">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Fall_Wood01" ID="{78F70C4D-89AD-45E1-AA62-E2A478815848}" ShortID="1016516704">
+															<Language>SFX</Language>
+															<AudioFile>Fall_Wood01.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Fall_Wood01" ID="{78F70C4D-89AD-45E1-AA62-E2A478815848}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Wood" ID="{FA8B4C69-204E-45F7-9007-A013AC5CFD68}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+									</GroupingInfo>
+								</SwitchContainer>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<BlendContainer Name="Teste Rebola" ID="{E0157709-620E-4490-A120-1C5D73A7888B}" ShortID="724945907">
 					<ReferenceList>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7415F2B5-20FE-46CA-B4C8-C925B47764E3}"/>
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{890A2CE1-1023-4D5C-89A0-7FF25D73CD69}"/>
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="positivenoise02" ID="{BE50C082-02C8-476B-8F7B-1E2BB4D7F9E4}" ShortID="613588331">
-							<Language>SFX</Language>
-							<AudioFile>positivenoise02.wav</AudioFile>
-						</AudioFileSource>
+						<Sound Name="Waterfall" ID="{624E3163-F0FC-4AEB-BEEA-122BC6954773}" ShortID="313433947">
+							<Comment>Waterfall ambient noise, from a gargantuan chute to a fountain-sized fall.</Comment>
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Lowpass" Type="int16">
+									<RTPCList>
+										<RTPC Name="" ID="{2B14E19D-2BEC-45E4-BFDA-8D1A81B00804}" ShortID="1011887875">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="rebolar" ID="{1615916B-FEF7-43F1-922F-3EDACEB2D1F5}" WorkUnitID="{F7089B78-2479-41A1-B379-8F5DC809E3A8}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{E37F61B1-6303-42A5-A1F0-819AB7D5F603}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>72</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<RTPCList>
+										<RTPC Name="" ID="{D565CBD9-F060-4835-BE79-3FB3900F817C}" ShortID="898180541">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="rebolar" ID="{1615916B-FEF7-43F1-922F-3EDACEB2D1F5}" WorkUnitID="{F7089B78-2479-41A1-B379-8F5DC809E3A8}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{C3E32FA5-3862-469C-A3BA-1B75358B07FC}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>2358</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+								<Property Name="PositioningType" Type="int16" Value="1"/>
+								<Property Name="Spatialization" Type="int16" Value="0"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="SoundSeed Wind" ID="{BFD0A5AA-2899-4662-B434-E8E62F439A19}" ShortID="767342224" PluginName="SoundSeed Air/SoundSeed Wind" CompanyID="0" PluginID="119">
+									<PropertyList>
+										<Property Name="FrequencyScale" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{8EF9E8C7-A16F-471E-ABC8-1294B37766F3}" ShortID="278071640">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SS_Air_Size" ID="{1329EBEF-A193-472E-A38C-64668B494879}" WorkUnitID="{3B167755-FB42-458B-98BF-96F557AFB3B9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{4BCD8744-A58F-45AB-ACEF-19FED8CC650F}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>1.84389</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>-1</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="GainOffset" Type="Real32" Value="-1.9">
+											<RTPCList>
+												<RTPC Name="" ID="{75CD260F-B331-48FC-8EA3-A0C2E9E837FD}" ShortID="656279670">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SS_Air_Size" ID="{1329EBEF-A193-472E-A38C-64668B494879}" WorkUnitID="{3B167755-FB42-458B-98BF-96F557AFB3B9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{05E7049B-2976-436B-945F-5F6DAD9CBEDF}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-4.0467</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Log1</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>14.82275</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="Gustiness" Type="Real32" Value="0.8"/>
+										<Property Name="Variability" Type="Real32" Value="0.2"/>
+										<Property Name="VelocityDynamicRange" Type="Real32" Value="0.75"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<PluginData/>
+									<PluginInnerObjectList>
+										<List Name="Deflectors">
+											<PluginInnerObject Name="" ID="{043EC2E5-6394-452B-AECD-85919CC4668D}" PluginName="Deflector" CompanyID="0" PluginID="121">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="60"/>
+													<Property Name="Gain" Type="Real32" Value="7"/>
+													<Property Name="PanX" Type="Real64" Value="-19.7014925373134"/>
+													<Property Name="PanY" Type="Real64" Value="2.9940119760479"/>
+													<Property Name="QFactor" Type="Real32" Value="0.25"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{70F0085F-316E-4EAA-AA51-1AB809697C07}" PluginName="Deflector" CompanyID="0" PluginID="121">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="93"/>
+													<Property Name="PanX" Type="Real64" Value="-15.5223880597015"/>
+													<Property Name="PanY" Type="Real64" Value="-3.59281437125749"/>
+													<Property Name="QFactor" Type="Real32" Value="0.63"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{2AA1CDFF-29B6-4688-9C35-116D9E3A0FD2}" PluginName="Deflector" CompanyID="0" PluginID="121">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="203"/>
+													<Property Name="Gain" Type="Real32" Value="4"/>
+													<Property Name="PanX" Type="Real64" Value="-16.1194029850746"/>
+													<Property Name="PanY" Type="Real64" Value="8.38323353293413"/>
+													<Property Name="QFactor" Type="Real32" Value="0.76"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{B177494F-1C01-4CD4-B2DE-CA13DFC7E620}" PluginName="Deflector" CompanyID="0" PluginID="121">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="1789"/>
+													<Property Name="Gain" Type="Real32" Value="-15"/>
+													<Property Name="PanX" Type="Real64" Value="-11.9402985074627"/>
+													<Property Name="PanY" Type="Real64" Value="13.7724550898204"/>
+													<Property Name="QFactor" Type="Real32" Value="0.14"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{78762260-AE6B-43E7-85CE-61950182F816}" PluginName="Deflector" CompanyID="0" PluginID="121">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="70"/>
+													<Property Name="Gain" Type="Real32" Value="6"/>
+													<Property Name="PanX" Type="Real64" Value="20.2985074626866"/>
+													<Property Name="PanY" Type="Real64" Value="3.59281437125747"/>
+													<Property Name="QFactor" Type="Real32" Value="0.25"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{61AA5271-2180-463A-B081-E217E2E3C767}" PluginName="Deflector" CompanyID="0" PluginID="121">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="87"/>
+													<Property Name="PanX" Type="Real64" Value="16.1194029850746"/>
+													<Property Name="PanY" Type="Real64" Value="-5.38922155688622"/>
+													<Property Name="QFactor" Type="Real32" Value="0.54"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{D36E5BED-00DD-44BF-BAB1-C4EB99AA67A3}" PluginName="Deflector" CompanyID="0" PluginID="121">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="195"/>
+													<Property Name="Gain" Type="Real32" Value="6"/>
+													<Property Name="PanX" Type="Real64" Value="23.2835820895522"/>
+													<Property Name="PanY" Type="Real64" Value="-4.79041916167666"/>
+													<Property Name="QFactor" Type="Real32" Value="0.67"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{03360B8F-43D1-4E5A-B5BB-82BC94FFA5BA}" PluginName="Deflector" CompanyID="0" PluginID="121">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="1901"/>
+													<Property Name="Gain" Type="Real32" Value="-10"/>
+													<Property Name="PanX" Type="Real64" Value="19.1044776119403"/>
+													<Property Name="PanY" Type="Real64" Value="10.1796407185629"/>
+													<Property Name="QFactor" Type="Real32" Value="0.1"/>
+												</PropertyList>
+											</PluginInnerObject>
+										</List>
+									</PluginInnerObjectList>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SoundSeed Wind" ID="{BFD0A5AA-2899-4662-B434-E8E62F439A19}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Wings" ID="{72FF5A1E-6F09-4C5B-8B40-92B0C9D431DA}" ShortID="352262480">
+							<Comment>Beating wings.
+Presence is roughly related to distance and occlusion</Comment>
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="PositioningType" Type="int16" Value="1"/>
+								<Property Name="Spatialization" Type="int16" Value="0"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="SoundSeed Air Woosh" ID="{30552D7A-7C24-41FE-AF01-96EA9A832A3D}" ShortID="1055663783" PluginName="SoundSeed Air/SoundSeed Woosh" CompanyID="0" PluginID="120">
+									<Comment>Each wing beating, made for looping.</Comment>
+									<PropertyList>
+										<Property Name="ChannelMask" Type="int32" Value="0"/>
+										<Property Name="DistanceAttenuation" Type="bool" Value="False"/>
+										<Property Name="Duration" Type="Real64" Value="1.5"/>
+										<Property Name="DurationRandom" Type="Real32" Value="0.1"/>
+										<Property Name="FrequencyScale" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{126D5941-39A8-4C53-9111-EED8B9A7EDBE}" ShortID="409076597">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SS_Air_Size" ID="{1329EBEF-A193-472E-A38C-64668B494879}" WorkUnitID="{3B167755-FB42-458B-98BF-96F557AFB3B9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{9136B606-9AC5-42D0-85CC-FF3B4115BD5E}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>4</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Exp2</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>-4</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="GainOffset" Type="Real32" Value="-1.9">
+											<RTPCList>
+												<RTPC Name="" ID="{16070FF5-C686-4EB4-8F3C-AB2E4B456819}" ShortID="560597853">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SS_Air_Presence" ID="{E3B7811A-7B2F-490F-B44F-5FE51B468041}" WorkUnitID="{3B167755-FB42-458B-98BF-96F557AFB3B9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{FC7E7BAD-286B-4DDA-A67E-4B39BDADCEA8}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-18</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>-6</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="Oversampling" Type="int16" Value="4"/>
+										<Property Name="PlaybackRate" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{BDA50D41-B186-467D-A2F1-530172D0E190}" ShortID="800487072">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SS_Air_Size" ID="{1329EBEF-A193-472E-A38C-64668B494879}" WorkUnitID="{3B167755-FB42-458B-98BF-96F557AFB3B9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{E6766511-695C-4690-B93E-6BCCF5D53E2E}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>6.5</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>1.01277</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="QFactorScale" Type="Real32" Value="-1.47">
+											<RTPCList>
+												<RTPC Name="" ID="{8CFA45A1-FDBC-4B15-A66F-B38153155218}" ShortID="170470935">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SS_Air_Presence" ID="{E3B7811A-7B2F-490F-B44F-5FE51B468041}" WorkUnitID="{3B167755-FB42-458B-98BF-96F557AFB3B9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{642448BD-2CB0-4850-9B27-AB457F733046}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-0.19858</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>0.48227</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="Speed" Type="Real32" Value="25">
+											<RTPCList>
+												<RTPC Name="" ID="{F5ED7ED2-BAC7-4372-8841-A8D81BED9FBD}" ShortID="666462160">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SS_Air_Size" ID="{1329EBEF-A193-472E-A38C-64668B494879}" WorkUnitID="{3B167755-FB42-458B-98BF-96F557AFB3B9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{EFC10A65-29FC-4442-912E-0EEA3DBEFBC9}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-25</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Log1</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="SpeedAutomate" Type="bool" Value="True"/>
+										<Property Name="SpeedPointTimeRandom" Type="Real32" Value="0.13"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<PluginData>
+	<WooshData>
+		<CurveList Version="1">
+			<CurveInfo Name="Speed">
+				<Curve Name="" ID="{58B78162-0801-4EDF-A8F3-594097C16653}">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="1"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>0</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>0.1351</XPos>
+							<YPos>12.33766</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>0.2631</XPos>
+							<YPos>100</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>0.48499</XPos>
+							<YPos>9.09091</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>0.6651375</XPos>
+							<YPos>0</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>0.77598</XPos>
+							<YPos>6.16883</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>0.897225</XPos>
+							<YPos>48.05195</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>1.17783</XPos>
+							<YPos>8.76623</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>1.5</XPos>
+							<YPos>0</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+		</CurveList>
+		<Path Version="1">
+			<Path2D Name="" ID="{B8DE9E29-F788-4C77-8140-C5697D4A36F4}">
+				<PropertyList>
+					<Property Name="Duration" Type="int32" Value="9000"/>
+					<Property Name="LinearTime" Type="bool" Value="False"/>
+				</PropertyList>
+				<PointList>
+					<Point>
+						<XPos>0.00001</XPos>
+						<YPos>-0.59347</YPos>
+						<Flags>12</Flags>
+						<Time>0</Time>
+					</Point>
+				</PointList>
+			</Path2D>
+		</Path>
+	</WooshData>
+</PluginData>
+									<PluginInnerObjectList>
+										<List Name="Deflectors">
+											<PluginInnerObject Name="" ID="{2C77030E-F02D-473C-BD98-C9E71596C836}" PluginName="Deflector" CompanyID="0" PluginID="122">
+												<PropertyList>
+													<Property Name="Anchor" Type="bool" Value="True"/>
+													<Property Name="Frequency" Type="Real32" Value="40"/>
+													<Property Name="Gain" Type="Real32" Value="3"/>
+													<Property Name="QFactor" Type="Real32" Value="36"/>
+													<Property Name="SectionRatio" Type="int32" Value="10"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{74B5B8CA-6A93-4C2F-A32C-853124F34D63}" PluginName="Deflector" CompanyID="0" PluginID="122">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="40"/>
+													<Property Name="Gain" Type="Real32" Value="3"/>
+													<Property Name="QFactor" Type="Real32" Value="36"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{DE1E439F-AE9A-4744-9D73-248CF3FF4B36}" PluginName="Deflector" CompanyID="0" PluginID="122">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="66"/>
+													<Property Name="Gain" Type="Real32" Value="-9"/>
+													<Property Name="QFactor" Type="Real32" Value="36"/>
+												</PropertyList>
+											</PluginInnerObject>
+											<PluginInnerObject Name="" ID="{446C217F-FD11-43F1-A7C2-A8CF8FC92FC6}" PluginName="Deflector" CompanyID="0" PluginID="122">
+												<PropertyList>
+													<Property Name="Frequency" Type="Real32" Value="1000"/>
+													<Property Name="Gain" Type="Real32" Value="-24"/>
+													<Property Name="QFactor" Type="Real32" Value="36"/>
+													<Property Name="SectionRatio" Type="int32" Value="2"/>
+												</PropertyList>
+											</PluginInnerObject>
+										</List>
+									</PluginInnerObjectList>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SoundSeed Air Woosh" ID="{30552D7A-7C24-41FE-AF01-96EA9A832A3D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="positivenoise02" ID="{BE50C082-02C8-476B-8F7B-1E2BB4D7F9E4}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
+					<BlendTrackList>
+						<BlendTrack Name="New Blend Track" ID="{764620BF-8165-4033-8281-6CF27D20BD66}" ShortID="866463181">
+							<PropertyList>
+								<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="LayerCrossFadeControlInput">
+									<ObjectRef Name="New_Game_Parameter" ID="{53F7541E-4C7D-4547-AEC5-F495EF143B19}" WorkUnitID="{F7089B78-2479-41A1-B379-8F5DC809E3A8}"/>
+								</Reference>
+							</ReferenceList>
+							<BlendTrackAssocList>
+								<BlendTrackAssoc>
+									<ItemRef Name="Waterfall" ID="{624E3163-F0FC-4AEB-BEEA-122BC6954773}"/>
+									<CrossfadingInfo>
+										<LeftEdgePos>0</LeftEdgePos>
+										<LeftFadingMode>Automatic</LeftFadingMode>
+										<RightEdgePos>50.00025</RightEdgePos>
+										<RightFadingMode>Automatic</RightFadingMode>
+									</CrossfadingInfo>
+								</BlendTrackAssoc>
+								<BlendTrackAssoc>
+									<ItemRef Name="Wings" ID="{72FF5A1E-6F09-4C5B-8B40-92B0C9D431DA}"/>
+									<CrossfadingInfo>
+										<LeftEdgePos>25.1854351851852</LeftEdgePos>
+										<LeftFadingMode>Automatic</LeftFadingMode>
+										<RightEdgePos>69.9208849206349</RightEdgePos>
+										<RightFadingMode>Automatic</RightFadingMode>
+									</CrossfadingInfo>
+								</BlendTrackAssoc>
+							</BlendTrackAssocList>
+						</BlendTrack>
+					</BlendTrackList>
+				</BlendContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

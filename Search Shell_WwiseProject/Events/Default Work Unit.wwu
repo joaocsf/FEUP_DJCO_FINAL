@@ -1,17 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{CDBE4696-D877-41AD-906B-CF658D461F34}" SchemaVersion="85">
+<WwiseDocument Type="WorkUnit" ID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" SchemaVersion="85">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{CDBE4696-D877-41AD-906B-CF658D461F34}" PersistMode="Standalone">
+		<WorkUnit Name="Default Work Unit" ID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Test" ID="{CE774BCA-C2CC-4A0A-A142-AC1801BF4D1F}">
+				<Event Name="Play_StepGrass" ID="{B105631C-9148-4BA0-A45E-374F976EC789}">
 					<ChildrenList>
-						<Action Name="" ID="{87B508B2-975C-4F48-9C9F-70F7A4490DC2}" ShortID="458848537">
+						<Action Name="" ID="{2052CD6A-8B0E-4A26-99E5-35115C51B4B5}" ShortID="908575994">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="positivenoise02" ID="{50FA50B0-992B-4A9F-B198-2A0CF41A9EB9}" WorkUnitID="{E28C1007-6579-445E-BA4A-04565E151414}"/>
+									<ObjectRef Name="Grass" ID="{D62C2092-CCED-4BB2-8DCA-2BE4D8DB7F3B}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_FallWood" ID="{C8DF62C6-BC08-40E3-9573-3CB6CA082EED}">
+					<ChildrenList>
+						<Action Name="" ID="{F346559A-36FD-4F06-9FA2-4A46C723C7ED}" ShortID="806638751">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Wood" ID="{FA8B4C69-204E-45F7-9007-A013AC5CFD68}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_StepWood" ID="{970950EB-9169-4AE3-A7E0-080289BCA054}">
+					<ChildrenList>
+						<Action Name="" ID="{FC36176D-7360-43A2-89D3-783624BE85B6}" ShortID="929976106">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Wood" ID="{DA6F16DB-2E6D-458E-B278-1FDDD48A9C29}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_StepLego" ID="{15EFC246-69A0-41DE-BB2B-2C185351A556}">
+					<ChildrenList>
+						<Action Name="" ID="{336B0441-FD79-4152-B9CC-D72607F3E7C2}" ShortID="837751025">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Lego" ID="{AC036617-9211-4B2A-9824-EA84BA82E68D}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Steps" ID="{40D48A9C-AE68-4CE6-AFEA-66A0532B1FDB}">
+					<ChildrenList>
+						<Action Name="" ID="{69F5CA40-C234-48D0-9FFB-973ABA8CE514}" ShortID="826598248">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Steps" ID="{049EA59A-E28E-4E59-B57A-9358FE1B32EE}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Steps_01" ID="{A9305D11-3189-4E54-99D5-9AA26232D83E}">
+					<ChildrenList>
+						<Action Name="" ID="{611F26B8-B54F-40CF-8CBA-8AB54198DC9B}" ShortID="416430062">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Steps" ID="{049EA59A-E28E-4E59-B57A-9358FE1B32EE}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

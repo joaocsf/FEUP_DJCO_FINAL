@@ -65,7 +65,7 @@ public class WwiseSettings
 				else
 				{
 					Settings.WwiseProjectPath =
-						AkUtilities.MakeRelativePath(UnityEngine.Application.dataPath + "/fake_depth", foundWwiseProjects[0]);
+						AkUtilities.MakeRelativePath(UnityEngine.Application.dataPath, foundWwiseProjects[0]);
 				}
 
 				Settings.SoundbankPath = AkSoundEngineController.s_DefaultBasePath;
@@ -224,7 +224,7 @@ public partial class AkUtilities
 		var warning = output.Contains("Process completed with warning");
 
 		var message = "WwiseUnity: SoundBanks generation " +
-		              (success ? "successful" : (warning ? "has warning(s)" : "error")) + ":\n" + output;
+					  (success ? "successful" : (warning ? "has warning(s)" : "error")) + ":\n" + output;
 
 		if (success)
 			UnityEngine.Debug.Log(message);
@@ -513,6 +513,12 @@ public partial class AkUtilities
 	// Make two paths relative to each other
 	public static string MakeRelativePath(string fromPath, string toPath)
 	{
+		// MONO BUG: https://github.com/mono/mono/pull/471
+		// In the editor, Application.dataPath returns <Project Folder>/Assets. There is a bug in
+		// mono for method Uri.GetRelativeUri where if the path ends in a folder, it will
+		// ignore the last part of the path. Thus, we need to add fake depth to get the "real"
+		// relative path.
+		fromPath += "/fake_depth";
 		try
 		{
 			if (string.IsNullOrEmpty(fromPath))
@@ -606,11 +612,10 @@ public partial class AkUtilities
 		var byteArray = new byte[property.arraySize];
 
 		for (var i = 0; i < byteArray.Length; i++)
-			byteArray[i] = (byte) property.GetArrayElementAtIndex(i).intValue;
+			byteArray[i] = (byte)property.GetArrayElementAtIndex(i).intValue;
 
 		return byteArray;
 	}
-
 
 	public static void SetByteArrayProperty(UnityEditor.SerializedProperty property, byte[] byteArray)
 	{
@@ -631,7 +636,6 @@ public partial class AkUtilities
 		}
 	}
 
-
 	///This function returns the absolute position and the width and height of the last drawn GuiLayout(or EditorGuiLayout) element in the inspector window.
 	///This function must be called in the OnInspectorGUI function
 	/// 
@@ -646,14 +650,14 @@ public partial class AkUtilities
 			System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
 		var positionPropInfo = inspectorType.GetProperty("position",
 			System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-		var InspectorPosition = (UnityEngine.Rect) positionPropInfo.GetValue(currentInspectorFieldInfo.GetValue(null), null);
+		var InspectorPosition = (UnityEngine.Rect)positionPropInfo.GetValue(currentInspectorFieldInfo.GetValue(null), null);
 
 		if (!applyScroll)
 			return new UnityEngine.Rect(InspectorPosition.x, InspectorPosition.y, InspectorPosition.width, 0);
 
 		var scrollPosInfo = inspectorType.GetField("m_ScrollPosition",
 			System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-		var scrollPos = (UnityEngine.Vector2) scrollPosInfo.GetValue(currentInspectorFieldInfo.GetValue(null));
+		var scrollPos = (UnityEngine.Vector2)scrollPosInfo.GetValue(currentInspectorFieldInfo.GetValue(null));
 
 		var relativePos = UnityEngine.GUILayoutUtility.GetLastRect();
 
@@ -670,12 +674,43 @@ public partial class AkUtilities
 		if (getAllInspectorInfo == null)
 			return;
 
-		var inspector = (UnityEditor.EditorWindow[]) getAllInspectorInfo.Invoke(null, null);
+		var inspector = (UnityEditor.EditorWindow[])getAllInspectorInfo.Invoke(null, null);
 		if (inspector == null)
 			return;
 
 		for (var i = 0; i < inspector.Length; i++)
 			inspector[i].Repaint();
+	}
+
+	public static void AddAkAudioListenerToMainCamera(bool logWarning = false)
+	{
+		if (!UnityEngine.Camera.main)
+			return;
+
+		if (UnityEngine.Camera.main.GetComponentInChildren<AkAudioListener>())
+			return;
+
+		var akAudioListener = UnityEditor.Undo.AddComponent<AkAudioListener>(UnityEngine.Camera.main.gameObject);
+		if (!akAudioListener)
+			return;
+
+		var akGameObj = akAudioListener.GetComponentInChildren<AkGameObj>();
+		if (akGameObj)
+			akGameObj.isEnvironmentAware = false;
+
+		if (logWarning)
+			UnityEngine.Debug.LogWarning(
+				"Automatically added AkAudioListener to Main Camera. Go to \"Edit > Wwise Settings...\" to disable this functionality.");
+	}
+
+	public static void RemoveUnityAudioListenerFromMainCamera()
+	{
+		if (!UnityEngine.Camera.main)
+			return;
+
+		var listener = UnityEngine.Camera.main.gameObject.GetComponent<UnityEngine.AudioListener>();
+		if (listener)
+			UnityEditor.Undo.DestroyObjectImmediate(listener);
 	}
 }
 #endif // UNITY_EDITOR

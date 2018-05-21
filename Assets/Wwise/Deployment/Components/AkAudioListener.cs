@@ -15,11 +15,28 @@ public class AkAudioListener : UnityEngine.MonoBehaviour
 {
 	private static readonly DefaultListenerList defaultListeners = new DefaultListenerList();
 	private ulong akGameObjectID = AkSoundEngine.AK_INVALID_GAME_OBJECT;
+	private System.Collections.Generic.List<AkGameObj> EmittersToStartListeningTo = 
+		new System.Collections.Generic.List<AkGameObj>();
+	private System.Collections.Generic.List<AkGameObj> EmittersToStopListeningTo = 
+		new System.Collections.Generic.List<AkGameObj>();
+
 	public bool isDefaultListener = true;
 
 	public static DefaultListenerList DefaultListeners
 	{
 		get { return defaultListeners; }
+	}
+
+	public void StartListeningToEmitter(AkGameObj emitter)
+	{
+		EmittersToStartListeningTo.Add(emitter);
+		EmittersToStopListeningTo.Remove(emitter);
+	}
+
+	public void StopListeningToEmitter(AkGameObj emitter)
+	{
+		EmittersToStartListeningTo.Remove(emitter);
+		EmittersToStopListeningTo.Add(emitter);
 	}
 
 	public void SetIsDefaultListener(bool isDefault)
@@ -35,10 +52,18 @@ public class AkAudioListener : UnityEngine.MonoBehaviour
 		}
 	}
 
+	private void Awake()
+	{
+		var akGameObj = GetComponent<AkGameObj>();
+		UnityEngine.Debug.Assert(akGameObj != null);
+		if (akGameObj)
+			akGameObj.Register();
+
+		akGameObjectID = AkSoundEngine.GetAkGameObjectID(gameObject);
+	}
+
 	private void OnEnable()
 	{
-		akGameObjectID = AkSoundEngine.GetAkGameObjectID(gameObject);
-
 		if (isDefaultListener)
 			DefaultListeners.Add(this);
 	}
@@ -47,8 +72,17 @@ public class AkAudioListener : UnityEngine.MonoBehaviour
 	{
 		if (isDefaultListener)
 			DefaultListeners.Remove(this);
+	}
 
-		akGameObjectID = AkSoundEngine.AK_INVALID_GAME_OBJECT;
+	private void Update()
+	{
+		for (var i = 0; i < EmittersToStartListeningTo.Count; ++i)
+			EmittersToStartListeningTo[i].AddListener(this);
+		EmittersToStartListeningTo.Clear();
+
+		for (var i = 0; i < EmittersToStopListeningTo.Count; ++i)
+			EmittersToStopListeningTo[i].RemoveListener(this);
+		EmittersToStopListeningTo.Clear();
 	}
 
 	public ulong GetAkGameObjectID()
@@ -115,32 +149,20 @@ public class AkAudioListener : UnityEngine.MonoBehaviour
 
 	public class DefaultListenerList : BaseListenerList
 	{
-		private bool isDirty = false;
-
 		public override bool Add(AkAudioListener listener)
 		{
 			var ret = base.Add(listener);
-			if (ret)
-				isDirty = true;
+			if (ret && AkSoundEngine.IsInitialized())
+				AkSoundEngine.AddDefaultListener(listener.gameObject);
 			return ret;
 		}
 
 		public override bool Remove(AkAudioListener listener)
 		{
 			var ret = base.Remove(listener);
-			if (ret)
-				isDirty = true;
+			if (ret && AkSoundEngine.IsInitialized())
+				AkSoundEngine.RemoveDefaultListener(listener.gameObject);
 			return ret;
-		}
-
-		internal void Refresh()
-		{
-			if (isDirty)
-			{
-				isDirty = false;
-				var Ids = GetListenerIds();
-				AkSoundEngine.SetDefaultListeners(Ids, (uint) Ids.Length);
-			}
 		}
 	}
 

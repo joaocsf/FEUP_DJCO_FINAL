@@ -15,7 +15,9 @@ public class CameraFollow : MonoBehaviour
 
     public Vector2 mouse;
 
-    public Vector2 tempMousePos;
+    public float offsetAngle;
+
+    public Vector2 mousePositionOffset;
 
     private Vector3 cameraPos;
     public Transform obj;
@@ -48,6 +50,10 @@ public class CameraFollow : MonoBehaviour
             lastPressed.x = 0;
         //mouse.x += Input.GetAxis("Mouse X")  * sensitivity;
         //mouse.y -= Input.GetAxis("Mouse Y") * sensitivity;
+        mousePositionOffset = new Vector2(
+            1 - Mathf.Clamp01(Input.mousePosition.x/Screen.width)*2,
+            1 - Mathf.Clamp01(Input.mousePosition.y/Screen.height)*2);
+
         this.CameraRotate(lastPressed.x);
         mouse.y = Mathf.Clamp(mouse.y, -80, 70);
 
@@ -101,7 +107,8 @@ public class CameraFollow : MonoBehaviour
             cameraPos = origin + cameraDir * radius;
 
         transform.position = Vector3.Lerp(transform.position, cameraPos, delta * lerpVelocity);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(mouse.y, mouse.x, 0)), delta * lerpVelocity);
+        Vector2 offset = mousePositionOffset * offsetAngle;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(mouse.y + offset.y, mouse.x - offset.x, 0)), delta * lerpVelocity);
     }
 
     void PositionCamera(Transform obj, float delta)

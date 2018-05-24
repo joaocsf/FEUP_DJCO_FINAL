@@ -124,11 +124,12 @@ public class GridManagerEditor : Editor {
 
 		public void SetRollProperties(float time = 0.3f){
 			obj.AddComponent<RollController>();
+			AddGravityAnimation();
 			RollAnimation anim = obj.AddComponent<RollAnimation>();
 			anim.animateOnMovement = true;
 			anim.duration = time;
 			SoftStartAnimation(anim.curve);
-			AddGravityAnimation();
+	
 		}
 
 	}

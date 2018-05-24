@@ -17,11 +17,25 @@ namespace Search_Shell.Controllers.Animation {
 
 		private Vector3 middlePos;
 		private Vector3 startPos;
+		private Vector3 originalInput;
     protected override void OnAnimate(Vector3 input)
     {
 			lastPos = obj.finalPosition + input;
 			startPos = obj.finalPosition;
 			time = duration;
+			originalInput = input;
+
+			ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
+			
+			foreach (ISoundEvent soundEvent in events)
+			{
+				if(originalInput.y < 0){
+					soundEvent.GravityStart();
+				}
+				else{
+					soundEvent.PushStart();
+				}
+			}
     }
 
     protected override void OnUpdate(float delta)
@@ -31,8 +45,20 @@ namespace Search_Shell.Controllers.Animation {
 			
 			obj.transform.localPosition = Vector3.Lerp(startPos, lastPos, t);
 
-			if(time <= 0)	
+			if(time <= 0){	
 				Finish();
+				ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
+
+				foreach (ISoundEvent soundEvent in events)
+				{
+					if(originalInput.y < 0){
+						soundEvent.GravityEnd();
+					}
+					else{
+						soundEvent.PushEnd();
+					}
+				}
+			}
     }
 	}
 }

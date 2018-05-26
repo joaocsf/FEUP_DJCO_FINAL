@@ -24,6 +24,10 @@ namespace Search_Shell.Controllers.Animation {
 			middlePos =  (lastPos + startPos)/2;
 			middlePos.y = Mathf.Max(lastPos.y, startPos.y) + yOffset;
 			time = duration;
+
+			ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
+				foreach (ISoundEvent soundEvent in events)
+                    soundEvent.JumpStart();
     }
 
 		public Vector3 LerpPositions(Vector3 start, Vector3 middle, Vector3 end, float t){
@@ -38,8 +42,12 @@ namespace Search_Shell.Controllers.Animation {
 			
 			obj.transform.localPosition = LerpPositions(startPos, middlePos, lastPos, t);
 
-			if(time <= 0)	
+			if(time <= 0){
 				Finish();
+				ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
+					foreach (ISoundEvent soundEvent in events)
+						soundEvent.JumpEnd();
+			}
     }
 	}
 }

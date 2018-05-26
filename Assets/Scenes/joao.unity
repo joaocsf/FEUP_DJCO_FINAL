@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 559999672}
   - component: {fileID: 559999671}
   - component: {fileID: 559999670}
+  - component: {fileID: 559999673}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -566,6 +567,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &559999673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 559999669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa44f08e2c9af29408a23cf0ae6e9d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  bankName: ShellBank
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  valueGuid: cf786a1fbd41834b831d8df18bba34d9
+--- !u!1 &681423543 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1078088521556190, guid: 801ece5603c4d7142a21b411ccc1eb0f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1411022049}
+--- !u!114 &681423544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 681423543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ff4e89de2163d439598105f3e60092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventType: 8
+  startEvents:
+  - ID: 1191112106
+    valueGuid: 1c6305b14891a04ba45e374f976ec789
+  endEvents: []
 --- !u!1 &767336478
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,15 +946,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1517641482495204, guid: 801ece5603c4d7142a21b411ccc1eb0f, type: 2}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1005255538103322, guid: 801ece5603c4d7142a21b411ccc1eb0f, type: 2}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 23066758905311488, guid: 801ece5603c4d7142a21b411ccc1eb0f, type: 2}
-    - {fileID: 33190072572182566, guid: 801ece5603c4d7142a21b411ccc1eb0f, type: 2}
+    - target: {fileID: 114038510030024070, guid: 801ece5603c4d7142a21b411ccc1eb0f,
+        type: 2}
+      propertyPath: eventType
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 801ece5603c4d7142a21b411ccc1eb0f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1525935770

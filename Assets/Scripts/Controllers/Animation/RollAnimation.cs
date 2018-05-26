@@ -27,6 +27,10 @@ namespace Search_Shell.Controllers.Animation {
             this.input = input;
             this.time = 0;
             pivot = obj.GetRollPivot(input);
+
+            ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
+				foreach (ISoundEvent soundEvent in events)
+                    soundEvent.RollStart();
         }
 
         protected override void OnUpdate(float delta) {
@@ -39,8 +43,12 @@ namespace Search_Shell.Controllers.Animation {
             transform.localPosition = pos;
             transform.localEulerAngles = rot;
 
-            if(time == duration)
+            if(time == duration) {
                 Finish();
+                ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
+				foreach (ISoundEvent soundEvent in events)
+                    soundEvent.RollEnd();
+            }
         }
   }
 

@@ -22,9 +22,8 @@ namespace Search_Shell.Controllers.Movement {
         public abstract HashSet<GridObject> Move(Vector3 input, ref HashSet<GridObject> mayfall);
 
         protected void Animate(Vector3 input){
-            Debug.Log(input + " - " + input.sqrMagnitude);
             if(Mathf.Approximately(input.sqrMagnitude,0)){
-                Debug.Log("Finish Animation");
+                //Debug.Log("Finish Animation");
                 FinishAnimation(input);
                 return;
             }
@@ -43,15 +42,15 @@ namespace Search_Shell.Controllers.Movement {
         
         public void FinishAnimation(Vector3 input) {
             if(--_animating > 0) return;
-            Debug.Log("Finishing Animation");
+            //Debug.Log("Finishing Animation");
             bool update = OnFinishAnimation(input);
             if(!Mathf.Approximately(input.sqrMagnitude, 0))
                 gridManager.RegisterObject(obj);
 
-            Debug.Log("Finishing Animation:" + update);
+            //Debug.Log("Finishing Animation:" + update);
             if(!update) return;
 
-            Debug.Log("Updating Listeners");
+            //Debug.Log("Updating Listeners");
             if(listener != null)
                 listener.OnFinishedMovement();
         }

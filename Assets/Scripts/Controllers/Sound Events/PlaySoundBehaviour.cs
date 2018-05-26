@@ -20,31 +20,34 @@ public class PlaySoundBehaviour : MonoBehaviour, ISoundEvent {
 	}
 
 	private void PlayEvents(AK.Wwise.Event[] events){
-		Debug.Log("Playing Events");
 		foreach(AK.Wwise.Event e in events)
 			e.Post(gameObject);
 	}
 
   public void GravityEnd()
   {
+		Debug.Log("Gravity End");
 		if(IsOfType(EventType.Gravity))
 			PlayEvents(endEvents);
   }
 
   public void GravityStart()
   {
+		Debug.Log("Gravity Start");
 		if(IsOfType(EventType.Gravity))
 			PlayEvents(startEvents);
   }
 
   public void JumpEnd()
   {
+		Debug.Log("Jump End");
 		if(IsOfType(EventType.Jump))
 			PlayEvents(endEvents);
   }
 
   public void JumpStart()
   {
+		Debug.Log("Jump Start");
 		if(IsOfType(EventType.Jump))
 			PlayEvents(startEvents);
   }

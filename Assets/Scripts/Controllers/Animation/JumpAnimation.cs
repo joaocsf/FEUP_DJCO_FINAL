@@ -17,6 +17,8 @@ namespace Search_Shell.Controllers.Animation {
 
 		private Vector3 middlePos;
 		private Vector3 startPos;
+
+		private bool hasFloor = false;
     protected override void OnAnimate(Vector3 input)
     {
 			lastPos = obj.finalPosition + input;
@@ -26,8 +28,10 @@ namespace Search_Shell.Controllers.Animation {
 			time = duration;
 
 			ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
-				foreach (ISoundEvent soundEvent in events)
-                    soundEvent.JumpStart();
+			int cols = gridManager.CheckCollision(obj, obj.CalculateSlide(input + Vector3.down)).Count;
+			hasFloor = cols != 0;
+			foreach (ISoundEvent soundEvent in events)
+				soundEvent.JumpStart();
     }
 
 		public Vector3 LerpPositions(Vector3 start, Vector3 middle, Vector3 end, float t){
@@ -45,6 +49,7 @@ namespace Search_Shell.Controllers.Animation {
 			if(time <= 0){
 				Finish();
 				ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
+				if(hasFloor)
 					foreach (ISoundEvent soundEvent in events)
 						soundEvent.JumpEnd();
 			}

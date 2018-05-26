@@ -9,5 +9,7 @@ namespace Search_Shell.Game
         public string nextLevel;
 
         public float scale;
+
+        public Vector3 offset;
     }
 }

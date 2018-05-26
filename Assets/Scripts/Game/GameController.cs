@@ -174,6 +174,7 @@ namespace Search_Shell.Game
             this.subLevelObject = properties.selectedObj;
             subLevelCamera.transform.parent = this.subLevel.transform;
             levelCamera.GetComponent<ScreenCapture>().scale = properties.scale;
+            levelCamera.GetComponent<ScreenCapture>().offset = properties.offset;
             subLevelCamera.GetComponent<SkyboxHandler>().SetOpacity(0);
             subLevel.AddListener(this);
             ControllObject(subLevelObject);

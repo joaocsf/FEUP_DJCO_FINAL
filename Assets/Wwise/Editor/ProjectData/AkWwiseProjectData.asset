@@ -208,8 +208,8 @@ MonoBehaviour:
   defaultPoolSize: 4096
   EventWwu:
   - Guid: '{F52FB322-7C49-4ECD-AD19-240917E57E12}'
-    m_lastTimePart2: -1999257263
-    m_lastTimePsrt1: 698263568
+    m_lastTimePart2: -1999257764
+    m_lastTimePsrt1: 1138978370
     ParentPhysicalPath: 
     PhysicalPath: Events\Default Work Unit.wwu
     List:
@@ -285,12 +285,69 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - Guid: e210d737c4713f45acdc06b2ec26a501
+      ID: 2082218999
+      Name: Possess_Bad
+      Path: Default Work Unit\Possess_Bad
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Possess_Bad
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: d74182fb45f02b4b86836733b211aabf
+      ID: 2136921002
+      Name: Possess_Funny
+      Path: Default Work Unit\Possess_Funny
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Possess_Funny
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 3719bd2a26664b4193fbad162fc51d83
+      ID: 2111999785
+      Name: Possess_Good
+      Path: Default Work Unit\Possess_Good
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Possess_Good
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 9236159ff869964187fc98141848e102
+      ID: -870652575
+      Name: Possess_Weird
+      Path: Default Work Unit\Possess_Weird
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Possess_Weird
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+  - Guid: '{295FAD4A-AB50-4CC2-8076-E68366A12596}'
+    m_lastTimePart2: -1999257774
+    m_lastTimePsrt1: -823032776
+    ParentPhysicalPath: 
+    PhysicalPath: Events\Musica.wwu
+    List: []
   ExpandedItems:
   - /Search Shell_WwiseProject
   - /Search Shell_WwiseProject/Events
   - /Search Shell_WwiseProject/Events/Default Work Unit
   - /Search Shell_WwiseProject/SoundBanks
   - /Search Shell_WwiseProject/SoundBanks/Default Work Unit
+  - /Search Shell_WwiseProject/Switches
+  - /Search Shell_WwiseProject/Switches/Default Work Unit
+  - /Search Shell_WwiseProject/Switches/Default Work Unit/Steps
   language: English(US)
   lowerPoolSize: 2048
   m_lastPopulateTimePart2: 0
@@ -420,16 +477,53 @@ MonoBehaviour:
         ObjectType: 13
   StateWwu:
   - Guid: '{68AABD09-94EE-4313-98D4-C1AA99A96AE8}'
-    m_lastTimePart2: -1999257263
-    m_lastTimePsrt1: 763373794
+    m_lastTimePart2: -1999257764
+    m_lastTimePsrt1: 1139043240
     ParentPhysicalPath: 
     PhysicalPath: States\Default Work Unit.wwu
-    List: []
+    List:
+    - Guid: 8cca13e3bd6472478143c24a17d025e8
+      ID: -1146124483
+      Name: Soul_States
+      Path: Default Work Unit\Soul_States
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Soul_States
+        ObjectType: 9
+      ValueGuids:
+      - bytes: ff92eb2c3bacad43a09e10898c4f4d1d
+      - bytes: cc633f42b8e82341a6460e6ac7140389
+      - bytes: d9ee40105d4b764ead5ca9ed3d8ae1fb
+      - bytes: a5e51277bf3ca84fa2ee7a35d6356c33
+      - bytes: b91df3cc5887a548b5e8f354f199dbea
+      - bytes: 27d4d73409e3be45909c1f8a51a362a0
+      ValueIcons:
+      - ElementName: Angry
+        ObjectType: 8
+      - ElementName: Anxious
+        ObjectType: 8
+      - ElementName: Cheerful
+        ObjectType: 8
+      - ElementName: Confused
+        ObjectType: 8
+      - ElementName: Ecstatic
+        ObjectType: 8
+      - ElementName: None
+        ObjectType: 8
+      valueIDs: 9057eb47cc08dfe389e2ddc2ec34ba162f841bfedb3ba32c
+      values:
+      - Angry
+      - Anxious
+      - Cheerful
+      - Confused
+      - Ecstatic
+      - None
   streamingPoolSize: 1024
   SwitchWwu:
   - Guid: '{DF812573-7F42-4EB6-88A0-944D0A00F26D}'
-    m_lastTimePart2: -1999257263
-    m_lastTimePsrt1: 763383759
+    m_lastTimePart2: -1999257773
+    m_lastTimePsrt1: 1483765393
     ParentPhysicalPath: 
     PhysicalPath: Switches\Default Work Unit.wwu
     List:
@@ -465,3 +559,54 @@ MonoBehaviour:
     ParentPhysicalPath: 
     PhysicalPath: Triggers\Default Work Unit.wwu
     List: []
+  - Guid: '{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}'
+    m_lastTimePart2: -1999257764
+    m_lastTimePsrt1: 1139252970
+    ParentPhysicalPath: 
+    PhysicalPath: Triggers\Musica.wwu
+    List:
+    - Guid: ddcecc3ac2c4674bbe690ecc1e14a424
+      ID: 1206605712
+      Name: Angry
+      Path: Musica\Angry
+      PathAndIcons:
+      - ElementName: Musica
+        ObjectType: 12
+      - ElementName: Angry
+        ObjectType: 14
+    - Guid: d9ce53b58593464f8018bada58a007b9
+      ID: -471922484
+      Name: Anxious
+      Path: Musica\Anxious
+      PathAndIcons:
+      - ElementName: Musica
+        ObjectType: 12
+      - ElementName: Anxious
+        ObjectType: 14
+    - Guid: 72e00e911c48d842830cb3e34c7c713f
+      ID: -1025645943
+      Name: Cheerful
+      Path: Musica\Cheerful
+      PathAndIcons:
+      - ElementName: Musica
+        ObjectType: 12
+      - ElementName: Cheerful
+        ObjectType: 14
+    - Guid: 04a1667c767c6f41875f8ff56ae6da6b
+      ID: 381301996
+      Name: Confused
+      Path: Musica\Confused
+      PathAndIcons:
+      - ElementName: Musica
+        ObjectType: 12
+      - ElementName: Confused
+        ObjectType: 14
+    - Guid: 8904f783209f8449b731612a36d5e1b3
+      ID: -31751121
+      Name: Ecstatic
+      Path: Musica\Ecstatic
+      PathAndIcons:
+      - ElementName: Musica
+        ObjectType: 12
+      - ElementName: Ecstatic
+        ObjectType: 14

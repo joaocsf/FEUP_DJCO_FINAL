@@ -7,6 +7,7 @@ public class ScreenCapture : MonoBehaviour {
         Camera cam;
         public Camera cam2;
         public float scale = 10;
+        public Vector3 offset;
         // Use this for initialization
         void Start () {
 
@@ -18,7 +19,8 @@ public class ScreenCapture : MonoBehaviour {
 
         void LateUpdate () {
         if(cam.transform.parent == null) return;
-        cam.transform.localPosition = cam2.transform.localPosition / Mathf.Clamp(scale,1, Mathf.Infinity);
+        float scl = Mathf.Clamp(scale, 1, Mathf.Infinity);
+        cam.transform.localPosition = cam2.transform.localPosition / scl + offset; 
         cam.transform.localEulerAngles = cam2.transform.localEulerAngles;
         }
 }

@@ -235,7 +235,6 @@ namespace Search_Shell.Grid
       bool moved = false;
       foreach (GridObject obj in objs)
       {
-        Debug.Log("Analysing:" + obj.name);
         int n = 0;
         while (++n <= maxGravityInterations)
         {

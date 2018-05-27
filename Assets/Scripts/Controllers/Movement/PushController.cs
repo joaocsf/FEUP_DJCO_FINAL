@@ -42,7 +42,6 @@ namespace Search_Shell.Controllers.Movement {
 		}
 
 		protected override bool OnFinishAnimation(Vector3 input){
-			Debug.Log("UUUU Update :" + update);
 			obj.Slide(input);
 			return update-- <= 0;
 		}

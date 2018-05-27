@@ -3,14 +3,12 @@
 	<States>
 		<WorkUnit Name="Default Work Unit" ID="{68AABD09-94EE-4313-98D4-C1AA99A96AE8}" PersistMode="Standalone">
 			<ChildrenList>
-				<StateGroup Name="Soul_States" ID="{E313CA8C-64BD-4772-8143-C24A17D025E8}">
+				<StateGroup Name="SoulStates" ID="{7FFA3D95-7815-4F91-A01C-605692518F72}">
 					<ChildrenList>
-						<State Name="None" ID="{34D7D427-E309-45BE-909C-1F8A51A362A0}"/>
-						<State Name="Angry" ID="{2CEB92FF-AC3B-43AD-A09E-10898C4F4D1D}"/>
-						<State Name="Anxious" ID="{423F63CC-E8B8-4123-A646-0E6AC7140389}"/>
-						<State Name="Confused" ID="{7712E5A5-3CBF-4FA8-A2EE-7A35D6356C33}"/>
-						<State Name="Cheerful" ID="{1040EED9-4B5D-4E76-AD5C-A9ED3D8AE1FB}"/>
-						<State Name="Ecstatic" ID="{CCF31DB9-8758-48A5-B5E8-F354F199DBEA}"/>
+						<State Name="None" ID="{DE3EFD8A-BD17-40FB-933F-7197193E7FBB}"/>
+						<State Name="Idle" ID="{5F557654-9A3F-4E11-97D4-CEF08E1B16A3}"/>
+						<State Name="Gameplay" ID="{1CCAEACF-B967-4ED1-8C4D-FBBA386FFB9A}"/>
+						<State Name="Menu" ID="{12E0F065-7432-4820-9ED4-21E7B108D596}"/>
 					</ChildrenList>
 				</StateGroup>
 			</ChildrenList>

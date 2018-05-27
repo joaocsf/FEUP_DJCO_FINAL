@@ -4,7 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{F7089B78-2479-41A1-B379-8F5DC809E3A8}" PersistMode="Standalone">
 			<ChildrenList>
 				<GameParameter Name="rebolar" ID="{1615916B-FEF7-43F1-922F-3EDACEB2D1F5}"/>
-				<GameParameter Name="New_Game_Parameter" ID="{53F7541E-4C7D-4547-AEC5-F495EF143B19}"/>
+				<GameParameter Name="Menu" ID="{0BB1D960-74D4-4A3F-BE6B-D9C126816D3A}">
+					<PropertyList>
+						<Property Name="FilterTimeDown" Type="Real64" Value="2"/>
+						<Property Name="FilterTimeUp" Type="Real64" Value="1"/>
+						<Property Name="RTPCRamping" Type="int16" Value="2"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

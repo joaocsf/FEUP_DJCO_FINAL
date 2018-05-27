@@ -10,6 +10,21 @@
 						<Switch Name="Wood" ID="{330B386A-C1EB-4289-B7B1-D35D445FFE75}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="Soul_Switches" ID="{56F5671C-3D42-4E81-A116-A918F03DDE12}">
+					<ChildrenList>
+						<Switch Name="Angry" ID="{E6F7FA30-F2F6-4A38-823C-7E9EE9E973E6}"/>
+						<Switch Name="Anxious" ID="{0144B45D-8C95-44CB-BADE-0EC96987E2A0}"/>
+						<Switch Name="Cheerful" ID="{3B47485D-09F9-4E7F-9402-7F477045BE58}"/>
+						<Switch Name="Confused" ID="{10F24757-F689-4054-9E5D-0D4BE60D2704}"/>
+						<Switch Name="Ecstatic" ID="{11A52434-ECF4-403E-AF00-C75E84DB119F}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="Place" ID="{576429C4-30FA-48C8-AA96-09DE6BF8A096}">
+					<ChildrenList>
+						<Switch Name="Nature" ID="{1285EB63-DB83-470D-AF44-571CBEB3754C}"/>
+						<Switch Name="Box" ID="{34893C53-7B50-42E7-BCF6-7168CA997B7D}"/>
+					</ChildrenList>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>

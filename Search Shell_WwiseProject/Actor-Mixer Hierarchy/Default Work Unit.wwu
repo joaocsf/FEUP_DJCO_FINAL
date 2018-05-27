@@ -995,37 +995,107 @@ Presence is roughly related to distance and occlusion</Comment>
 					</ChildrenList>
 					<BlendTrackList>
 						<BlendTrack Name="New Blend Track" ID="{764620BF-8165-4033-8281-6CF27D20BD66}" ShortID="866463181">
-							<PropertyList>
-								<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="LayerCrossFadeControlInput">
-									<ObjectRef Name="New_Game_Parameter" ID="{53F7541E-4C7D-4547-AEC5-F495EF143B19}" WorkUnitID="{F7089B78-2479-41A1-B379-8F5DC809E3A8}"/>
-								</Reference>
-							</ReferenceList>
+							<ReferenceList/>
 							<BlendTrackAssocList>
 								<BlendTrackAssoc>
 									<ItemRef Name="Waterfall" ID="{624E3163-F0FC-4AEB-BEEA-122BC6954773}"/>
-									<CrossfadingInfo>
-										<LeftEdgePos>0</LeftEdgePos>
-										<LeftFadingMode>Automatic</LeftFadingMode>
-										<RightEdgePos>50.00025</RightEdgePos>
-										<RightFadingMode>Automatic</RightFadingMode>
-									</CrossfadingInfo>
 								</BlendTrackAssoc>
 								<BlendTrackAssoc>
 									<ItemRef Name="Wings" ID="{72FF5A1E-6F09-4C5B-8B40-92B0C9D431DA}"/>
-									<CrossfadingInfo>
-										<LeftEdgePos>25.1854351851852</LeftEdgePos>
-										<LeftFadingMode>Automatic</LeftFadingMode>
-										<RightEdgePos>69.9208849206349</RightEdgePos>
-										<RightFadingMode>Automatic</RightFadingMode>
-									</CrossfadingInfo>
 								</BlendTrackAssoc>
 							</BlendTrackAssocList>
 						</BlendTrack>
 					</BlendTrackList>
 				</BlendContainer>
+				<SwitchContainer Name="Botao_Menu" ID="{A4D5C7DF-0749-4BB1-95E3-CB80BEBE5872}" ShortID="613453814">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="Botao_Click" ID="{76B274FA-F321-4EF0-8F72-EF0BBC474AB3}" ShortID="717162502">
+							<PropertyList>
+								<Property Name="InitialDelay" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{688C4F5D-95EB-4DD4-9178-F67CBC89E937}">
+												<PropertyList>
+													<Property Name="Min" Type="Real64" Value="-76"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{28AC26F5-BED5-4145-9AAD-A7C0EAD18A0F}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="30"/>
+													<Property Name="Min" Type="Real64" Value="-27"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{D8D944DE-D9A2-4BD6-9262-9E70122E70D1}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="733"/>
+													<Property Name="Min" Type="Real64" Value="-202"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Botão_Menu" ID="{CFB1E298-22AE-48E6-919D-5E2B1C54FA1D}" ShortID="747961580">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{DECEA997-C69F-4942-A85D-F2831D35AC6C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{95264EF2-B7C4-4710-B145-A140E44F57FA}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Botão_Menu" ID="{00493646-43F5-4622-8D53-CD2EBC25C7DA}" ShortID="698836142">
+											<Language>SFX</Language>
+											<AudioFile>Botão_Menu.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Botão_Menu" ID="{00493646-43F5-4622-8D53-CD2EBC25C7DA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+					<GroupingInfo>
+						<GroupingBehaviorList>
+							<GroupingBehavior>
+								<ItemRef Name="Botao_Click" ID="{76B274FA-F321-4EF0-8F72-EF0BBC474AB3}"/>
+							</GroupingBehavior>
+						</GroupingBehaviorList>
+					</GroupingInfo>
+				</SwitchContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

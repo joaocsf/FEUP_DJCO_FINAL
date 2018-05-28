@@ -86,14 +86,18 @@ public class GridManagerEditor : Editor {
 		}
 
 		private void SoftStartAnimation(AnimationCurve curve){
-			Keyframe start = new Keyframe(0f, 0f, 0f, 1f);
-			Keyframe end = new Keyframe(1f, 1f, 0f, 0f);
+			Keyframe start = new Keyframe(0f, 0f);
+			start.inTangent = 0f;
+			Keyframe end = new Keyframe(1f, 1f);
+			end.inTangent = 2.5f;
 			curve.AddKey(start);
 			curve.AddKey(end);
 		}
 		private void HardStartAnimation(AnimationCurve curve){
-			Keyframe start = new Keyframe(0f, 0f, 0f, 0f);
-			Keyframe end = new Keyframe(1f, 1f, 1f, 0f);
+			Keyframe start = new Keyframe(0f, 0f);
+			start.outTangent = 2.5f;
+			Keyframe end = new Keyframe(1f, 1f);
+			end.inTangent = 0f;
 			curve.AddKey(start);
 			curve.AddKey(end);
 		}
@@ -103,6 +107,8 @@ public class GridManagerEditor : Editor {
 			anim.animateOnMovement = false;
 			anim.duration = time;
 			anim.yOffset = 0f;	
+			if(anim.curve == null)
+				anim.curve = new AnimationCurve();
 			SoftStartAnimation(anim.curve);
 		}
 
@@ -111,6 +117,8 @@ public class GridManagerEditor : Editor {
 			JumpAnimation anim = obj.AddComponent<JumpAnimation>();
 			anim.animateOnMovement = true;
 			anim.duration = time;
+			if(anim.curve == null)
+				anim.curve = new AnimationCurve();
 			HardStartAnimation(anim.curve);
 			AddGravityAnimation();
 		}
@@ -128,6 +136,8 @@ public class GridManagerEditor : Editor {
 			RollAnimation anim = obj.AddComponent<RollAnimation>();
 			anim.animateOnMovement = true;
 			anim.duration = time;
+			if(anim.curve == null)
+				anim.curve = new AnimationCurve();
 			SoftStartAnimation(anim.curve);
 	
 		}

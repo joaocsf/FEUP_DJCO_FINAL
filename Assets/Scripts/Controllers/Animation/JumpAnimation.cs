@@ -9,7 +9,7 @@ namespace Search_Shell.Controllers.Animation {
 
 		public float duration = 1;
 
-		public float yOffset = 0;
+		public float yOffset = 0.5f;
 		public AnimationCurve curve;
 
 		private float time = 0;

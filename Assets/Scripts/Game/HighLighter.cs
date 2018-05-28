@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,9 @@ namespace Search_Shell.Game{
 		public Texture selectionTexture;
 		public float selectionScale;
 		public Texture overlay;
+
+		private static float time = 3f;
+		private float lastLerpValue = 0;
 
 		
 		private Dictionary<Renderer, Shader> current;
@@ -49,6 +53,24 @@ namespace Search_Shell.Game{
 				r.material.SetFloat("_SelectionScale", selectionScale);
 				r.material.SetTexture("_OverLay", overlay);
 			}
+			StartCoroutine(LerpOverLay(0, null));
+		}
+
+		private IEnumerator LerpOverLay(float direction, Action action){
+			float t = lastLerpValue;
+			if(direction > 0.5f) t = 0;
+
+			while(t <= 1f){
+				t+=Time.fixedDeltaTime * time;
+
+				foreach(Renderer r in renderer)
+					r.material.SetFloat("_SelectionThreshold", Mathf.Abs(Mathf.Clamp01(t) - direction));
+
+				yield return new WaitForFixedUpdate();
+			}
+			lastLerpValue = 1 - direction;
+			if(action != null)
+				action();
 		}
 
 		private void ResetMaterials(){
@@ -67,7 +89,7 @@ namespace Search_Shell.Game{
 					UpdateShader(selectedShader, highlighted);
 					break;
 				case HighLight.None:
-					ResetMaterials();
+					StartCoroutine(LerpOverLay(1f, null));
 					break;
 			}
 		}

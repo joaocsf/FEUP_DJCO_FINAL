@@ -16,7 +16,32 @@ public class GridObjectEditor : Editor {
 	}
 
 	public void OnSceneGUI(){
-		
+		BoxCollider[] colliders = obj.GetComponents<BoxCollider>();
+
+		foreach(BoxCollider col in colliders)
+			HandleCollider(col);
+
+	}
+
+	private void HandleCollider(BoxCollider col){
+		Vector3 max = col.center + col.size/2f;
+		Vector3 min = col.center - col.size/2f;
+		max = obj.transform.TransformPoint(max);
+		min = obj.transform.TransformPoint(min);
+
+		EditorGUI.BeginChangeCheck();
+		max = Handles.FreeMoveHandle(max, Quaternion.identity, 0.2f, Vector3.one, Handles.SphereHandleCap);
+		min = Handles.FreeMoveHandle(min, Quaternion.identity, 0.2f, Vector3.one, Handles.SphereHandleCap);
+		if(EditorGUI.EndChangeCheck()){
+	
+			max = obj.transform.InverseTransformPoint(max);
+			min = obj.transform.InverseTransformPoint(min);
+			col.size = max-min;
+			col.center = (max + min)/2;
+
+			obj.SnapPosition();
+			obj.CalculateVolume();
+		}
 	}
 
 	private void SwapMinMax(ref Vector3 min ,ref Vector3 max){

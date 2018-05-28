@@ -224,10 +224,12 @@ namespace Search_Shell.Game
 
         void UpdateReachableObjects()
         {
-            UpdateMaterial(HighLight.None);
             DetectorController detect = subLevelObject.GetComponent<DetectorController>();
             if (detect == null) return;
-            nearObjects = detect.NearObjects();
+            HashSet<GridObject> objs = detect.NearObjects();
+            nearObjects.RemoveWhere((obj) => objs.Contains(obj));
+            UpdateMaterial(HighLight.None);
+            nearObjects = objs;
             UpdateMaterial(HighLight.Highlighted);
         }
 

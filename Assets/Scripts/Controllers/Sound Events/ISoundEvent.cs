@@ -1,30 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Search_Shell.Grid;
 using UnityEngine;
 
 public interface ISoundEvent {
 
 	//Start Roll event
-	void RollStart ();
+	void RollStart (SurfaceType surface);
 	
 	//End Roll event
-	void RollEnd ();
+	void RollEnd (SurfaceType surface);
 
 	//Start Roll event
-	void JumpStart ();
+	void JumpStart (SurfaceType surface);
 	
 	//End Roll event
-	void JumpEnd ();
+	void JumpEnd (SurfaceType surface);
 
 	//Start Roll event
-	void PushStart ();
+	void PushStart (SurfaceType surface);
 	
 	//End Roll event
-	void PushEnd ();
+	void PushEnd (SurfaceType surface);
 
 	//Start Roll event
-	void GravityStart ();
+	void GravityStart (SurfaceType surface);
 	
 	//End Roll event
-	void GravityEnd ();
+	void GravityEnd (SurfaceType surface);
 }

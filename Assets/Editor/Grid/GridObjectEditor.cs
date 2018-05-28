@@ -65,6 +65,7 @@ public class GridObjectEditor : Editor {
 		GUILayout.BeginVertical();
 		obj.properties.canControll = EditorGUILayout.Toggle("Controll", obj.properties.canControll);
 		obj.properties.isStatic = EditorGUILayout.Toggle("Static", obj.properties.isStatic);
+		obj.properties.surface = (SurfaceType)EditorGUILayout.EnumPopup("Type", obj.properties.surface);
 		GUILayout.EndVertical();
 	}
 

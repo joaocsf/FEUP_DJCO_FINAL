@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Search_Shell.Grid;
 using UnityEngine;
-
 
 namespace Search_Shell.Controllers.Animation {
 	public class LinearAnimation : AnimationController {
@@ -18,6 +18,8 @@ namespace Search_Shell.Controllers.Animation {
 		private Vector3 middlePos;
 		private Vector3 startPos;
 		private Vector3 originalInput;
+
+		private SurfaceType surface;
     protected override void OnAnimate(Vector3 input)
     {
 			lastPos = obj.finalPosition + input;
@@ -25,15 +27,18 @@ namespace Search_Shell.Controllers.Animation {
 			time = duration;
 			originalInput = input;
 
+			surface = gridManager.GetSurfaceType(obj, input + Vector3.down);
 			ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
+
+
 			
 			foreach (ISoundEvent soundEvent in events)
 			{
 				if(originalInput.y < 0){
-					soundEvent.GravityStart();
+					soundEvent.GravityStart(surface);
 				}
 				else{
-					soundEvent.PushStart();
+					soundEvent.PushStart(surface);
 				}
 			}
     }
@@ -52,10 +57,10 @@ namespace Search_Shell.Controllers.Animation {
 				foreach (ISoundEvent soundEvent in events)
 				{
 					if(originalInput.y < 0){
-						soundEvent.GravityEnd();
+						soundEvent.GravityEnd(surface);
 					}
 					else{
-						soundEvent.PushEnd();
+						soundEvent.PushEnd(surface);
 					}
 				}
 			}

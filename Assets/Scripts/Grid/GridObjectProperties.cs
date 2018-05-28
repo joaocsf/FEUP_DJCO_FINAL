@@ -6,9 +6,20 @@ using UnityEngine;
 
 namespace Search_Shell.Grid
 {
+    [System.Flags]
+    public enum SurfaceType {
+        None,
+        Grass,
+        Wood
+    }
+
     [Serializable]
 	public class GridObjectProperties{
         public bool canControll = false; 
         public bool isStatic = true;
+
+
+
+        public SurfaceType surface;
 	}
 }

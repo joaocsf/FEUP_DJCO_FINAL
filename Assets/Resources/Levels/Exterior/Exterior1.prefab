@@ -1047,6 +1047,8 @@ GameObject:
   - component: {fileID: 114201669377821814}
   - component: {fileID: 114519890491611016}
   - component: {fileID: 114103635018799640}
+  - component: {fileID: 114717500708859768}
+  - component: {fileID: 114565039145768002}
   m_Layer: 0
   m_Name: TopWall
   m_TagString: Untagged
@@ -4914,6 +4916,7 @@ MonoBehaviour:
   properties:
     canControll: 1
     isStatic: 0
+    surface: 2
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -11, y: 0, z: -3}
   offset: {x: 0, y: 0, z: 0}
@@ -4929,10 +4932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventType: 4
-  startEvents:
-  - ID: 1191112106
-    valueGuid: 1c6305b14891a04ba45e374f976ec789
-  endEvents: []
+  events: []
 --- !u!114 &114042542211244194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4965,6 +4965,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 1
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -11, y: -1, z: 0}
   offset: {x: 0, y: 0, z: 0}
@@ -4985,6 +4986,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 1
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 0, y: -1, z: 0}
   offset: {x: 0, y: 0, z: 0}
@@ -5037,6 +5039,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -4, y: 0, z: 6}
   offset: {x: 0, y: 0, z: 0}
@@ -5080,6 +5083,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 0, y: 0, z: -2}
   offset: {x: 0, y: 0, z: 0}
@@ -5100,6 +5104,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -1, y: 0, z: -1}
   offset: {x: 0, y: 0, z: 0}
@@ -5151,6 +5156,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -5, y: 0, z: -2}
   offset: {x: 0, y: 0, z: 0}
@@ -5208,6 +5214,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -6, y: 0, z: -2}
   offset: {x: 0, y: 0, z: 0}
@@ -5260,6 +5267,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -6, y: 0, z: 5}
   offset: {x: 0, y: 0, z: 0}
@@ -5280,9 +5288,60 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 1, y: 0, z: -1}
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &114565039145768002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889354362799314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ff4e89de2163d439598105f3e60092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventType: 1
+  events:
+  - surfaceType: 6
+    startEvent:
+      ID: 0
+      valueGuid: 
+    endEvent:
+      ID: 1191112106
+      valueGuid: 1c6305b14891a04ba45e374f976ec789
+    gameObject: {fileID: 0}
+--- !u!114 &114717500708859768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889354362799314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ff4e89de2163d439598105f3e60092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventType: 8
+  events:
+  - surfaceType: 2
+    startEvent:
+      ID: 1191112106
+      valueGuid: 1c6305b14891a04ba45e374f976ec789
+    endEvent:
+      ID: 0
+      valueGuid: 00000000000000000000000000000000
+    gameObject: {fileID: 0}
+  - surfaceType: 4
+    startEvent:
+      ID: 0
+      valueGuid: 00000000000000000000000000000000
+    endEvent:
+      ID: 1854392579
+      valueGuid: eb5009976991e34aa7e0080289bca054
+    gameObject: {fileID: 0}
 --- !u!114 &114739039466912622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5300,6 +5359,7 @@ MonoBehaviour:
   properties:
     canControll: 1
     isStatic: 0
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 90}
   finalPosition: {x: -12, y: 2, z: -2}
   offset: {x: 0, y: 0, z: 0}
@@ -5358,10 +5418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventType: 12
-  startEvents:
-  - ID: 1191112106
-    valueGuid: 1c6305b14891a04ba45e374f976ec789
-  endEvents: []
+  events: []
 --- !u!114 &114934355572602212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5410,6 +5467,7 @@ MonoBehaviour:
   properties:
     canControll: 1
     isStatic: 0
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 0, y: 1, z: 0}
   offset: {x: 0, y: 0, z: 0}

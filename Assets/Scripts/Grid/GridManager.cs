@@ -250,6 +250,17 @@ namespace Search_Shell.Grid
       return moved;
     }
 
+    public SurfaceType GetSurfaceType(GridObject obj, Vector3 offset){
+      SurfaceType surface = SurfaceType.None;
+
+      HashSet<GridObject> objs = CheckCollision(obj, obj.CalculateSlide(offset));
+
+      foreach(GridObject tmp in objs)
+        return tmp.properties.surface;
+
+      return surface;
+    }
+
     public HashSet<GridObject> GetMovingObjects()
     {
       HashSet<GridObject> objs = new HashSet<GridObject>();

@@ -309,7 +309,7 @@ MonoBehaviour:
   level: {fileID: 1615233641}
   levelLayer: Level
   subLevelLayer: SubLevel
-  startingLevel: Test/Test2
+  startingLevel: Exterior/Exterior1
   defaultCameraZoom: 5
   cameraCurve:
     serializedVersion: 2
@@ -392,6 +392,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
+    surface: 0
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}

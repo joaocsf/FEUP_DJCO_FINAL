@@ -21,16 +21,17 @@ namespace Search_Shell.Controllers.Animation {
         public AnimationCurve curve;
 
         private Pivot pivot;
+        private SurfaceType surface;
 
         protected override void OnAnimate(Vector3 input){
             this.animating = true;
             this.input = input;
             this.time = 0;
             pivot = obj.GetRollPivot(input);
-
+            surface = gridManager.GetSurfaceType(obj, input + Vector3.down);
             ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
 				foreach (ISoundEvent soundEvent in events)
-                    soundEvent.RollStart();
+                    soundEvent.RollStart(surface);
         }
 
         protected override void OnUpdate(float delta) {
@@ -47,7 +48,7 @@ namespace Search_Shell.Controllers.Animation {
                 Finish();
                 ISoundEvent[] events = obj.GetComponents<ISoundEvent>();
 				foreach (ISoundEvent soundEvent in events)
-                    soundEvent.RollEnd();
+                    soundEvent.RollEnd(surface);
             }
         }
   }

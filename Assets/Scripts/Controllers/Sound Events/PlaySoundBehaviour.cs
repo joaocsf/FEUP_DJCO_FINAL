@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Search_Shell.Grid;
 using UnityEngine;
 
 public class PlaySoundBehaviour : MonoBehaviour, ISoundEvent {
@@ -7,74 +8,77 @@ public class PlaySoundBehaviour : MonoBehaviour, ISoundEvent {
 	[EnumFlagsArray]
 	public EventType eventType;
 
-	public AK.Wwise.Event[] startEvents;
-	public AK.Wwise.Event[] endEvents;
+	[HideInInspector]
+	public List<SoundEventType> events;
 	
 	[System.Flags]
 	public enum EventType {
 		Gravity, Jump, Push, Roll
 	}
 
+	void Start(){
+		foreach(SoundEventType type in events){
+			type.gameObject = gameObject;
+		}
+	}
+
 	private bool IsOfType(EventType t){
 		return ((int)eventType & (1 << (int)t)) != 0;
 	}
 
-	private void PlayEvents(AK.Wwise.Event[] events){
-		foreach(AK.Wwise.Event e in events)
-			e.Post(gameObject);
+	private void PlayEvents(bool start, SurfaceType surface){
+		foreach(SoundEventType e in events)
+			if(start)
+				e.PlayStartEvents(surface);
+			else
+				e.PlayEndEvents(surface);
 	}
 
-  public void GravityEnd()
+  public void GravityEnd(SurfaceType surface)
   {
-		Debug.Log("Gravity End");
 		if(IsOfType(EventType.Gravity))
-			PlayEvents(endEvents);
+			PlayEvents(false, surface);
   }
 
-  public void GravityStart()
+  public void GravityStart(SurfaceType surface)
   {
-		Debug.Log("Gravity Start");
 		if(IsOfType(EventType.Gravity))
-			PlayEvents(startEvents);
+			PlayEvents(true, surface);
   }
 
-  public void JumpEnd()
+  public void JumpEnd(SurfaceType surface)
   {
-		Debug.Log("Jump End");
 		if(IsOfType(EventType.Jump))
-			PlayEvents(endEvents);
+			PlayEvents(false, surface);
   }
 
-  public void JumpStart()
+  public void JumpStart(SurfaceType surface)
   {
-		Debug.Log("Jump Start");
 		if(IsOfType(EventType.Jump))
-			PlayEvents(startEvents);
+			PlayEvents(true, surface);
   }
 
-  public void PushEnd()
+  public void PushEnd(SurfaceType surface)
   {
 		if(IsOfType(EventType.Push))
-			PlayEvents(endEvents);
+			PlayEvents(false, surface);
   }
 
-  public void PushStart()
+  public void PushStart(SurfaceType surface)
   {
-		Debug.Log("Start Push" + (int)eventType);
 		if(IsOfType(EventType.Push))
-			PlayEvents(startEvents);
+			PlayEvents(true, surface);
   }
 
-  public void RollEnd()
+  public void RollEnd(SurfaceType surface)
   {
 		if(IsOfType(EventType.Roll))
-			PlayEvents(endEvents);
+			PlayEvents(false, surface);
   }
 
-  public void RollStart()
+  public void RollStart(SurfaceType surface)
   {
-		Debug.Log("Roll" + eventType + " - " + (int)EventType.Roll);
 		if(IsOfType(EventType.Roll))
-			PlayEvents(startEvents);
+			PlayEvents(true, surface);
   }
 }

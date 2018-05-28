@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Search_Shell.Grid;
 using UnityEngine;
 
 public class CrossfadeEvent : MonoBehaviour, ISoundEvent{
@@ -14,42 +15,42 @@ public class CrossfadeEvent : MonoBehaviour, ISoundEvent{
 		
 	}
 
-    public void GravityEnd()
+    public void GravityEnd(SurfaceType surface)
     {
 		  Debug.LogWarning("Ended falling");
     }
 
-    public void GravityStart()
+    public void GravityStart(SurfaceType surface)
     {
 		  Debug.LogWarning("Started falling");
     }
 
-    public void JumpEnd()
+    public void JumpEnd(SurfaceType surface)
     {
 
     }
 
-    public void JumpStart()
+    public void JumpStart(SurfaceType surface)
     {
 
     }
 
-    public void PushEnd()
+    public void PushEnd(SurfaceType surface)
     {
 		  Debug.LogWarning("Stopped pushing");
     }
 
-    public void PushStart()
+    public void PushStart(SurfaceType surface)
     {
 		  Debug.LogWarning("Started pushing");
     }
 
-    public void RollEnd()
+    public void RollEnd(SurfaceType surface)
     {
 
     }
 
-    public void RollStart()
+    public void RollStart(SurfaceType surface)
     {
 
     }

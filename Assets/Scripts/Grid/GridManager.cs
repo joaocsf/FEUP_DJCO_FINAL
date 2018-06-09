@@ -314,7 +314,7 @@ namespace Search_Shell.Grid
       if (!RegisterObject(obj, obj.GetVolumePositions()))
       {
         Debug.Log(obj.name);
-        Debug.LogError("Cannot Assign Object to this position! Overlap!!");
+        Debug.LogWarning("Cannot Assign Object"+obj.name+" to this position! Overlap!!");
         return false;
       }
       return true;

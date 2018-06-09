@@ -26,8 +26,10 @@ public class GridObjectEditor : Editor {
 	private void HandleCollider(BoxCollider col){
 		Vector3 max = col.center + col.size/2f;
 		Vector3 min = col.center - col.size/2f;
+		Vector3 center = col.center;
 		max = obj.transform.TransformPoint(max);
 		min = obj.transform.TransformPoint(min);
+		center = obj.transform.TransformPoint(center);
 
 		EditorGUI.BeginChangeCheck();
 		max = Handles.FreeMoveHandle(max, Quaternion.identity, 0.2f, Vector3.one, Handles.SphereHandleCap);
@@ -36,9 +38,19 @@ public class GridObjectEditor : Editor {
 	
 			max = obj.transform.InverseTransformPoint(max);
 			min = obj.transform.InverseTransformPoint(min);
+
 			col.size = max-min;
 			col.center = (max + min)/2;
 
+			obj.SnapPosition();
+			obj.CalculateVolume();
+		}
+
+		EditorGUI.BeginChangeCheck();
+		center = Handles.FreeMoveHandle(center, Quaternion.identity, 0.3f, Vector3.one, Handles.SphereHandleCap);
+		if(EditorGUI.EndChangeCheck()){
+			center = obj.transform.InverseTransformPoint(center);
+			col.center = center;
 			obj.SnapPosition();
 			obj.CalculateVolume();
 		}

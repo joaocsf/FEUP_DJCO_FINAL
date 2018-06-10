@@ -1,6 +1,7 @@
 ﻿Shader "Custom/SelectedShader" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
+		_Bounds ("Bounds", Vector) = (1,1,1,1)
 		_SelectionThreshold("Selection Threshold", Range(0,1)) = 1
 		_SelectionColor ("Selection Color", Color) = (1,1,1,1)
 		_SelectionRadius ("Selection Radius", Range(0,1)) = 1

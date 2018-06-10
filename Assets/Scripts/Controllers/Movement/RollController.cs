@@ -8,7 +8,7 @@ namespace Search_Shell.Controllers.Movement {
 	public class RollController : MovementController {
 
 		public bool debug = false;
-		
+				
 		Drawer drawer = new Drawer();
 
 		float f = 0;

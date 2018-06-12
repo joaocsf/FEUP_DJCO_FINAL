@@ -87,6 +87,54 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Possess_Bad" ID="{37D710E2-71C4-453F-ACDC-06B2EC26A501}">
+					<ChildrenList>
+						<Action Name="" ID="{852DAB8A-2A09-4C23-9C84-4A924D9F5FBE}" ShortID="231399782">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="35"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Anxious" ID="{B553CED9-9385-4F46-8018-BADA58A007B9}" WorkUnitID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{DF553869-9B9D-4944-99A9-CE9D017FFF09}" ShortID="648453592">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Possess_Funny" ID="{FB8241D7-F045-4B2B-8683-6733B211AABF}">
+					<ChildrenList>
+						<Action Name="" ID="{1E76042F-D864-4908-BC6D-FFF42FD09B19}" ShortID="363247585">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="35"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ecstatic" ID="{83F70489-9F20-4984-B731-612A36D5E1B3}" WorkUnitID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Possess_Mean" ID="{A6A4CC48-A110-484E-AFCC-6A210F1643C0}">
+					<ChildrenList>
+						<Action Name="" ID="{B62785CD-9BB1-41A6-92A4-F8EBA8A126F3}" ShortID="221229671">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="35"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Angry" ID="{3ACCCEDD-C4C2-4B67-BE69-0ECC1E14A424}" WorkUnitID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

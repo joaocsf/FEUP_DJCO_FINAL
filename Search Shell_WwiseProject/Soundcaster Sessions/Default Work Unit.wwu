@@ -3,11 +3,41 @@
 	<SoundcasterSessions>
 		<WorkUnit Name="Default Work Unit" ID="{03980A16-9283-4B2D-AA98-E765CA5FE461}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundcasterSession Name="New Soundcaster Session" ID="{C6761309-8186-4545-A2CF-1DA68B7E3039}">
+				<SoundcasterSession Name="Musictest" ID="{C6761309-8186-4545-A2CF-1DA68B7E3039}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Possess_Mean" ID="{A6A4CC48-A110-484E-AFCC-6A210F1643C0}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Box_GP" ID="{F561194F-896A-4953-B755-401C6AE0AECE}" WorkUnitID="{B58C09A5-774B-4468-8A99-A06835937C72}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Possess_Funny" ID="{FB8241D7-F045-4B2B-8683-6733B211AABF}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Box_menu" ID="{88FB3C25-1A18-4C15-B709-E38ED07A7035}" WorkUnitID="{B58C09A5-774B-4468-8A99-A06835937C72}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Possess_Bad" ID="{37D710E2-71C4-453F-ACDC-06B2EC26A501}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Box_Idle" ID="{DFA9DBE9-A50D-480F-A488-C8318051C81D}" WorkUnitID="{B58C09A5-774B-4468-8A99-A06835937C72}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
 							<GameParameterRef Name="SS_Air_Turbulence" ID="{EDA87B19-73AA-40A0-9F19-2073606DB710}"/>
 							<Value>6</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="rebolar" ID="{1615916B-FEF7-43F1-922F-3EDACEB2D1F5}"/>
+							<Value>22.938689217759</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="SS_Air_Month" ID="{09E2B445-C4A3-447F-B3CA-818A1D925EF7}"/>
@@ -34,6 +64,10 @@
 							<Value>75</Value>
 						</RTPCValue>
 						<RTPCValue>
+							<GameParameterRef Name="Menu" ID="{0BB1D960-74D4-4A3F-BE6B-D9C126816D3A}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
 							<GameParameterRef Name="SS_Air_TimeOfDay" ID="{536FA72C-8C7E-4C8B-AE03-EF34FDADC314}"/>
 							<Value>6</Value>
 						</RTPCValue>
@@ -46,8 +80,14 @@
 							<Value>50</Value>
 						</RTPCValue>
 					</RTPCValueList>
-					<CurrentStateList ShowAll="true"/>
-					<CurrentSwitchList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Idle" ID="{5F557654-9A3F-4E11-97D4-CEF08E1B16A3}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Grass" ID="{7048AED2-8A6D-468D-81D8-C066C1B5FBF2}"/>
+						<CurrentSwitchRef Name="Box" ID="{34893C53-7B50-42E7-BCF6-7168CA997B7D}"/>
+						<CurrentSwitchRef Name="Angry" ID="{E6F7FA30-F2F6-4A38-823C-7E9EE9E973E6}"/>
+					</CurrentSwitchList>
 				</SoundcasterSession>
 				<SoundcasterSession Name="New Soundcaster Session_01" ID="{9F14EA0A-94C1-468C-B0D4-9A00BD366FB9}">
 					<ModuleList>
@@ -80,10 +120,6 @@
 						<RTPCValue>
 							<GameParameterRef Name="SS_Air_RPM" ID="{A34890AB-B9D5-4526-A64D-5290C43EF2DC}"/>
 							<Value>50</Value>
-						</RTPCValue>
-						<RTPCValue>
-							<GameParameterRef Name="New_Game_Parameter" ID="{53F7541E-4C7D-4547-AEC5-F495EF143B19}"/>
-							<Value>18.677</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="SS_Air_Fury" ID="{A2AE79DC-CA3A-46BA-9652-9986C322A87B}"/>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}" SchemaVersion="85">
+	<Triggers>
+		<WorkUnit Name="Musica" ID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}" PersistMode="Standalone">
+			<ChildrenList>
+				<Trigger Name="Angry" ID="{3ACCCEDD-C4C2-4B67-BE69-0ECC1E14A424}"/>
+				<Trigger Name="Anxious" ID="{B553CED9-9385-4F46-8018-BADA58A007B9}"/>
+				<Trigger Name="Cheerful" ID="{910EE072-481C-42D8-830C-B3E34C7C713F}"/>
+				<Trigger Name="Confused" ID="{7C66A104-7C76-416F-875F-8FF56AE6DA6B}"/>
+				<Trigger Name="Ecstatic" ID="{83F70489-9F20-4984-B731-612A36D5E1B3}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Triggers>
+</WwiseDocument>

@@ -1,3 +1,14 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	3148842813	Soul_States			\Default Work Unit\Soul_States	
+
+State	ID	Name	State Group			Notes
+	0	None	Soul_States			
+	381301996	Confused	Soul_States			
+	1206605712	Angry	Soul_States			
+	3269321353	Cheerful	Soul_States			
+	3823044812	Anxious	Soul_States			
+	4263216175	Ecstatic	Soul_States			
+
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	504532776	Brick			\Factory Reflect Acoustic Textures\Textures\Brick	
 	513139656	Mountain			\Factory Reflect Acoustic Textures\Textures\Mountain	

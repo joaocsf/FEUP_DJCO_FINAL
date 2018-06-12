@@ -8,8 +8,12 @@ public class GrassFX : MonoBehaviour {
 	public Mesh grass;
 
 	public Material grassMat;
+	
+	public float unitsPerMeter = 1.0f;
 
 	public Vector3 rotationOffset;
+
+	public Vector2 offset;
 	public Vector3 randomize;
 
 	public Vector3 scale;
@@ -33,14 +37,17 @@ public class GrassFX : MonoBehaviour {
 	public void Paint(Vector3 xy){
 		xy = transform.InverseTransformPoint(xy);
 		Debug.Log("Painting");
-		Vector2 distance = min - max;		
-		Vector2 relPos = min - new Vector2(xy.x, xy.z);
-		Vector3 mm = min - Vector2.one;
+		Vector2 distance = max - min;		
+		Vector2 relPos = new Vector2(xy.x, xy.z) - min;
+		Vector3 mm = Vector2.one;
+		mm.x = distance.x;
+		mm.y = distance.y;
 		float dist = mm.magnitude*2;
 		xy.x = relPos.x/distance.x;
 		xy.y = relPos.y/distance.y;
-		stampDrawer.SetVector("_Coord", new Vector4(xy.x, xy.y,0,0));
-		stampDrawer.SetFloat("_Distance", dist);
+		stampDrawer.SetVector("_Coord", new Vector4(xy.x, xy.y,mm.y,mm.x));
+		Debug.Log(xy + " - " + mm);
+		stampDrawer.SetVector("_Distance", new Vector4(1, 1,0,0));
 		RenderTexture tmp = RenderTexture.GetTemporary(128,128,0, RenderTextureFormat.RGB565);
 		Graphics.Blit(rt, tmp);
 		Graphics.Blit(tmp, rt, stampDrawer);
@@ -72,8 +79,18 @@ public class GrassFX : MonoBehaviour {
 
 	void PopulateCollider(BoxCollider collider, ref List<CombineInstance> instances){
 		Bounds bounds = collider.bounds;
-		for(float i = bounds.min.x; i <= bounds.max.x; i++){
-			for(float j = bounds.min.z; j <= bounds.max.z; j++){
+		float distance = bounds.size.x;
+		Vector2 spacement = Vector2.zero;
+		spacement.x = bounds.size.x * unitsPerMeter;
+		spacement.y = bounds.size.z * unitsPerMeter;
+
+		spacement.x = (bounds.size.x - 2 * offset.x)/spacement.x;
+		spacement.y = (bounds.size.z - 2 * offset.y)/spacement.y;
+
+		int maxIter = 200;
+		for(float i = bounds.min.x + offset.x; i <= bounds.max.x - offset.x;){
+			for(float j = bounds.min.z + offset.y; j <= bounds.max.z - offset.y;){
+				if(maxIter -- <= 0) return;
 				CombineInstance instance = new CombineInstance();
 				Vector3 position = new Vector3(i, bounds.max.y, j);
 				position = transform.InverseTransformPoint(position);
@@ -83,10 +100,16 @@ public class GrassFX : MonoBehaviour {
 				randomRotation.x *= randomize.x;
 				randomRotation.y *= randomize.y;
 				randomRotation.z *= randomize.z;
-
-				instance.transform = Matrix4x4.Translate(position) * Matrix4x4.Scale(scale) * Matrix4x4.Rotate(Quaternion.Euler(rotationOffset + randomRotation)) * Matrix4x4.identity;
+				instance.transform = Matrix4x4.Translate(position) * Matrix4x4.Scale(scale) *  Matrix4x4.Rotate(Quaternion.Euler(rotationOffset + randomRotation)) * Matrix4x4.identity;
 				instances.Add(instance);
+				if(j != bounds.max.z - offset.y)
+					j=Mathf.Clamp(spacement.y+j, bounds.min.z + offset.y, bounds.max.z - offset.y);
+				else break;
 			}
+
+			if(i != bounds.max.x - offset.x)
+				i=Mathf.Clamp(i+spacement.x, bounds.min.x + offset.x, bounds.max.x - offset.x);
+			else break;
 		}
 	}
 	

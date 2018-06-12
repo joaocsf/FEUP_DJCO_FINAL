@@ -4,7 +4,7 @@
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		_Coord ("Coordinate", Vector) = (1,1,1,1)
-		_Distance ("Distance", float) = 1.0
+		_Distance ("Distance", Vector) = (1,1,1,1)
 	}
 	SubShader
 	{
@@ -37,7 +37,7 @@
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			float4 _Coord;
-			float _Distance;
+			float4 _Distance;
 			
 			v2f vert (appdata v)
 			{
@@ -52,7 +52,18 @@
 			{
 				// sample the texture
 				fixed4 col = tex2D(_MainTex, i.uv);
-				float draw = pow(saturate(1 - distance(i.uv, _Coord.xy)), _Distance);
+				float distX = 1 - abs(i.uv.x - _Coord.x);
+				float distY = 1 - abs(i.uv.y - _Coord.y);
+				float2 distances = abs(i.uv - _Coord.xy);
+				distances.x *= _Coord.w;
+				distances.y *= _Coord.z;
+
+				distances = saturate((_Distance.x - distances)/_Distance.x);
+
+				float draw = saturate(distances.x * distances.y);
+				draw = pow(draw*1, 1);
+				//return float4(0,0,0,0);
+				// float draw = pow(saturate(1 - distance(i.uv, _Coord.xy)), _Distance);
 				return saturate(col + draw*(float4(1,0,0,1)));
 			}
 			ENDCG

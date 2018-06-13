@@ -73,20 +73,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Steps_01" ID="{A9305D11-3189-4E54-99D5-9AA26232D83E}">
-					<ChildrenList>
-						<Action Name="" ID="{611F26B8-B54F-40CF-8CBA-8AB54198DC9B}" ShortID="416430062">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Steps" ID="{049EA59A-E28E-4E59-B57A-9358FE1B32EE}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="Possess_Bad" ID="{37D710E2-71C4-453F-ACDC-06B2EC26A501}">
 					<ChildrenList>
 						<Action Name="" ID="{852DAB8A-2A09-4C23-9C84-4A924D9F5FBE}" ShortID="231399782">
@@ -98,12 +84,6 @@
 									<ObjectRef Name="Anxious" ID="{B553CED9-9385-4F46-8018-BADA58A007B9}" WorkUnitID="{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}"/>
 								</Reference>
 							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{DF553869-9B9D-4944-99A9-CE9D017FFF09}" ShortID="648453592">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-							</PropertyList>
-							<ReferenceList/>
 						</Action>
 					</ChildrenList>
 				</Event>

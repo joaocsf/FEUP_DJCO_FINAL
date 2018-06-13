@@ -6,9 +6,16 @@
 				<SoundBank Name="ShellBank" ID="{1F6A78CF-41BD-4B83-831D-8DF18BBA34D9}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_FallWood" ID="{C8DF62C6-BC08-40E3-9573-3CB6CA082EED}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Idle_Start" ID="{E13B2E44-9B8C-414D-AB2F-B915134CC0DA}" WorkUnitID="{295FAD4A-AB50-4CC2-8076-E68366A12596}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Menu_Start" ID="{90034812-B891-415A-AD1C-7AB451C1E68A}" WorkUnitID="{295FAD4A-AB50-4CC2-8076-E68366A12596}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Play_StepLego" ID="{15EFC246-69A0-41DE-BB2B-2C185351A556}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Possess_Bad" ID="{37D710E2-71C4-453F-ACDC-06B2EC26A501}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Musica" ID="{834A8406-BAF7-45F8-AC60-C152B3D7D7A6}" WorkUnitID="{295FAD4A-AB50-4CC2-8076-E68366A12596}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Possess_Mean" ID="{A6A4CC48-A110-484E-AFCC-6A210F1643C0}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Play_StepWood" ID="{970950EB-9169-4AE3-A7E0-080289BCA054}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Possess_Funny" ID="{FB8241D7-F045-4B2B-8683-6733B211AABF}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Play_StepGrass" ID="{B105631C-9148-4BA0-A45E-374F976EC789}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Gameplay_Start" ID="{171EE4BC-491D-4F64-ACBF-8FFD6C870D88}" WorkUnitID="{295FAD4A-AB50-4CC2-8076-E68366A12596}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

@@ -188,8 +188,8 @@ MonoBehaviour:
     List: []
   BankWwu:
   - Guid: '{19061B5E-BD4D-4031-9B64-CCAC326D4311}'
-    m_lastTimePart2: -1999257263
-    m_lastTimePsrt1: 763363803
+    m_lastTimePart2: -1999253147
+    m_lastTimePsrt1: 2132664230
     ParentPhysicalPath: 
     PhysicalPath: SoundBanks\Default Work Unit.wwu
     List:
@@ -208,8 +208,8 @@ MonoBehaviour:
   defaultPoolSize: 4096
   EventWwu:
   - Guid: '{F52FB322-7C49-4ECD-AD19-240917E57E12}'
-    m_lastTimePart2: -1999257764
-    m_lastTimePsrt1: 1138978370
+    m_lastTimePart2: -1999253158
+    m_lastTimePsrt1: -540631319
     ParentPhysicalPath: 
     PhysicalPath: Events\Default Work Unit.wwu
     List:
@@ -261,18 +261,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - Guid: 115d30a98931544e99d59aa26232d83e
-      ID: -568282789
-      Name: Play_Steps_01
-      Path: Default Work Unit\Play_Steps_01
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Play_Steps_01
-        ObjectType: 3
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
     - Guid: eb5009976991e34aa7e0080289bca054
       ID: 1854392579
       Name: Play_StepWood
@@ -309,45 +297,84 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - Guid: 3719bd2a26664b4193fbad162fc51d83
-      ID: 2111999785
-      Name: Possess_Good
-      Path: Default Work Unit\Possess_Good
+    - Guid: 48cca4a610a14e48afcc6a210f1643c0
+      ID: -1614712091
+      Name: Possess_Mean
+      Path: Default Work Unit\Possess_Mean
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Possess_Good
-        ObjectType: 3
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - Guid: 9236159ff869964187fc98141848e102
-      ID: -870652575
-      Name: Possess_Weird
-      Path: Default Work Unit\Possess_Weird
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Possess_Weird
+      - ElementName: Possess_Mean
         ObjectType: 3
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
   - Guid: '{295FAD4A-AB50-4CC2-8076-E68366A12596}'
-    m_lastTimePart2: -1999257774
-    m_lastTimePsrt1: -823032776
+    m_lastTimePart2: -1999253147
+    m_lastTimePsrt1: 2132604275
     ParentPhysicalPath: 
     PhysicalPath: Events\Musica.wwu
-    List: []
+    List:
+    - Guid: bce41e171d49644facbf8ffd6c870d88
+      ID: 796312888
+      Name: Gameplay_Start
+      Path: Musica\Gameplay_Start
+      PathAndIcons:
+      - ElementName: Musica
+        ObjectType: 12
+      - ElementName: Gameplay_Start
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 442e3be18c9b4d41ab2fb915134cc0da
+      ID: -1841988206
+      Name: Idle_Start
+      Path: Musica\Idle_Start
+      PathAndIcons:
+      - ElementName: Musica
+        ObjectType: 12
+      - ElementName: Idle_Start
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 1248039091b85a41ad1c7ab451c1e68a
+      ID: -386669443
+      Name: Menu_Start
+      Path: Musica\Menu_Start
+      PathAndIcons:
+      - ElementName: Musica
+        ObjectType: 12
+      - ElementName: Menu_Start
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 06844a83f7baf845ac60c152b3d7d7a6
+      ID: 1730564739
+      Name: Musica
+      Path: Musica\Musica
+      PathAndIcons:
+      - ElementName: Musica
+        ObjectType: 12
+      - ElementName: Musica
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   ExpandedItems:
   - /Search Shell_WwiseProject
   - /Search Shell_WwiseProject/Events
-  - /Search Shell_WwiseProject/Events/Default Work Unit
+  - /Search Shell_WwiseProject/Events/Musica
   - /Search Shell_WwiseProject/SoundBanks
   - /Search Shell_WwiseProject/SoundBanks/Default Work Unit
+  - /Search Shell_WwiseProject/States
+  - /Search Shell_WwiseProject/States/Default Work Unit
+  - /Search Shell_WwiseProject/States/Default Work Unit/SoulStates
   - /Search Shell_WwiseProject/Switches
   - /Search Shell_WwiseProject/Switches/Default Work Unit
-  - /Search Shell_WwiseProject/Switches/Default Work Unit/Steps
+  - /Search Shell_WwiseProject/Switches/Default Work Unit/Place
   language: English(US)
   lowerPoolSize: 2048
   m_lastPopulateTimePart2: 0
@@ -356,19 +383,19 @@ MonoBehaviour:
   preparePoolSize: 0
   RtpcWwu:
   - Guid: '{F7089B78-2479-41A1-B379-8F5DC809E3A8}'
-    m_lastTimePart2: -1999257263
-    m_lastTimePsrt1: 698273547
+    m_lastTimePart2: -1999253443
+    m_lastTimePsrt1: -125402369
     ParentPhysicalPath: 
     PhysicalPath: Game Parameters\Default Work Unit.wwu
     List:
-    - Guid: 1e54f7537d4c4745aec5f495ef143b19
-      ID: -623829214
-      Name: New_Game_Parameter
-      Path: Default Work Unit\New_Game_Parameter
+    - Guid: 60d9b10bd4743f4abe6bd9c126816d3a
+      ID: -1687411216
+      Name: Menu
+      Path: Default Work Unit\Menu
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: New_Game_Parameter
+      - ElementName: Menu
         ObjectType: 13
     - Guid: 6b911516f7fef143922f3edaceb2d1f5
       ID: -833955480
@@ -477,56 +504,102 @@ MonoBehaviour:
         ObjectType: 13
   StateWwu:
   - Guid: '{68AABD09-94EE-4313-98D4-C1AA99A96AE8}'
-    m_lastTimePart2: -1999257764
-    m_lastTimePsrt1: 1139043240
+    m_lastTimePart2: -1999253443
+    m_lastTimePsrt1: -32560091
     ParentPhysicalPath: 
     PhysicalPath: States\Default Work Unit.wwu
     List:
-    - Guid: 8cca13e3bd6472478143c24a17d025e8
-      ID: -1146124483
-      Name: Soul_States
-      Path: Default Work Unit\Soul_States
+    - Guid: 953dfa7f1578914fa01c605692518f72
+      ID: -605425786
+      Name: SoulStates
+      Path: Default Work Unit\SoulStates
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Soul_States
+      - ElementName: SoulStates
         ObjectType: 9
       ValueGuids:
-      - bytes: ff92eb2c3bacad43a09e10898c4f4d1d
-      - bytes: cc633f42b8e82341a6460e6ac7140389
-      - bytes: d9ee40105d4b764ead5ca9ed3d8ae1fb
-      - bytes: a5e51277bf3ca84fa2ee7a35d6356c33
-      - bytes: b91df3cc5887a548b5e8f354f199dbea
-      - bytes: 27d4d73409e3be45909c1f8a51a362a0
+      - bytes: cfeaca1c67b9d14e8c4dfbba386ffb9a
+      - bytes: 5476555f3f9a114e97d4cef08e1b16a3
+      - bytes: 65f0e012327420489ed421e7b108d596
+      - bytes: 8afd3ede17bdfb40933f7197193e7fbb
       ValueIcons:
-      - ElementName: Angry
+      - ElementName: Gameplay
         ObjectType: 8
-      - ElementName: Anxious
+      - ElementName: Idle
         ObjectType: 8
-      - ElementName: Cheerful
-        ObjectType: 8
-      - ElementName: Confused
-        ObjectType: 8
-      - ElementName: Ecstatic
+      - ElementName: Menu
         ObjectType: 8
       - ElementName: None
         ObjectType: 8
-      valueIDs: 9057eb47cc08dfe389e2ddc2ec34ba162f841bfedb3ba32c
+      valueIDs: 01bf5505ff60b76ff0256c9bdb3ba32c
+      values:
+      - Gameplay
+      - Idle
+      - Menu
+      - None
+  streamingPoolSize: 1024
+  SwitchWwu:
+  - Guid: '{DF812573-7F42-4EB6-88A0-944D0A00F26D}'
+    m_lastTimePart2: -1999253443
+    m_lastTimePsrt1: -32550097
+    ParentPhysicalPath: 
+    PhysicalPath: Switches\Default Work Unit.wwu
+    List:
+    - Guid: c4296457fa30c848aa9609de6bf8a096
+      ID: 64340058
+      Name: Place
+      Path: Default Work Unit\Place
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Place
+        ObjectType: 11
+      ValueGuids:
+      - bytes: 533c8934507be742bcf67168ca997b7d
+      - bytes: 63eb851283db0d47af44571cbeb3754c
+      ValueIcons:
+      - ElementName: Box
+        ObjectType: 10
+      - ElementName: Nature
+        ObjectType: 10
+      valueIDs: 00b99920d4f8add0
+      values:
+      - Box
+      - Nature
+    - Guid: 1c67f556423d814ea116a918f03dde12
+      ID: -137770233
+      Name: Soul_Switches
+      Path: Default Work Unit\Soul_Switches
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Soul_Switches
+        ObjectType: 11
+      ValueGuids:
+      - bytes: 30faf7e6f6f2384a823c7e9ee9e973e6
+      - bytes: 5db44401958ccb44bade0ec96987e2a0
+      - bytes: 5d48473bf9097f4e94027f477045be58
+      - bytes: 5747f21089f654409e5d0d4be60d2704
+      - bytes: 3424a511f4ec3e40af00c75e84db119f
+      ValueIcons:
+      - ElementName: Angry
+        ObjectType: 10
+      - ElementName: Anxious
+        ObjectType: 10
+      - ElementName: Cheerful
+        ObjectType: 10
+      - ElementName: Confused
+        ObjectType: 10
+      - ElementName: Ecstatic
+        ObjectType: 10
+      valueIDs: 9057eb47cc08dfe389e2ddc2ec34ba162f841bfe
       values:
       - Angry
       - Anxious
       - Cheerful
       - Confused
       - Ecstatic
-      - None
-  streamingPoolSize: 1024
-  SwitchWwu:
-  - Guid: '{DF812573-7F42-4EB6-88A0-944D0A00F26D}'
-    m_lastTimePart2: -1999257773
-    m_lastTimePsrt1: 1483765393
-    ParentPhysicalPath: 
-    PhysicalPath: Switches\Default Work Unit.wwu
-    List:
     - Guid: 0a2baa7377ab5e46b7b728cc5a2d7418
       ID: 1718617278
       Name: Steps
@@ -560,8 +633,8 @@ MonoBehaviour:
     PhysicalPath: Triggers\Default Work Unit.wwu
     List: []
   - Guid: '{3F7509F2-0F5C-4B5C-BC9D-36833EB1D201}'
-    m_lastTimePart2: -1999257764
-    m_lastTimePsrt1: 1139252970
+    m_lastTimePart2: -1999253443
+    m_lastTimePsrt1: -31249526
     ParentPhysicalPath: 
     PhysicalPath: Triggers\Musica.wwu
     List:

@@ -15,6 +15,8 @@ namespace Search_Shell.Game
     public class GameController : MonoBehaviour, IMovementListener, IGridEvents
     {
 
+        public GameObject music;
+
         [Header("FX")]
         public Color highlighted;
         public Color selected;
@@ -119,6 +121,7 @@ namespace Search_Shell.Game
 
             this.subLevel = subLevel;
             LevelProperties properties = subLevel.GetComponent<LevelProperties>();
+            AkSoundEngine.SetSwitch((uint)properties._switch.groupID, (uint)properties._switch.ID, music);
             this.subLevelObject = properties.selectedObj;
             subLevelCamera.transform.parent = this.subLevel.transform;
             levelCamera.GetComponent<ScreenCapture>().scale = properties.scale;

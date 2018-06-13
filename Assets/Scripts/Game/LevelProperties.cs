@@ -11,5 +11,7 @@ namespace Search_Shell.Game
         public float scale;
 
         public Vector3 offset;
+
+        public AK.Wwise.Switch _switch;
     }
 }

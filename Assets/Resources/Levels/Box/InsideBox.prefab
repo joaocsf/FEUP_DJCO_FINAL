@@ -2856,6 +2856,11 @@ MonoBehaviour:
   nextLevel: Exterior/ForestPath
   scale: 11
   offset: {x: 0, y: -0.1, z: 0}
+  _switch:
+    ID: 546945280
+    valueGuid: 533c8934507be742bcf67168ca997b7d
+    groupGuid: c4296457fa30c848aa9609de6bf8a096
+    groupID: 64340058
 --- !u!114 &114908550060911032
 MonoBehaviour:
   m_ObjectHideFlags: 1

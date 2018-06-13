@@ -32,6 +32,8 @@ public class CameraFollow : MonoBehaviour
 
     public bool animating = false;
 
+    public LayerMask lm;
+
     void Start()
     {
 
@@ -107,7 +109,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 cameraDir = GetDirection();
         RaycastHit hit;
         Vector3 point = Vector3.zero;
-        if (Physics.Raycast(origin, cameraDir, out hit, radius) && collide && !animating)
+        if (Physics.Raycast(origin, cameraDir, out hit, radius, lm) && collide && !animating)
         {
             cameraPos = hit.point - cameraDir.normalized;
         }

@@ -29,7 +29,7 @@ public class GrassFX : MonoBehaviour {
 	void Start () {
 		stampDrawer = new Material(stampShader);	
 		GenerateMesh();
-		rt = new RenderTexture(128,128,0,RenderTextureFormat.RGB565);
+		rt = new RenderTexture(128,128,0,RenderTextureFormat.Default);
 		mat = GetComponent<Renderer>().material;
 		mat.SetTexture("_Map", rt);
 		mat.SetVector("_Bounds", new Vector4(min.x, min.y, max.x, max.y));
@@ -48,7 +48,7 @@ public class GrassFX : MonoBehaviour {
 		stampDrawer.SetVector("_Coord", new Vector4(xy.x, xy.y,mm.y,mm.x));
 		Debug.Log(xy + " - " + mm);
 		stampDrawer.SetVector("_Distance", new Vector4(1, 1,0,0));
-		RenderTexture tmp = RenderTexture.GetTemporary(128,128,0, RenderTextureFormat.RGB565);
+		RenderTexture tmp = RenderTexture.GetTemporary(128,128,0, RenderTextureFormat.Default);
 		Graphics.Blit(rt, tmp);
 		Graphics.Blit(tmp, rt, stampDrawer);
 		RenderTexture.ReleaseTemporary(tmp);

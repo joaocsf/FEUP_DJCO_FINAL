@@ -167,9 +167,10 @@ namespace Search_Shell.Game
       TurnStack turnsStack = savedata[level];
       Stack<Turn> turns = turnsStack.turns;
       Turn turn;
+      turn = turns.Peek();
       while (turns.Count > savedata[level].turnNumber)
         turn = turns.Pop();
-      turn = turns.Pop();
+      
 
       HashSet<GridObject> movingObjects = controller.level.GetObjectsRaw();
       Dictionary<String, Transformation> transformations = turn.transformations;

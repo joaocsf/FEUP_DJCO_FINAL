@@ -28,6 +28,10 @@ public class CameraFollow : MonoBehaviour
 
     public Vector2 lastPressed = Vector2.zero;
 
+    public bool debug = false;
+
+    public bool animating = false;
+
     void Start()
     {
 
@@ -57,7 +61,11 @@ public class CameraFollow : MonoBehaviour
         this.CameraRotate(lastPressed.x);
         mouse.y = Mathf.Clamp(mouse.y, -80, 70);
 
-        radius -= Input.GetAxisRaw("Mouse ScrollWheel") * 2;
+        if(!animating){
+            radius -= Input.GetAxisRaw("Mouse ScrollWheel") * 2;
+            if(!debug)
+            radius = Mathf.Clamp(radius, 2,5);
+        }
 
 
         if (obj == null) return;
@@ -99,7 +107,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 cameraDir = GetDirection();
         RaycastHit hit;
         Vector3 point = Vector3.zero;
-        if (Physics.Raycast(origin, cameraDir, out hit, radius) && collide)
+        if (Physics.Raycast(origin, cameraDir, out hit, radius) && collide && !animating)
         {
             cameraPos = hit.point - cameraDir.normalized;
         }

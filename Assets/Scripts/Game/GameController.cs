@@ -49,52 +49,7 @@ namespace Search_Shell.Game
 
 
         private SaveManager saveManager;
-/*
-        private Stack<Turn> turns = new Stack<Turn>();
 
-        private Dictionary<String, int> levelsSave = new Dictionary<String, int>();
-
-        [Serializable]
-        private struct Transformation
-        {
-            public Vector3 initialPosition;
-            public Vector3 initialAngles;
-
-            public Transformation(Vector3 initialPosition, Vector3 initialAngles)
-            {
-                this.initialPosition = initialPosition;
-                this.initialAngles = initialAngles;
-            }
-        }
-
-        [Serializable]
-        private struct Turn
-        {
-            public Dictionary<String, Transformation> movements;
-            public String currentObjectName;
-
-            public Turn(GridObject obj, Dictionary<GridObject, Transformation> movements)
-            {
-                this.movements = new Dictionary<String, Transformation>();
-                foreach(GridObject g in movements.Keys ){
-                    this.movements.Add(g.name, movements[g]);
-                }
-                this.currentObjectName = obj.name;
-            }
-
-            public Turn(GridObject obj, Dictionary<String, Transformation> movements)
-            {
-                this.movements = movements;
-                this.currentObjectName = obj.name;
-            }
-
-            public Turn(String objectName, Dictionary<String, Transformation> movements)
-            {
-                this.movements = movements;
-                this.currentObjectName = objectName;
-            }
-        }
-*/
         private bool canControll = true;
 
         void Start()
@@ -111,13 +66,6 @@ namespace Search_Shell.Game
 
         void SetupCamera()
         {
-            /* 
-			levelCamera.transform.parent = levelObject.transform;
-			subLevelCamera.transform.parent = subLevel.transform;
-			subLevelCamera.transform.localPosition = Vector3.zero + Vector3.one;
-			subLevelCamera.GetComponent<CameraFollow>().SetTransform(subLevelObject.transform);
-			subLevelCamera.GetComponent<CameraFollow>().radius = defaultCameraZoom;
-			*/
             LoadStartingLevel(startingLevel);
         }
 
@@ -177,6 +125,7 @@ namespace Search_Shell.Game
             levelCamera.GetComponent<ScreenCapture>().offset = properties.offset;
             subLevelCamera.GetComponent<SkyboxHandler>().SetOpacity(0);
             subLevel.AddListener(this);
+            subLevel.Initialize();
             ControllObject(subLevelObject);
             SetLayer(subLevel.transform,
                 obj =>
@@ -191,7 +140,7 @@ namespace Search_Shell.Game
         public void ControllObject(GridObject obj)
         {
             if (subLevelObject != null)
-                GetHighLighter(subLevelObject).SetSelected(HighLight.None);
+                GetHighLighter(subLevelObject).SetSelected(HighLight.Highlighted);
             subLevelObject = obj;
             subLevelCamera.GetComponent<CameraFollow>().SetTransform(subLevelObject.transform);
             UpdateReachableObjects();
@@ -227,8 +176,10 @@ namespace Search_Shell.Game
             DetectorController detect = subLevelObject.GetComponent<DetectorController>();
             if (detect == null) return;
             HashSet<GridObject> objs = detect.NearObjects();
+            objs.Add(subLevelObject);
             nearObjects.RemoveWhere((obj) => objs.Contains(obj));
             UpdateMaterial(HighLight.None);
+            objs.Remove(subLevelObject);
             nearObjects = objs;
             UpdateMaterial(HighLight.Highlighted);
         }
@@ -240,6 +191,7 @@ namespace Search_Shell.Game
             if (Physics.Raycast(r, out hit))
             {
                 GridObject obj = hit.collider.GetComponent<GridObject>();
+                if(obj == null) return;
                 if (nearObjects.Contains(obj))
                 {
                     saveManager.SaveTurn();
@@ -367,6 +319,7 @@ namespace Search_Shell.Game
             canControll = false;
             yield return new WaitForFixedUpdate();
             CameraFollow cam = subLevelCamera.GetComponent<CameraFollow>();
+            cam.animating = true;
             SkyboxHandler handler = subLevelCamera.GetComponent<SkyboxHandler>();
             
             saveManager.Save();
@@ -396,12 +349,14 @@ namespace Search_Shell.Game
             }
             handler.SetOpacity(0);
             canControll = true;
+            cam.animating = false;
         }
 
         IEnumerator CameraTransition()
         {
             canControll = false;
             CameraFollow cam = subLevelCamera.GetComponent<CameraFollow>();
+            cam.animating = true;
             SkyboxHandler handler = subLevelCamera.GetComponent<SkyboxHandler>();
             LevelProperties subLevelProperties = subLevel.GetComponent<LevelProperties>();
             cam.SetTransform(subLevel.transform);
@@ -435,6 +390,7 @@ namespace Search_Shell.Game
 
 
             canControll = true;
+            cam.animating = false;
         }
 
     }

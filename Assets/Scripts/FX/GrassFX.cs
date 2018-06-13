@@ -87,7 +87,7 @@ public class GrassFX : MonoBehaviour {
 		spacement.x = (bounds.size.x - 2 * offset.x)/spacement.x;
 		spacement.y = (bounds.size.z - 2 * offset.y)/spacement.y;
 
-		int maxIter = 200;
+		int maxIter = 2000;
 		for(float i = bounds.min.x + offset.x; i <= bounds.max.x - offset.x;){
 			for(float j = bounds.min.z + offset.y; j <= bounds.max.z - offset.y;){
 				if(maxIter -- <= 0) return;

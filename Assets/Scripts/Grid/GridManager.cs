@@ -19,18 +19,21 @@ namespace Search_Shell.Grid
     Dictionary<Vector3, GridObject> position2Object = new Dictionary<Vector3, GridObject>();
 
     private HashSet<IGridEvents> listeners = new HashSet<IGridEvents>();
-    IEnumerator Start()
+
+    private bool initialized = false;
+    void Start(){
+      Initialize();
+    }
+    public void Initialize()
     {
-
-      yield return new WaitForFixedUpdate();
-
+      if(initialized) return;
+      initialized = true;
       GridObject[] objs = GetComponentsInChildren<GridObject>();
 
       foreach (GridObject obj in objs)
       {
         obj.SnapPosition();
         obj.CalculateVolume();
-        // Debug.Log("Registered:" + obj.name);
         RegisterObject(obj);
       }
     }

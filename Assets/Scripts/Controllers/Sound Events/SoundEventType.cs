@@ -25,7 +25,6 @@ public class SoundEventType{
 	}
 
 	public void PlayStartEvents(SurfaceType type){
-		Debug.Log("HERE");
 		if(IsOfType(type))
 			startEvent.Post(gameObject);
 	}

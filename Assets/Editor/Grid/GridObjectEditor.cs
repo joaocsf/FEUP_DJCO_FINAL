@@ -32,7 +32,9 @@ public class GridObjectEditor : Editor {
 		center = obj.transform.TransformPoint(center);
 
 		EditorGUI.BeginChangeCheck();
+		Handles.color = Color.red;
 		max = Handles.FreeMoveHandle(max, Quaternion.identity, 0.2f, Vector3.one, Handles.SphereHandleCap);
+		Handles.color = Color.blue;
 		min = Handles.FreeMoveHandle(min, Quaternion.identity, 0.2f, Vector3.one, Handles.SphereHandleCap);
 		if(EditorGUI.EndChangeCheck()){
 	
@@ -47,6 +49,7 @@ public class GridObjectEditor : Editor {
 		}
 
 		EditorGUI.BeginChangeCheck();
+		Handles.color = Color.green;
 		center = Handles.FreeMoveHandle(center, Quaternion.identity, 0.3f, Vector3.one, Handles.SphereHandleCap);
 		if(EditorGUI.EndChangeCheck()){
 			center = obj.transform.InverseTransformPoint(center);
@@ -79,6 +82,8 @@ public class GridObjectEditor : Editor {
 			GridObject[] objs = obj.transform.parent.GetComponentsInChildren<GridObject>();
 
 			foreach(GridObject obj in objs){
+				obj.SnapPosition();
+				obj.CalculateVolume();
 				action(obj);
 			}
 	}

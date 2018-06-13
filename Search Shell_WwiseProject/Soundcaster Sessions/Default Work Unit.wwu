@@ -81,11 +81,11 @@
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="Idle" ID="{5F557654-9A3F-4E11-97D4-CEF08E1B16A3}"/>
+						<CurrentStateRef Name="Menu" ID="{12E0F065-7432-4820-9ED4-21E7B108D596}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true">
 						<CurrentSwitchRef Name="Grass" ID="{7048AED2-8A6D-468D-81D8-C066C1B5FBF2}"/>
-						<CurrentSwitchRef Name="Box" ID="{34893C53-7B50-42E7-BCF6-7168CA997B7D}"/>
+						<CurrentSwitchRef Name="Nature" ID="{1285EB63-DB83-470D-AF44-571CBEB3754C}"/>
 						<CurrentSwitchRef Name="Angry" ID="{E6F7FA30-F2F6-4A38-823C-7E9EE9E973E6}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
@@ -98,10 +98,6 @@
 						<Module>
 							<ObjectRef Name="Play_Steps" ID="{40D48A9C-AE68-4CE6-AFEA-66A0532B1FDB}" WorkUnitID="{F52FB322-7C49-4ECD-AD19-240917E57E12}"/>
 							<Position X="0" Y="1"/>
-						</Module>
-						<Module>
-							<ObjectRef Name="Teste Rebola" ID="{E0157709-620E-4490-A120-1C5D73A7888B}" WorkUnitID="{3FD4EC09-6A74-4A18-B270-F423860FA820}"/>
-							<Position X="1" Y="0"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">

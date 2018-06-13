@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{295FAD4A-AB50-4CC2-8076-E68366A12596}" SchemaVersion="85">
 	<Events>
-		<WorkUnit Name="Musica" ID="{295FAD4A-AB50-4CC2-8076-E68366A12596}" PersistMode="Standalone"/>
+		<WorkUnit Name="Musica" ID="{295FAD4A-AB50-4CC2-8076-E68366A12596}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Gameplay_Start" ID="{171EE4BC-491D-4F64-ACBF-8FFD6C870D88}">
+					<ChildrenList>
+						<Action Name="" ID="{799471CC-EC70-4DE4-B89D-00B00E74956D}" ShortID="420385127">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Gameplay" ID="{1CCAEACF-B967-4ED1-8C4D-FBBA386FFB9A}" WorkUnitID="{68AABD09-94EE-4313-98D4-C1AA99A96AE8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Musica" ID="{834A8406-BAF7-45F8-AC60-C152B3D7D7A6}">
+					<ChildrenList>
+						<Action Name="" ID="{0883BE3D-6273-4974-B035-9A66121C0E1E}" ShortID="614092159">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shell_Music" ID="{707DF71A-8298-4B99-9886-F37155E3713F}" WorkUnitID="{B58C09A5-774B-4468-8A99-A06835937C72}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{263CE8D4-7087-4D36-803D-73CD92219CD3}" ShortID="661899351">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Gameplay" ID="{1CCAEACF-B967-4ED1-8C4D-FBBA386FFB9A}" WorkUnitID="{68AABD09-94EE-4313-98D4-C1AA99A96AE8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{4DE7A2CA-E4CA-48BB-8D32-5C242523029E}" ShortID="877907589">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shell_Music" ID="{707DF71A-8298-4B99-9886-F37155E3713F}" WorkUnitID="{B58C09A5-774B-4468-8A99-A06835937C72}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Idle_Start" ID="{E13B2E44-9B8C-414D-AB2F-B915134CC0DA}">
+					<ChildrenList>
+						<Action Name="" ID="{0CB34628-3C52-4D98-9D0F-0019ED150AED}" ShortID="406815777">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Idle" ID="{5F557654-9A3F-4E11-97D4-CEF08E1B16A3}" WorkUnitID="{68AABD09-94EE-4313-98D4-C1AA99A96AE8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Menu_Start" ID="{90034812-B891-415A-AD1C-7AB451C1E68A}">
+					<ChildrenList>
+						<Action Name="" ID="{D22897B4-E1A9-44E8-96A7-3F016229B5D9}" ShortID="187117515">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu" ID="{12E0F065-7432-4820-9ED4-21E7B108D596}" WorkUnitID="{68AABD09-94EE-4313-98D4-C1AA99A96AE8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

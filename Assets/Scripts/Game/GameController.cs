@@ -17,6 +17,8 @@ namespace Search_Shell.Game
 
         public GameObject music;
 
+        public AK.Wwise.Event[] defaultSoulEvents;
+
         [Header("FX")]
         public Color highlighted;
         public Color selected;
@@ -148,6 +150,11 @@ namespace Search_Shell.Game
             subLevelCamera.GetComponent<CameraFollow>().SetTransform(subLevelObject.transform);
             UpdateReachableObjects();
             GetHighLighter(obj).SetSelected(HighLight.Selected);
+
+            SoulState state = obj.GetComponent<SoulState>();
+
+            AK.Wwise.Event _event = (state != null? state._event : defaultSoulEvents[UnityEngine.Random.Range(0,defaultSoulEvents.Length)]);
+            _event.Post(music); 
             IControllEvents[] events = subLevelObject.GetComponents<IControllEvents>();
             foreach (IControllEvents listener in events)
             {

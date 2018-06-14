@@ -365,16 +365,9 @@ MonoBehaviour:
       minDuration: 0
   ExpandedItems:
   - /Search Shell_WwiseProject
-  - /Search Shell_WwiseProject/Events
-  - /Search Shell_WwiseProject/Events/Musica
-  - /Search Shell_WwiseProject/SoundBanks
-  - /Search Shell_WwiseProject/SoundBanks/Default Work Unit
-  - /Search Shell_WwiseProject/States
-  - /Search Shell_WwiseProject/States/Default Work Unit
-  - /Search Shell_WwiseProject/States/Default Work Unit/SoulStates
   - /Search Shell_WwiseProject/Switches
   - /Search Shell_WwiseProject/Switches/Default Work Unit
-  - /Search Shell_WwiseProject/Switches/Default Work Unit/Place
+  - /Search Shell_WwiseProject/Switches/Default Work Unit/Soul_Switches
   language: English(US)
   lowerPoolSize: 2048
   m_lastPopulateTimePart2: 0

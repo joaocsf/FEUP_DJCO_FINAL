@@ -64,9 +64,9 @@ namespace Search_Shell.Game
             saveManager = new SaveManager(this);
             SetupCamera();
             UIManager = GameObject.FindObjectOfType<UIManager>();
-            //PostProcessVolume volume = GameObject.Find("PostProcessGlobal").GetComponent<PostProcessVolume>();
-            //volume.profile.TryGetSettings(out skyboxEffect);
-            //skyboxEffect.blend.value = 0; 
+            PostProcessVolume volume = GameObject.Find("PostProcessGlobal").GetComponent<PostProcessVolume>();
+            volume.profile.TryGetSettings(out skyboxEffect);
+            skyboxEffect.blend.value = 0; 
         }
 
         void OnDrawGizmos()

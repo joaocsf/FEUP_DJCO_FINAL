@@ -51,3 +51,5 @@ Plugins.meta
 logRunSetup.txt
 /Assets/Wwise/Deployment/Plugins
 /Search Shell_WwiseProject/GeneratedSoundBanks
+/Assets/PostProcessing
+/Assets/PostProcessing.meta

@@ -70,7 +70,7 @@
 			f = 1 - clamp(f, 0, 1);
 			f *= _SelectionThreshold;
 			o.Albedo = lerp(c.rgb, _SelectionColor, f);
-			o.Emission = lerp(fixed4(0,0,0,0), _SelectionColor, f);
+			o.Emission = lerp(fixed4(0,0,0,0), _SelectionColor * 5, f);
 			o.Metallic = lerp(_Metallic, 0, f);
 			o.Smoothness = lerp(_Glossiness, 0, f);
 			o.Alpha = c.a;

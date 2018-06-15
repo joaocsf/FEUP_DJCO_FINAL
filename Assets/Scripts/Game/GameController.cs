@@ -8,6 +8,7 @@ using Search_Shell.Controllers.Movement;
 using Search_Shell.Game.Controll;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace Search_Shell.Game
 {
@@ -18,6 +19,8 @@ namespace Search_Shell.Game
         public GameObject music;
 
         public AK.Wwise.Event[] defaultSoulEvents;
+
+        public SkyboxEffect skyboxEffect;
 
         [Header("FX")]
         public Color highlighted;
@@ -61,7 +64,9 @@ namespace Search_Shell.Game
             saveManager = new SaveManager(this);
             SetupCamera();
             UIManager = GameObject.FindObjectOfType<UIManager>();
-            
+            //PostProcessVolume volume = GameObject.Find("PostProcessGlobal").GetComponent<PostProcessVolume>();
+            //volume.profile.TryGetSettings(out skyboxEffect);
+            //skyboxEffect.blend.value = 0; 
         }
 
         void OnDrawGizmos()
@@ -324,6 +329,11 @@ namespace Search_Shell.Game
             Destroy(obj.gameObject);
         }
 
+        private void SetSkyboxEffect(float f){
+            if(skyboxEffect != null)
+                skyboxEffect.blend.value = f;
+        }
+
         IEnumerator InverseCameraTansition(String sublevelName)
         {
             canControll = false;
@@ -353,11 +363,12 @@ namespace Search_Shell.Game
             while (time < transitionTime)
             {
                 time += Time.fixedDeltaTime;
-                handler.SetOpacity(1f - time / transitionTime);
+                SetSkyboxEffect(1f - time / transitionTime);
                 cam.radius = radius + cameraCurve.Evaluate(time / transitionTime) * diff;
                 yield return new WaitForFixedUpdate();
             }
-            handler.SetOpacity(0);
+            SetSkyboxEffect(0);
+            cam.radius = radius + cameraCurve.Evaluate(time / transitionTime) * diff;
             canControll = true;
             cam.animating = false;
         }
@@ -378,11 +389,11 @@ namespace Search_Shell.Game
             while (time < transitionTime)
             {
                 time += Time.fixedDeltaTime;
-                handler.SetOpacity(time / transitionTime);
+                SetSkyboxEffect(time / transitionTime);
                 cam.radius = radius + cameraCurve.Evaluate(time / transitionTime) * diff;
                 yield return new WaitForFixedUpdate();
             }
-            handler.SetOpacity(0);
+            SetSkyboxEffect(0);
 
             float dist = levelCamera.transform.localPosition.magnitude;
             subLevelCamera.transform.position = levelCamera.transform.position;

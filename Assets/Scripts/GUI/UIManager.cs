@@ -2,46 +2,40 @@
 using UnityEngine.UI;
 using System.Collections;
 using Search_Shell.Game;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject mainPanel;
     public GameObject gamePanel;
     private GameController gameControl;
+    private CameraFollow cameraFollow;
+    public AK.Wwise.State stateMenu;
+    public AK.Wwise.State stateGame;
     
-    public Button btnExit;
-    public Button btnContinue;
-    public Button btnNewGame;
-    public Button btnSettings;
-    public Button btnMenu;
-    public Button btnBack;
-    public Button btnLeft;
-    public Button btnRight;
     private bool active = true;
 
     void Start()
     {
-        Button bExit = btnExit.GetComponent<Button>();
-        Button bNewGame = btnNewGame.GetComponent<Button>();
-        Button bSettings = btnSettings.GetComponent<Button>();
-        Button bContinue = btnContinue.GetComponent<Button>();
-        Button bMenu = btnMenu.GetComponent<Button>();
-        Button bLeft = btnLeft.GetComponent<Button>();
-        Button bRight = btnRight.GetComponent<Button>();
         gameControl=FindObjectOfType<GameController>();
-        // Button bBack = btnBack.GetComponent<Button>();
-
-        bExit.onClick.AddListener(ClickExit);
-        bContinue.onClick.AddListener(ClickContinue);
-        bNewGame.onClick.AddListener(ClickNewgame);
-        bSettings.onClick.AddListener(ClickSettings);
-        bMenu.onClick.AddListener(ToggleMenu);
+        cameraFollow =FindObjectOfType<CameraFollow>();
+    
+    }
+    public void clickRotate(int i) 
+    {
+        cameraFollow.CameraRotate(i);
+    }
+    public void clickUndo()
+    {
+        gameControl.Undo();
     }
     public void ClickContinue()
     {
+        ToggleMenu();
     }
     public void ClickNewgame()
     {
+        SceneManager.LoadScene(0);
     }
     public void ClickExit()
     {
@@ -64,5 +58,6 @@ public class UIManager : MonoBehaviour
         active = !active;
 
         mainPanel.SetActive(active);
+        gameControl.PlayState(active? stateMenu: stateGame);
     }
 }

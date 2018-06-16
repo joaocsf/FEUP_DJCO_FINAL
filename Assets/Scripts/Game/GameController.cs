@@ -60,6 +60,7 @@ namespace Search_Shell.Game
         {
             saveManager = new SaveManager(this);
             SetupCamera();
+            canControll = false;
             UIManager = GameObject.FindObjectOfType<UIManager>();
             PostProcessVolume volume = GameObject.Find("PostProcessGlobal").GetComponent<PostProcessVolume>();
             volume.profile.TryGetSettings(out skyboxEffect);
@@ -253,8 +254,6 @@ namespace Search_Shell.Game
                 saveManager.Load();
             }
 
-            Application.Quit();
-
             if (Input.GetMouseButtonDown(0))
                 SwitchObject();
 
@@ -263,7 +262,7 @@ namespace Search_Shell.Game
                 0,
                 Input.GetAxisRaw("Vertical"));
 
-            if (input == lastInput) return;
+            if (input.magnitude == 0) return;
             lastInput = input;
             if (input.magnitude == 0) return;
             input = subLevelCamera.GetComponent<CameraFollow>().GetPlaneDirection(input);

@@ -16,7 +16,8 @@ public sealed class SkyboxEffect : PostProcessEffectSettings {
 public sealed class SkyboxRenderer : PostProcessEffectRenderer<SkyboxEffect>
 {
     public override void Render(PostProcessRenderContext context){
-        var sheet = context.propertySheets.Get(Shader.Find("Hidden/SkyboxSwitcher"));
+        Shader s = Shader.Find("Custom/SkyboxSwitcher");
+        var sheet = context.propertySheets.Get(s);
         sheet.properties.SetFloat("_Opacity", settings.blend);
         context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);
     }

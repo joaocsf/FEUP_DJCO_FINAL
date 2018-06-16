@@ -13,6 +13,9 @@ namespace Search_Shell.Game.Controll{
 		private GameObject cam = null;
 		private Vector3 cameraLookPos;
 
+		public float waitTime = 5f;
+		public string endString;
+
     public void OnControll()
     {
 			animator.SetBool("play", true);
@@ -23,6 +26,7 @@ namespace Search_Shell.Game.Controll{
 			camF.enabled = false;
 			cam = camF.gameObject;
 			cameraLookPos = cam.transform.position + cam.transform.forward;
+			StartCoroutine(OpenUI());
 		}
 
 		void Update()
@@ -32,6 +36,15 @@ namespace Search_Shell.Game.Controll{
 				cameraLookPos = Vector3.Lerp(cameraLookPos, kite.transform.position, 0.2f* Time.deltaTime);
 				cam.transform.LookAt(cameraLookPos);
 			}
+		}
+
+
+		IEnumerator OpenUI(){
+			UIManager UIManager = FindObjectOfType<UIManager>();
+			UIManager.DisableUI();
+			UIManager.end = true;
+			yield return new WaitForSeconds(waitTime);
+			UIManager.ActivateEnding(true, endString);
 		}
 	}
 }

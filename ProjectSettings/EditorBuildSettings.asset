@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/lazaro2.unity
-    guid: 00a6a6afce9839942adee631048fa519
+    path: Assets/Scenes/joao.unity
+    guid: dbe61311e2e4abf459772eff6f2e4a2a

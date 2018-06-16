@@ -25,7 +25,6 @@ namespace Search_Shell.Controllers.Animation {
 
 			finalRotation = input.x > 0? 90f : input.x < 0 ? -90f : input.z > 0 ? 0f : 180f;
 			finalRotation += offSet;
-			Debug.Log("Look Animation" + finalRotation);
 			initialRotation = obj.localEulerAngles.y;
 
     }
@@ -34,10 +33,8 @@ namespace Search_Shell.Controllers.Animation {
     {
 			time -= delta;
 			float t = curve.Evaluate( 1f - time/duration );
-			Debug.Log(t);	
 			float finalY = Mathf.LerpAngle(initialRotation, finalRotation, t);
 			
-			Debug.Log(finalY);	
 			obj.localEulerAngles = new Vector3(0,finalY,0);
 
 			if(time <= 0){	

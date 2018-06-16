@@ -2696,6 +2696,11 @@ MonoBehaviour:
   nextLevel: Test/Test1
   scale: 9.5
   offset: {x: 0, y: -0.5, z: 0}
+  _switch:
+    ID: 546945280
+    valueGuid: 533c8934507be742bcf67168ca997b7d
+    groupGuid: c4296457fa30c848aa9609de6bf8a096
+    groupID: 64340058
 --- !u!114 &114663933438472198
 MonoBehaviour:
   m_ObjectHideFlags: 1

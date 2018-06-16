@@ -57,7 +57,7 @@ namespace Search_Shell.Game
 
         private SaveManager saveManager;
 
-        private bool canControll = true;
+        public bool canControll = true;
 
         void Start()
         {
@@ -87,6 +87,14 @@ namespace Search_Shell.Game
 
             GridManager level = LoadLevel(properties.nextLevel);
             SetLevel(level);
+        }
+
+        public void PlaySwitch(AK.Wwise.Switch _switch){
+            AkSoundEngine.SetSwitch((uint)_switch.groupID, (uint)_switch.ID, music);
+        }
+
+        public void PlayState(AK.Wwise.State _state){
+            AkSoundEngine.SetState((uint)_state.groupID, (uint)_state.ID);
         }
 
 
@@ -197,6 +205,12 @@ namespace Search_Shell.Game
             objs.Remove(subLevelObject);
             nearObjects = objs;
             UpdateMaterial(HighLight.Highlighted);
+        }
+
+        public void DisableHighlights() {
+           nearObjects.Add(subLevelObject); 
+           UpdateMaterial(HighLight.None);
+           nearObjects.Remove(subLevelObject);
         }
 
         void SwitchObject()

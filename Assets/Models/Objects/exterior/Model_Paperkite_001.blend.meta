@@ -42,6 +42,7 @@ ModelImporter:
     2300012: la_o4
     2300014: Paomadeiraver
     2300016: Paumadeirahor
+    2300018: kite
     3300000: BezierCurve
     3300002: BezierCurve_001
     3300004: GRID
@@ -51,6 +52,7 @@ ModelImporter:
     3300012: la_o4
     3300014: Paomadeiraver
     3300016: Paumadeirahor
+    3300018: kite
     4300000: la_o4
     4300002: la_o3
     4300004: la_o2
@@ -138,7 +140,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

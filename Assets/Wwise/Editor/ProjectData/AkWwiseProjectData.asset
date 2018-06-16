@@ -365,6 +365,8 @@ MonoBehaviour:
       minDuration: 0
   ExpandedItems:
   - /Search Shell_WwiseProject
+  - /Search Shell_WwiseProject/Events
+  - /Search Shell_WwiseProject/Events/Default Work Unit
   - /Search Shell_WwiseProject/Switches
   - /Search Shell_WwiseProject/Switches/Default Work Unit
   - /Search Shell_WwiseProject/Switches/Default Work Unit/Soul_Switches

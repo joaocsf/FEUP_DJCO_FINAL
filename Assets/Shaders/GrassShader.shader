@@ -63,9 +63,9 @@
 			float zz = cos(_Time.w + v.vertex.z);
 			float2 pos = getPosition(v.vertex.xyz);
 			float4 colors = tex2Dlod(_Map, float4( pos ,0,0));
-			float height = colors.r * _MaxHeight;
+			float height = colors.r * _MaxHeight * v.color.r;
 			o.pos = v.vertex;
-			v.vertex.y -= height * v.color.r + height;
+			v.vertex.y -= height * v.color.r + height - _Height*height;
 			v.vertex.xyz += float3(xx, 00, zz) * (1.0 - colors.r) * _Wind *  v.color.r;
 
 		}

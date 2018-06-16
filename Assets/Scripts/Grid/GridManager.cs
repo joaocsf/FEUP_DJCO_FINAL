@@ -302,7 +302,7 @@ namespace Search_Shell.Grid
         GridObject existing = AssignObjectToPosition(obj, position);
         if (existing != null)
         {
-          Debug.Log(existing.name + " " + position);
+          Debug.LogWarning(existing.name + " " + position);
           ClearObject(obj);
           return false;
         }

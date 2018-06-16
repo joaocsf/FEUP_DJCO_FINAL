@@ -208,9 +208,7 @@ namespace Search_Shell.Game
         }
 
         public void DisableHighlights() {
-           nearObjects.Add(subLevelObject); 
            UpdateMaterial(HighLight.None);
-           nearObjects.Remove(subLevelObject);
         }
 
         void SwitchObject()

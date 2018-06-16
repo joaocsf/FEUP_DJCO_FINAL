@@ -31,8 +31,21 @@ namespace Search_Shell.Game{
 		private Renderer[] _renderer;
 		private Renderer[] renderer{
 			get{ 
-				if(_renderer == null) _renderer = GetComponentsInChildren<Renderer>();
+				if(_renderer == null) {
+					List<Renderer> tmp = new List<Renderer>();	
+					SearchRenderer(transform, ref tmp);
+					_renderer = tmp.ToArray();
+				}
 				return _renderer;
+			}
+		}
+
+		private void SearchRenderer(Transform ts, ref List<Renderer> list){
+			foreach(Transform t in ts){
+				Renderer r = t.GetComponent<Renderer>();
+				if(r != null && t.tag != "IgnoreMaterials")
+					list.Add(r);
+				SearchRenderer(t, ref list);	
 			}
 		}
 

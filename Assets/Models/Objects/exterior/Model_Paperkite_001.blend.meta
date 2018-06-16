@@ -33,6 +33,8 @@ ModelImporter:
     2100006: Untitled
     2100008: Material_001
     2100010: Material
+    2100012: Material_002
+    2100014: Material_006
     2300000: BezierCurve
     2300002: BezierCurve_001
     2300004: GRID
@@ -43,6 +45,7 @@ ModelImporter:
     2300014: Paomadeiraver
     2300016: Paumadeirahor
     2300018: kite
+    2300020: //RootNode
     3300000: BezierCurve
     3300002: BezierCurve_001
     3300004: GRID
@@ -53,6 +56,7 @@ ModelImporter:
     3300014: Paomadeiraver
     3300016: Paumadeirahor
     3300018: kite
+    3300020: //RootNode
     4300000: la_o4
     4300002: la_o3
     4300004: la_o2

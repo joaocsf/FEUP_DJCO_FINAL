@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Search_Shell.Game;
+
 public class UIManager : MonoBehaviour
 {
     public GameObject mainPanel;
     public GameObject gamePanel;
-
+    private GameController gameControl;
+    
     public Button btnExit;
     public Button btnContinue;
     public Button btnNewGame;
@@ -25,6 +28,7 @@ public class UIManager : MonoBehaviour
         Button bMenu = btnMenu.GetComponent<Button>();
         Button bLeft = btnLeft.GetComponent<Button>();
         Button bRight = btnRight.GetComponent<Button>();
+        gameControl=FindObjectOfType<GameController>();
         // Button bBack = btnBack.GetComponent<Button>();
 
         bExit.onClick.AddListener(ClickExit);
@@ -47,10 +51,18 @@ public class UIManager : MonoBehaviour
     public void ClickSettings()
     {
     }
+    void Update () {
+        if (Input.GetKeyDown("escape"))
+        {
+            ToggleMenu();
+        }
+    }
     public void ToggleMenu()
     {
         gamePanel.SetActive(active);
+        gameControl.SetCanControl(active);        
         active = !active;
+
         mainPanel.SetActive(active);
     }
 }

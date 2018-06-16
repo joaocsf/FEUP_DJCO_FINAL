@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -331,11 +331,17 @@ MonoBehaviour:
   angle: 45
   radius: 3
   mouse: {x: 44, y: 45}
-  tempMousePos: {x: 0, y: 0}
+  offsetAngle: 0
+  mousePositionOffset: {x: 0, y: 0}
   obj: {fileID: 0}
   lerpVelocity: 10
   collide: 0
   lastPressed: {x: 0, y: 0}
+  debug: 0
+  animating: 0
+  lm:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &104164721
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +505,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec241948e864d34288787314bdd76e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 0}
+  defaultSoulEvents: []
+  skyboxEffect: {fileID: 0}
   highlighted: {r: 0.32413793, g: 1, b: 0, a: 1}
   selected: {r: 0, g: 0.006896496, b: 1, a: 1}
   selectedShaderMat: {fileID: 2100000, guid: 66eed73ee117e264e8de42f20ec0216c, type: 2}
@@ -2001,6 +2010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam2: {fileID: 44562679}
   scale: 10
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1575706930
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,14 +28,12 @@ namespace Search_Shell.Game
         public Material selectedShaderMat;
 
         public GridManager level;
-
         public string levelLayer = "Level";
         public string subLevelLayer = "SubLevel";
 
         public string startingLevel = "";
         public float defaultCameraZoom = 5;
         public AnimationCurve cameraCurve;
-
 
         public float transitionTime = 1;
         public GridManager subLevel;
@@ -53,7 +51,6 @@ namespace Search_Shell.Game
         private HashSet<GridObject> nearObjects = new HashSet<GridObject>();
 
         private HashSet<GridObject> movedObjects = new HashSet<GridObject>();
-
 
         private SaveManager saveManager;
 
@@ -73,10 +70,15 @@ namespace Search_Shell.Game
         {
         }
 
+       public void SetCanControl(bool active) {
+            canControll = active;
+        }
+
         void SetupCamera()
         {
             LoadStartingLevel(startingLevel);
         }
+        
 
         public void LoadStartingLevel(string name)
         {
@@ -98,6 +100,10 @@ namespace Search_Shell.Game
         }
 
 
+        public void Undo ()
+        {
+            saveManager.Undo();
+        }
 
         public void SetLevel(GridManager level, GridObject levelObj = null)
         {
@@ -231,11 +237,7 @@ namespace Search_Shell.Game
         {
 
             if (!canControll) return;
-
-            if (Input.GetKeyDown("escape"))
-            {
-                UIManager.ToggleMenu();
-            }
+ 
 
             if (Input.GetKeyDown("u"))
             {

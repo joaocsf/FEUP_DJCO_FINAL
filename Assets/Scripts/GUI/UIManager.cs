@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using Search_Shell.Game;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class UIManager : MonoBehaviour
 
     public FadeController optionsPanel;
     public FadeController endingPanelMenu;
+
+    public GameObject menuSelect;
+    public GameObject optionsSelect;
+    public GameObject endSelect;
+
     private GameController gameControl;
     private CameraFollow cameraFollow;
     public AK.Wwise.State stateMenu;
@@ -53,10 +59,29 @@ public class UIManager : MonoBehaviour
     {
         ClickOpenOptions(true);
     }
+
+    Vector3 lastMouse;
+    void EnableMouse(bool b){
+        lastMouse = Input.mousePosition;
+        Cursor.visible = b;
+        cameraFollow.useMouse = b;
+    }
     void Update () {
-        if (Input.GetKeyDown("escape"))
+        if(lastMouse!=Input.mousePosition)
+            EnableMouse(true);
+
+        lastMouse = Input.mousePosition;
+        if (Input.GetButtonDown("Escape"))
         {
             ToggleMenu();
+        }
+
+        if (Input.GetButtonDown("Select"))
+            ClickNewgame();
+
+        if(Input.GetAxis("Vertical1") != 0){
+            ActivatePanel(gamePanel, false);
+            EnableMouse(false);
         }
     }
     public void ToggleMenu()
@@ -68,6 +93,9 @@ public class UIManager : MonoBehaviour
         gameControl.SetCanControl(active);        
         active = !active;
 
+        if(active){
+            EventSystem.current.SetSelectedGameObject(menuSelect);
+        }
         ActivatePanel(mainPanel,active);
         gameControl.PlayState(active? stateMenu: stateGame);
     }
@@ -79,11 +107,13 @@ public class UIManager : MonoBehaviour
     public void ClickOpenMenu(bool open){
         DisableUI();
         ActivatePanel(mainPanel, open);
+        if (open) EventSystem.current.SetSelectedGameObject(menuSelect);
     }
 
     public void ClickOpenOptions(bool options){
         DisableUI();
         ActivatePanel(optionsPanel, options);
+        EventSystem.current.SetSelectedGameObject(optionsSelect);
     }
     public void DisableUI(){
         ActivatePanel(mainPanel,false);
@@ -98,5 +128,6 @@ public class UIManager : MonoBehaviour
         ActivatePanel(gamePanel,false);
         this.endingText.text = endingText;
         ActivatePanel(endingPanelMenu, setMenu);
+        EventSystem.current.SetSelectedGameObject(endSelect);
     }
 }

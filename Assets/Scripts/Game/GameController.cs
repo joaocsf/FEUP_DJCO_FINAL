@@ -25,6 +25,7 @@ namespace Search_Shell.Game
         [Header("FX")]
         public Color highlighted;
         public Color selected;
+        public Color subSelected;
         public Material selectedShaderMat;
 
         public GridManager level;
@@ -49,12 +50,15 @@ namespace Search_Shell.Game
         private Vector3 lastInput;
 
         private HashSet<GridObject> nearObjects = new HashSet<GridObject>();
+        private List<GridObject> nearObjectsList = new List<GridObject>();
 
         private HashSet<GridObject> movedObjects = new HashSet<GridObject>();
 
         private SaveManager saveManager;
 
         public bool canControll = true;
+
+        private int subSelectedObj = 0;
 
         void Start()
         {
@@ -189,6 +193,7 @@ namespace Search_Shell.Game
                 hl = obj.gameObject.AddComponent<HighLighter>();
                 hl.highlighted = highlighted;
                 hl.selected = selected;
+                hl.subSelected = subSelected;
                 hl.CopyMaterial(selectedShaderMat);
             }
             return hl;
@@ -212,19 +217,38 @@ namespace Search_Shell.Game
             objs.Remove(subLevelObject);
             nearObjects = objs;
             UpdateMaterial(HighLight.Highlighted);
+
+            nearObjectsList = new List<GridObject>(nearObjects);
+
+            subSelectedObj = 0;
+            UpdateSubSelected(0);
+        }
+
+        void UpdateSubSelected(int increase = 0){
+            int old = subSelectedObj;
+            subSelectedObj+=increase;
+            if(nearObjectsList.Count <= 0) return;
+            subSelectedObj %= nearObjectsList.Count;
+
+            if(subSelectedObj != old && old < nearObjectsList.Count){
+                GetHighLighter(nearObjectsList[old]).SetSelected(HighLight.Highlighted);
+            }
+
+            GetHighLighter(nearObjectsList[subSelectedObj]).SetSelected(HighLight.SubSelected);
         }
 
         public void DisableHighlights() {
            UpdateMaterial(HighLight.None);
         }
 
-        void SwitchObject()
+        void SwitchObject(GridObject obj2 = null)
         {
             RaycastHit hit;
             Ray r = subLevelCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(r, out hit))
+            if (Physics.Raycast(r, out hit) || obj2)
             {
-                GridObject obj = hit.collider.GetComponent<GridObject>();
+                GridObject obj = obj2 != null? obj2 : hit.collider.GetComponent<GridObject>();
+
                 if(obj == null) return;
                 if (nearObjects.Contains(obj))
                 {
@@ -240,7 +264,7 @@ namespace Search_Shell.Game
             if (!canControll) return;
  
 
-            if (Input.GetKeyDown("u"))
+            if (Input.GetKeyDown("u") || Input.GetButtonDown("B"))
             {
                 saveManager.Undo();
             }
@@ -256,6 +280,14 @@ namespace Search_Shell.Game
 
             if (Input.GetMouseButtonDown(0))
                 SwitchObject();
+
+            if(Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.LeftControl)){
+                SwitchObject(nearObjectsList.Count > subSelectedObj? nearObjectsList[subSelectedObj] : null);
+            }
+
+            if(Input.GetButtonDown("X") || Input.GetKeyDown(KeyCode.Space)){
+               UpdateSubSelected(1); 
+            }
 
             Vector3 input = new Vector3(
                 Input.GetAxisRaw("Horizontal"),

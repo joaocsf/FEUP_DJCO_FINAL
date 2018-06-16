@@ -34,6 +34,8 @@ public class CameraFollow : MonoBehaviour
 
     public LayerMask lm;
 
+    public bool useMouse = true;
+
     void Start()
     {
 
@@ -48,17 +50,19 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetButtonDown("Q"))
             lastPressed.x = 1;
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetButtonDown("E"))
             lastPressed.x = -1;
         else
             lastPressed.x = 0;
         //mouse.x += Input.GetAxis("Mouse X")  * sensitivity;
         //mouse.y -= Input.GetAxis("Mouse Y") * sensitivity;
-        mousePositionOffset = new Vector2(
-            1 - Mathf.Clamp01(Input.mousePosition.x/Screen.width)*2,
-            1 - Mathf.Clamp01(Input.mousePosition.y/Screen.height)*2);
+        mousePositionOffset = new Vector2(-Input.GetAxis("Horizontal1"), Input.GetAxis("Vertical1"));
+        if(mousePositionOffset.magnitude == 0 && useMouse)
+            mousePositionOffset = new Vector2(
+                1 - Mathf.Clamp01(Input.mousePosition.x/Screen.width)*2,
+                1 - Mathf.Clamp01(Input.mousePosition.y/Screen.height)*2);
 
         this.CameraRotate(lastPressed.x);
         mouse.y = Mathf.Clamp(mouse.y, -80, 70);

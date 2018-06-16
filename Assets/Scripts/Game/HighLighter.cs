@@ -6,6 +6,7 @@ using UnityEngine;
 namespace Search_Shell.Game{
 	public enum HighLight {
 		Selected,
+		SubSelected,
 		Highlighted,
 		None
 	}
@@ -15,6 +16,7 @@ namespace Search_Shell.Game{
 		
 		public Color selected;	
 		public Color highlighted;	
+		public Color subSelected;	
 		public Shader selectedShader;
 
 		public float selectionRadius;
@@ -25,6 +27,7 @@ namespace Search_Shell.Game{
 		private static float time = 3f;
 		private float lastLerpValue = 0;
 
+		private float _direction;
 		
 		private Dictionary<Renderer, Shader> current;
 
@@ -66,22 +69,23 @@ namespace Search_Shell.Game{
 				r.material.SetFloat("_SelectionScale", selectionScale);
 				r.material.SetTexture("_OverLay", overlay);
 			}
-			StartCoroutine(LerpOverLay(0, null));
+			_direction = 0;
+			StartCoroutine(LerpOverLay(null));
 		}
 
-		private IEnumerator LerpOverLay(float direction, Action action){
+		private IEnumerator LerpOverLay(Action action){
 			float t = lastLerpValue;
-			if(direction > 0.5f) t = 0;
+			if(_direction > 0.5f) t = 0;
 
 			while(t <= 1f){
 				t+=Time.fixedDeltaTime * time;
 
 				foreach(Renderer r in renderer)
-					r.material.SetFloat("_SelectionThreshold", Mathf.Abs(Mathf.Clamp01(t) - direction));
+					r.material.SetFloat("_SelectionThreshold", Mathf.Abs(Mathf.Clamp01(t) - _direction));
 
 				yield return new WaitForFixedUpdate();
 			}
-			lastLerpValue = 1 - direction;
+			lastLerpValue = 1 - _direction;
 			if(action != null)
 				action();
 		}
@@ -102,8 +106,12 @@ namespace Search_Shell.Game{
 				case HighLight.Highlighted:
 					UpdateShader(selectedShader, highlighted);
 					break;
+				case HighLight.SubSelected:
+					UpdateShader(selectedShader, subSelected);
+					break;
 				case HighLight.None:
-					StartCoroutine(LerpOverLay(1f, null));
+					_direction = 1;
+					StartCoroutine(LerpOverLay(null));
 					break;
 			}
 		}

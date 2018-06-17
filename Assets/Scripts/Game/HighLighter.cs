@@ -98,7 +98,7 @@ namespace Search_Shell.Game{
 		}
 
 		public void SetSelected(HighLight highlight){
-			Debug.Log(name + " - " + highlight);
+
 			switch(highlight){
 				case HighLight.Selected:
 					UpdateShader(selectedShader, selected);

@@ -2568,6 +2568,7 @@ GameObject:
   - component: {fileID: 114219101812890640}
   - component: {fileID: 114147393477145990}
   - component: {fileID: 114516746583741096}
+  - component: {fileID: 114980275185288538}
   m_Layer: 10
   m_Name: BearPush
   m_TagString: Untagged
@@ -23362,7 +23363,7 @@ Animator:
   m_GameObject: {fileID: 1548965946441958}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 88accdf9cc4ad404c9d677f882b44547, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a5d00b8902a733468a71e2e9f6a4df4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -26533,6 +26534,20 @@ MonoBehaviour:
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: -12, y: 1, z: 0}
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &114980275185288538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433791201289978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8fda331fa2d8f74587449b832d03fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animateOnMovement: 1
+  duration: 0.2
+  animator: {fileID: 95778382607930508}
 --- !u!114 &114980446152388846
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -36,7 +36,7 @@ public class GrassFX : MonoBehaviour {
 	}
 	public void Paint(Vector3 xy){
 		xy = transform.InverseTransformPoint(xy);
-		Debug.Log("Painting");
+
 		Vector2 distance = max - min;		
 		Vector2 relPos = new Vector2(xy.x, xy.z) - min;
 		Vector3 mm = Vector2.one;
@@ -46,7 +46,7 @@ public class GrassFX : MonoBehaviour {
 		xy.x = relPos.x/distance.x;
 		xy.y = relPos.y/distance.y;
 		stampDrawer.SetVector("_Coord", new Vector4(xy.x, xy.y,mm.y,mm.x));
-		Debug.Log(xy + " - " + mm);
+
 		stampDrawer.SetVector("_Distance", new Vector4(1, 1,0,0));
 		RenderTexture tmp = RenderTexture.GetTemporary(128,128,0, RenderTextureFormat.Default);
 		Graphics.Blit(rt, tmp);

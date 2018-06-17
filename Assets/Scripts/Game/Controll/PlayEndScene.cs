@@ -14,11 +14,15 @@ namespace Search_Shell.Game.Controll{
 		private Vector3 cameraLookPos;
 
 		public float waitTime = 5f;
+
+		public float look_speed = 0.2f;
+		public float transform_speed = 0.5f;
 		public string endString;
 
     public void OnControll()
     {
-			animator.SetBool("play", true);
+			if(animator != null)
+				animator.SetBool("play", true);
 			GameController controller = FindObjectOfType<GameController>();
 			controller.canControll = false;
 			controller.DisableHighlights();
@@ -32,8 +36,8 @@ namespace Search_Shell.Game.Controll{
 		void Update()
 		{
 			if(cam != null){
-				cam.transform.position = Vector3.Lerp(cam.transform.position, pivot.position, Time.deltaTime*0.5f);
-				cameraLookPos = Vector3.Lerp(cameraLookPos, kite.transform.position, 0.2f* Time.deltaTime);
+				cam.transform.position = Vector3.Lerp(cam.transform.position, pivot.position, Time.deltaTime * transform_speed);
+				cameraLookPos = Vector3.Lerp(cameraLookPos, kite.transform.position, look_speed * Time.deltaTime);
 				cam.transform.LookAt(cameraLookPos);
 			}
 		}

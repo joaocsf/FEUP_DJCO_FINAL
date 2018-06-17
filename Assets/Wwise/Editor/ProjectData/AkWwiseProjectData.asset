@@ -188,8 +188,8 @@ MonoBehaviour:
     List: []
   BankWwu:
   - Guid: '{19061B5E-BD4D-4031-9B64-CCAC326D4311}'
-    m_lastTimePart2: -1999252595
-    m_lastTimePsrt1: -1232044258
+    m_lastTimePart2: -1999252417
+    m_lastTimePsrt1: 2050555562
     ParentPhysicalPath: 
     PhysicalPath: SoundBanks\Default Work Unit.wwu
     List:
@@ -208,8 +208,8 @@ MonoBehaviour:
   defaultPoolSize: 4096
   EventWwu:
   - Guid: '{F52FB322-7C49-4ECD-AD19-240917E57E12}'
-    m_lastTimePart2: -1999252595
-    m_lastTimePsrt1: -1683146069
+    m_lastTimePart2: -1999252417
+    m_lastTimePsrt1: 1905448139
     ParentPhysicalPath: 
     PhysicalPath: Events\Default Work Unit.wwu
     List:
@@ -310,8 +310,8 @@ MonoBehaviour:
       maxDuration: 0
       minDuration: 0
   - Guid: '{295FAD4A-AB50-4CC2-8076-E68366A12596}'
-    m_lastTimePart2: -1999252595
-    m_lastTimePsrt1: -1683105954
+    m_lastTimePart2: -1999252417
+    m_lastTimePsrt1: 1900793787
     ParentPhysicalPath: 
     PhysicalPath: Events\Musica.wwu
     List:
@@ -365,11 +365,9 @@ MonoBehaviour:
       minDuration: 0
   ExpandedItems:
   - /Search Shell_WwiseProject
-  - /Search Shell_WwiseProject/Events
-  - /Search Shell_WwiseProject/Events/Default Work Unit
   - /Search Shell_WwiseProject/States
-  - /Search Shell_WwiseProject/Switches
-  - /Search Shell_WwiseProject/Switches/Default Work Unit
+  - /Search Shell_WwiseProject/States/Default Work Unit
+  - /Search Shell_WwiseProject/States/Default Work Unit/SoulStates
   language: English(US)
   lowerPoolSize: 2048
   m_lastPopulateTimePart2: 0

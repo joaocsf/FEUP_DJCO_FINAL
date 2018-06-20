@@ -3183,9 +3183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ff4e89de2163d439598105f3e60092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventType: -1
+  eventType: 3
   events:
-  - surfaceType: -1
+  - surfaceType: 6
     startEvent:
       ID: 0
       valueGuid: 
@@ -3480,9 +3480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ff4e89de2163d439598105f3e60092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventType: -1
+  eventType: 3
   events:
-  - surfaceType: -1
+  - surfaceType: 6
     startEvent:
       ID: 0
       valueGuid: 

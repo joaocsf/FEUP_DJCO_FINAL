@@ -2474,7 +2474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventType: -1
   events:
-  - surfaceType: -1
+  - surfaceType: 6
     startEvent:
       ID: 0
       valueGuid: 
@@ -2516,7 +2516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventType: -1
   events:
-  - surfaceType: -1
+  - surfaceType: 6
     startEvent:
       ID: 0
       valueGuid: 

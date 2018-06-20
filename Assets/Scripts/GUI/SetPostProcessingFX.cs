@@ -20,9 +20,20 @@ public class SetPostProcessingFX : MonoBehaviour {
 		volume1 = GameObject.Find("PostProcessGlobal").GetComponent<PostProcessVolume>();
 		volume2 = GameObject.Find("PostProcessGlobalLevel").GetComponent<PostProcessVolume>();
 		toggle.onValueChanged.AddListener(ActivatePosProcessing);
+		LoadState();
+	}
+
+	void StoreState(bool state){
+		PlayerPrefs.SetInt("postFX", state? 1 : 0);
+	}
+
+	void LoadState(){
+		int vlaue = PlayerPrefs.GetInt("postFX", 1);
+		ActivatePosProcessing(vlaue == 1);
 	}
 
 	void ActivatePosProcessing(bool state){
+		StoreState(state);
 		Bloom bloom;
 		ColorGrading colorGrading;
 		AmbientOcclusion occlusion;

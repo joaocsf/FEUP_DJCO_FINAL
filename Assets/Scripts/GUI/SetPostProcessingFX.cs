@@ -29,7 +29,7 @@ public class SetPostProcessingFX : MonoBehaviour {
 
 	void LoadState(){
 		int vlaue = PlayerPrefs.GetInt("postFX", 1);
-		ActivatePosProcessing(vlaue == 1);
+		toggle.isOn = vlaue == 1;
 	}
 
 	void ActivatePosProcessing(bool state){

@@ -22,6 +22,9 @@ namespace Search_Shell.Game
 
         public SkyboxEffect skyboxEffect;
 
+        public AK.Wwise.Switch defaultSwitch;
+        public AK.Wwise.State defaultState;
+
         [Header("FX")]
         public Color highlighted;
         public Color selected;
@@ -45,16 +48,14 @@ namespace Search_Shell.Game
         public Camera levelCamera;
         public Camera subLevelCamera;
 
-        private UIManager UIManager;
-
-        private Vector3 lastInput;
-
         private HashSet<GridObject> nearObjects = new HashSet<GridObject>();
         private List<GridObject> nearObjectsList = new List<GridObject>();
 
         private HashSet<GridObject> movedObjects = new HashSet<GridObject>();
 
         private SaveManager saveManager;
+
+        private CameraFollow cameraFollow;
 
         public bool canControll = true;
 
@@ -65,10 +66,10 @@ namespace Search_Shell.Game
             saveManager = new SaveManager(this);
             SetupCamera();
             canControll = false;
-            UIManager = GameObject.FindObjectOfType<UIManager>();
             PostProcessVolume volume = GameObject.Find("PostProcessGlobal").GetComponent<PostProcessVolume>();
             volume.profile.TryGetSettings(out skyboxEffect);
             skyboxEffect.blend.value = 0; 
+            cameraFollow = subLevelCamera.GetComponent<CameraFollow>();
         }
 
         void OnDrawGizmos()
@@ -104,6 +105,22 @@ namespace Search_Shell.Game
             AkSoundEngine.SetState((uint)_state.groupID, (uint)_state.ID);
         }
 
+        public void Reset(){
+            subLevelCamera.transform.parent = null;
+            levelCamera.transform.parent = null;
+            ClearSave();
+            ClearLevel(level);
+            ClearLevel(subLevel);
+            PlayState(defaultState);
+            PlaySwitch(defaultSwitch);
+            LoadStartingLevel("Box/Introduction");
+            cameraFollow.enabled = true;
+            canControll = true;
+        }
+
+        public void ClearSave(){
+            saveManager = new SaveManager(this);
+        }
 
         public void Undo ()
         {
@@ -295,8 +312,6 @@ namespace Search_Shell.Game
                 Input.GetAxisRaw("Vertical"));
 
             if (input.magnitude == 0) return;
-            lastInput = input;
-            if (input.magnitude == 0) return;
             input = subLevelCamera.GetComponent<CameraFollow>().GetPlaneDirection(input);
             Debug.DrawLine(subLevelCamera.transform.position, subLevelCamera.transform.position + input, Color.black, 2);
             input = subLevel.transform.InverseTransformDirection(input);
@@ -321,7 +336,6 @@ namespace Search_Shell.Game
             }
 
             movedObjects.Clear();
-
             MovementController controller = subLevelObject.GetComponent<MovementController>();
             if (controller == null) return;
             controller.SetListener(this);
@@ -385,7 +399,6 @@ namespace Search_Shell.Game
             yield return new WaitForFixedUpdate();
             CameraFollow cam = subLevelCamera.GetComponent<CameraFollow>();
             cam.animating = true;
-            SkyboxHandler handler = subLevelCamera.GetComponent<SkyboxHandler>();
             
             saveManager.Save();
             ClearLevel(level);
@@ -423,7 +436,6 @@ namespace Search_Shell.Game
             canControll = false;
             CameraFollow cam = subLevelCamera.GetComponent<CameraFollow>();
             cam.animating = true;
-            SkyboxHandler handler = subLevelCamera.GetComponent<SkyboxHandler>();
             LevelProperties subLevelProperties = subLevel.GetComponent<LevelProperties>();
             cam.SetTransform(subLevel.transform);
             float time = 0;

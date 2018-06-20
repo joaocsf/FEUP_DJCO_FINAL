@@ -18,7 +18,6 @@ namespace Search_Shell.Controllers.Movement {
 
 		private void DebugRotation(Vector3 input){
 
-			Pivot pivot = obj.GetRollPivot(input);
 			drawer.Clear();	
 			Vector3 pos = obj.finalPosition;
 			Vector3 rot = obj.finalAngles;

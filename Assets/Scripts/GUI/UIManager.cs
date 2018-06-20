@@ -48,8 +48,9 @@ public class UIManager : MonoBehaviour
     }
     public void ClickNewgame()
     {
-        Destroy(GameObject.Find("WwiseGlobal"));
-        SceneManager.LoadScene(0);
+        gameControl.Reset();
+        end=false;
+        DisableUI();
     }
     public void ClickExit()
     {
@@ -89,7 +90,6 @@ public class UIManager : MonoBehaviour
     {
         if(end)return;
         DisableUI();
-        Debug.Log(end);
         ActivatePanel(gamePanel,active);
         gameControl.SetCanControl(active);        
         active = !active;

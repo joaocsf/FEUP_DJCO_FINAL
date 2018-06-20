@@ -75,10 +75,7 @@ namespace Search_Shell.Grid
 		public void Roll(Vector3 direction, float angle, ref Vector3 position, ref Vector3 angles){
 			Pivot pivot = GetRollPivot(direction);
 			Matrix4x4 matrix = RollMatrix(direction,angle);
-			Vector3 tempPos = position;
 			position = matrix.MultiplyPoint(position);
-
-			Vector3 upVector = matrix.MultiplyVector(Vector3.up);
 
 			Quaternion rot = Quaternion.AngleAxis(angle, pivot.normal) * Quaternion.Euler(angles.x, angles.y, angles.z);
 
@@ -88,7 +85,6 @@ namespace Search_Shell.Grid
 
 		public List<Vector3> CalculateRoll(Vector3 direction, float angle){
 			lastDirection = direction;
-			Pivot pivot = GetRollPivot(direction);
 			Vector3 tempPosition = finalPosition;
 			Vector3 tempAngles = finalAngles;
 
@@ -128,7 +124,6 @@ namespace Search_Shell.Grid
 			return res;			
 		}
 
-		private Color c = Color.white;
 		public Vector3 WorldToLocal(Vector3 position){
         Vector3 scaleInvert = transform.localScale;
         scaleInvert = new Vector3(1f/scaleInvert.x, 1f/scaleInvert.y, 1f/scaleInvert.z);

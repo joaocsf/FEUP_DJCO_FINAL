@@ -11,7 +11,7 @@ namespace Search_Shell.Controllers.Animation {
 		
 		public AnimationCurve curve;
 
-		public Transform obj;
+		public Transform tobj;
 
 		public float offSet = 0;
 		float finalRotation;
@@ -25,7 +25,7 @@ namespace Search_Shell.Controllers.Animation {
 
 			finalRotation = input.x > 0? 90f : input.x < 0 ? -90f : input.z > 0 ? 0f : 180f;
 			finalRotation += offSet;
-			initialRotation = obj.localEulerAngles.y;
+			initialRotation = tobj.localEulerAngles.y;
 
     }
 
@@ -35,7 +35,7 @@ namespace Search_Shell.Controllers.Animation {
 			float t = curve.Evaluate( 1f - time/duration );
 			float finalY = Mathf.LerpAngle(initialRotation, finalRotation, t);
 			
-			obj.localEulerAngles = new Vector3(0,finalY,0);
+			tobj.localEulerAngles = new Vector3(0,finalY,0);
 
 			if(time <= 0){	
 				Finish();

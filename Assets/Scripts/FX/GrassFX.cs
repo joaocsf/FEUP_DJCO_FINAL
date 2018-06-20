@@ -42,7 +42,6 @@ public class GrassFX : MonoBehaviour {
 		Vector3 mm = Vector2.one;
 		mm.x = distance.x;
 		mm.y = distance.y;
-		float dist = mm.magnitude*2;
 		xy.x = relPos.x/distance.x;
 		xy.y = relPos.y/distance.y;
 		stampDrawer.SetVector("_Coord", new Vector4(xy.x, xy.y,mm.y,mm.x));
@@ -79,7 +78,6 @@ public class GrassFX : MonoBehaviour {
 
 	void PopulateCollider(BoxCollider collider, ref List<CombineInstance> instances){
 		Bounds bounds = collider.bounds;
-		float distance = bounds.size.x;
 		Vector2 spacement = Vector2.zero;
 		spacement.x = bounds.size.x * unitsPerMeter;
 		spacement.y = bounds.size.z * unitsPerMeter;

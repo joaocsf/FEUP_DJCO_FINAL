@@ -3206,7 +3206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventType: -1
   events:
-  - surfaceType: -1
+  - surfaceType: 6
     startEvent:
       ID: 0
       valueGuid: 
@@ -3231,7 +3231,7 @@ MonoBehaviour:
   properties:
     canControll: 0
     isStatic: 1
-    surface: 0
+    surface: 2
   finalAngles: {x: -0, y: 0, z: 0}
   finalPosition: {x: 0, y: -5, z: 0}
   offset: {x: 0, y: 0, z: 0}

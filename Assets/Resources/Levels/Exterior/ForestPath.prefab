@@ -24264,7 +24264,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  obj: {fileID: 4360778962771638}
+  tobj: {fileID: 4360778962771638}
   offSet: 0
 --- !u!114 &114100282135310622
 MonoBehaviour:
@@ -25469,7 +25469,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  obj: {fileID: 4010753589132892}
+  tobj: {fileID: 4010753589132892}
   offSet: 0
 --- !u!114 &114519063979390194
 MonoBehaviour:

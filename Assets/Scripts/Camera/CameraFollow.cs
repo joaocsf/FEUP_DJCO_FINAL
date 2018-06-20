@@ -77,7 +77,6 @@ public class CameraFollow : MonoBehaviour
         if (obj == null) return;
 
         PositionCamera(obj, Time.deltaTime);
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
     }
 
     public Vector3 GetPlaneDirection(Vector3 point)
